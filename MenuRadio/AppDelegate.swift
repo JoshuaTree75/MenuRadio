@@ -12,9 +12,12 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 
+    let menuRadio = MenuRadio()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
+        menuRadio.launch()
+        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
