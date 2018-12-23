@@ -28,6 +28,8 @@ class MenuRadio: LongPressButtonDelegate {
                 icon = NSImage(named: NSImage.Name("iconStop"))!
             case .UrlNotSet:
                 icon = NSImage(named: NSImage.Name("iconUrlNotSet"))!
+            case .Loading:
+                icon = NSImage(named: NSImage.Name("iconUrlNotSet"))!
             }
         }
     }
@@ -64,12 +66,16 @@ class MenuRadio: LongPressButtonDelegate {
         switch playbackState {
         case .Error:
             playbackState = .Playing
+            longPress()
         case .Playing:
             playbackState = .Stop
         case .Stop:
             playbackState = .UrlNotSet
         case .UrlNotSet:
+            longPress()
             playbackState = .Error
+        case .Loading:
+            playbackState = .Stop
         }
     }
 

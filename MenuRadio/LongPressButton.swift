@@ -9,6 +9,7 @@
 import Foundation
 import AppKit
 
+// TODO: Should improve the code with protocol implementation but can't without using non computed variables (for the timer).
 
 //protocol LongPressButton {
 //    var longPressActivated: Bool {get set}

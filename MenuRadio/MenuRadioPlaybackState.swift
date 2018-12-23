@@ -13,4 +13,5 @@ enum MenuRadioPlaybackState: Int {
     case Playing
     case Stop
     case Error
+    case Loading
 }
