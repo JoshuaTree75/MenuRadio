@@ -14,6 +14,7 @@
 		FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42F21D044D30076C4FD /* LongPressButton.swift */; };
 		FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */; };
 		FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43521D188DD0076C4FD /* AnimatedView.swift */; };
+		FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		FA10A42F21D044D30076C4FD /* LongPressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadioPlaybackState.swift; sourceTree = "<group>"; };
 		FA10A43521D188DD0076C4FD /* AnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedView.swift; sourceTree = "<group>"; };
+		FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				FA10A42F21D044D30076C4FD /* LongPressButton.swift */,
 				FA10A42121D041930076C4FD /* Assets.xcassets */,
 				FA10A42321D041930076C4FD /* Main.storyboard */,
+				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
 				FA10A42621D041930076C4FD /* Info.plist */,
 				FA10A42721D041930076C4FD /* MenuRadio.entitlements */,
 			);
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */,
 				FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */,
 				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,
