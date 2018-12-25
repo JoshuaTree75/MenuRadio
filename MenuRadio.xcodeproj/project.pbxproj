@@ -13,6 +13,7 @@
 		FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42D21D042030076C4FD /* MenuRadio.swift */; };
 		FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42F21D044D30076C4FD /* LongPressButton.swift */; };
 		FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */; };
+		FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43521D188DD0076C4FD /* AnimatedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		FA10A42D21D042030076C4FD /* MenuRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadio.swift; sourceTree = "<group>"; };
 		FA10A42F21D044D30076C4FD /* LongPressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
 		FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadioPlaybackState.swift; sourceTree = "<group>"; };
+		FA10A43521D188DD0076C4FD /* AnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 		FA10A41C21D041910076C4FD /* MenuRadio */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A43721D1C13B0076C4FD /* Unused */,
 				FA10A41D21D041910076C4FD /* AppDelegate.swift */,
 				FA10A42D21D042030076C4FD /* MenuRadio.swift */,
 				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
@@ -67,6 +70,14 @@
 				FA10A42721D041930076C4FD /* MenuRadio.entitlements */,
 			);
 			path = MenuRadio;
+			sourceTree = "<group>";
+		};
+		FA10A43721D1C13B0076C4FD /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
+			);
+			path = Unused;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +160,7 @@
 			files = (
 				FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */,
+				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,
 				FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */,
 				FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */,
 			);

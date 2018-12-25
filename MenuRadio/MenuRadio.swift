@@ -21,43 +21,41 @@ class MenuRadio: LongPressButtonDelegate {
             print("Playback state is: \(playbackState)")
             switch playbackState {
             case .Error:
-                icon = NSImage(named: NSImage.Name("iconError"))!
+                setMenuIcon(withIconName: "iconError")
             case .Playing:
-                icon = NSImage(named: NSImage.Name("iconPlaying"))!
+                setMenuIcon(withIconName: "iconPlaying")
             case .Stop:
-                icon = NSImage(named: NSImage.Name("iconStop"))!
+                setMenuIcon(withIconName: "iconStop")
             case .UrlNotSet:
-                icon = NSImage(named: NSImage.Name("iconUrlNotSet"))!
+                setMenuIcon(withIconName: "iconUrlNotSet")
             case .Loading:
-                icon = NSImage(named: NSImage.Name("iconUrlNotSet"))!
+                setMenuIcon(withIconName: "iconLoading")
             }
         }
     }
-    
+
     // MARK: - Managing the icon
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     
-    var icon = NSImage() {
-        didSet {
-            if let view = statusItem.button?.subviews.last as? LongPressButton {
-            view.image = icon
-            }
-        }
-    }
+    var iconView: LongPressButton?
     
     func launch() {
         if let menuIcon = statusItem.button {
             if statusItem.button?.subviews.count == 0 {
                 let frame = statusItem.button!.frame
                 let view = LongPressButton.init(frame: frame)
-                view.imageScaling = .scaleProportionallyUpOrDown
                 view.delegate = self
                 menuIcon.addSubview(view)
+                iconView = view
                 print("IconView loaded")
                 playbackState = .Stop
             }
         }
+    }
+    
+    func setMenuIcon(withIconName name: String) {
+        iconView?.image = NSImage(named: name)
     }
     
     // MARK: - Managing the menu button
