@@ -23,5 +23,6 @@ class PreferenceManager {
     
     func registerDefaults() {
         let defaults = [autoplay: true, launchAtStartup: true, notifications: false, animatedIcon: false]
+        userDefaults.register(defaults: defaults)
     }
 }

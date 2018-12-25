@@ -12,7 +12,7 @@ import AppKit
 /**
  This class manages the app. It handles the icon menu behaviour and appareance
  */
-class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
+class MenuRadio: NSObject {
     
     
     //*****************************************************************
@@ -24,15 +24,15 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
             print("Playback state is: \(playbackState)")
             switch playbackState {
             case .Error:
-                setMenuIcon(withIconName: "iconError")
+                setIconViewImage(withIconName: "iconError")
             case .Playing:
-                setMenuIcon(withIconName: "iconPlaying")
+                setIconViewImage(withIconName: "iconPlaying")
             case .Stop:
-                setMenuIcon(withIconName: "iconStop")
+                setIconViewImage(withIconName: "iconStop")
             case .UrlNotSet:
-                setMenuIcon(withIconName: "iconUrlNotSet")
+                setIconViewImage(withIconName: "iconUrlNotSet")
             case .Loading:
-                setMenuIcon(withIconName: "iconLoading")
+                setIconViewImage(withIconName: "iconLoading")
             }
         }
     }
@@ -46,12 +46,12 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
     var iconView: LongPressButton?
     
     func launch() {
-        if let menuIcon = statusItem.button {
+        if let icon = statusItem.button {
             if statusItem.button?.subviews.count == 0 {
                 let frame = statusItem.button!.frame
                 let view = LongPressButton.init(frame: frame)
                 view.delegate = self
-                menuIcon.addSubview(view)
+                icon.addSubview(view)
                 iconView = view
                 print("IconView loaded")
                 playbackState = .Stop
@@ -59,36 +59,11 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
         }
     }
     
-    func setMenuIcon(withIconName name: String) {
+    func setIconViewImage(withIconName name: String) {
         iconView?.image = NSImage(named: name)
     }
     
-    //*****************************************************************
-    // MARK: - Menu button management
-    //*****************************************************************
-    
-    func click() {
-        print("Mouse clicked")
-        switch playbackState {
-        case .Error:
-            playbackState = .Playing
-            togglePopover(self)
-        case .Playing:
-            playbackState = .Stop
-        case .Stop:
-            playbackState = .UrlNotSet
-        case .UrlNotSet:
-            playbackState = .Error
-            togglePopover(self)
-        case .Loading:
-            playbackState = .Stop
-        }
-    }
-    
-    func longPress() {
-        print("Mouse held")
-        togglePopover(self)
-    }
+
     
     
     //*****************************************************************
@@ -138,10 +113,47 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
         
     }
     
+    //*****************************************************************
+    // MARK: - Preferences management
+    //*****************************************************************
     
-    //*****************************************************************
-    // MARK: - Popover delegation
-    //*****************************************************************
+    let preferences = PreferenceManager()
+}
+
+//*****************************************************************
+// MARK: - Menu button delegation
+//*****************************************************************
+
+extension MenuRadio: LongPressButtonDelegate {
+    
+    func click() {
+        print("Mouse clicked")
+        switch playbackState {
+        case .Error:
+            playbackState = .Playing
+            togglePopover(self)
+        case .Playing:
+            playbackState = .Stop
+        case .Stop:
+            playbackState = .UrlNotSet
+        case .UrlNotSet:
+            playbackState = .Error
+            togglePopover(self)
+        case .Loading:
+            playbackState = .Stop
+        }
+    }
+    
+    func longPress() {
+        print("Mouse held")
+        togglePopover(self)
+    }
+}
+//*****************************************************************
+// MARK: - Popover delegation
+//*****************************************************************
+
+extension MenuRadio: NSPopoverDelegate {
     
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
         return true
@@ -181,10 +193,4 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
             print("closeReason: popover did detach")
         }
     }
-    
-    //*****************************************************************
-    // MARK: - References management
-    //*****************************************************************
-
-    let preferences = PreferenceManager()
 }
