@@ -12,6 +12,7 @@ private let autoplay = "autoPlay"
 private let launchAtStartup = "launchAtStartup"
 private let notifications = "notifications"
 private let animatedIcon = "animatedIcon"
+private let defaultUrl = "defaultUrl"
 
 class PreferenceManager {
     
@@ -22,7 +23,11 @@ class PreferenceManager {
     }
     
     func registerDefaults() {
-        let defaults = [autoplay: true, launchAtStartup: true, notifications: false, animatedIcon: false]
+        let defaults: [String : Any] = [autoplay: true,
+                                        launchAtStartup: true,
+                                        notifications: false,
+                                        animatedIcon: false,
+                                        defaultUrl: "https://ycradio.stream.publicradio.org/ycradio.mp3"]
         userDefaults.register(defaults: defaults)
     }
 }

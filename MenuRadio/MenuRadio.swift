@@ -45,7 +45,7 @@ class MenuRadio: NSObject {
     
     var iconView: LongPressButton?
     
-    func launch() {
+    override func awakeFromNib() {
         if let icon = statusItem.button {
             if statusItem.button?.subviews.count == 0 {
                 let frame = statusItem.button!.frame
@@ -131,7 +131,6 @@ extension MenuRadio: LongPressButtonDelegate {
         switch playbackState {
         case .Error:
             playbackState = .Playing
-            togglePopover(self)
         case .Playing:
             playbackState = .Stop
         case .Stop:
@@ -160,9 +159,9 @@ extension MenuRadio: NSPopoverDelegate {
     }
     
     func detachableWindow(for popover: NSPopover) -> NSWindow? {
-        //        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: NSWindow.StyleMask.resizable, backing: NSWindow.BackingStoreType.buffered, defer: true)
-        //        window.contentViewController = popover.contentViewController
-        return nil //window // nil //detachedWindowController.window
+//        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: [.resizable], backing: NSWindow.BackingStoreType.buffered, defer: true)
+//        window = popover.contentViewController
+        return nil
         
     }
     
