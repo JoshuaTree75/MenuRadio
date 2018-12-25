@@ -125,7 +125,7 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
                 popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown], handler: {event in
                     self.closePopover(sender: sender)
                 }) as? NSEvent
-                            }
+            }
         }
     }
     
@@ -139,7 +139,9 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
     }
     
     
-    // MARK: - Popover Delegate
+    //*****************************************************************
+    // MARK: - Popover delegation
+    //*****************************************************************
     
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
         return true
@@ -179,4 +181,10 @@ class MenuRadio: NSObject, LongPressButtonDelegate, NSPopoverDelegate {
             print("closeReason: popover did detach")
         }
     }
+    
+    //*****************************************************************
+    // MARK: - References management
+    //*****************************************************************
+
+    let preferences = PreferenceManager()
 }
