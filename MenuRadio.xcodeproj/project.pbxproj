@@ -16,6 +16,9 @@
 		FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43521D188DD0076C4FD /* AnimatedView.swift */; };
 		FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */; };
 		FA10A43B21D1D6EA0076C4FD /* PreferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */; };
+		FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44521D2FCBB0076C4FD /* Reachability.swift */; };
+		FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44621D2FCBB0076C4FD /* FRadioAPI.swift */; };
+		FA10A44A21D2FCBB0076C4FD /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44721D2FCBB0076C4FD /* FRadioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		FA10A43521D188DD0076C4FD /* AnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedView.swift; sourceTree = "<group>"; };
 		FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceManager.swift; sourceTree = "<group>"; };
+		FA10A44521D2FCBB0076C4FD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		FA10A44621D2FCBB0076C4FD /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
+		FA10A44721D2FCBB0076C4FD /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,7 @@
 		FA10A41C21D041910076C4FD /* MenuRadio */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A43E21D2F6210076C4FD /* FRadioPlayer */,
 				FA10A43721D1C13B0076C4FD /* Unused */,
 				FA10A41D21D041910076C4FD /* AppDelegate.swift */,
 				FA10A42D21D042030076C4FD /* MenuRadio.swift */,
@@ -84,6 +91,16 @@
 				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 			);
 			path = Unused;
+			sourceTree = "<group>";
+		};
+		FA10A43E21D2F6210076C4FD /* FRadioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A44621D2FCBB0076C4FD /* FRadioAPI.swift */,
+				FA10A44721D2FCBB0076C4FD /* FRadioPlayer.swift */,
+				FA10A44521D2FCBB0076C4FD /* Reachability.swift */,
+			);
+			path = FRadioPlayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,10 +183,13 @@
 			files = (
 				FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */,
 				FA10A43B21D1D6EA0076C4FD /* PreferenceManager.swift in Sources */,
+				FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */,
 				FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */,
 				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,
 				FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */,
+				FA10A44A21D2FCBB0076C4FD /* FRadioPlayer.swift in Sources */,
+				FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */,
 				FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

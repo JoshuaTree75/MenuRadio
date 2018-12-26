@@ -19,31 +19,15 @@ class MenuRadio: NSObject {
     // MARK: - Properties
     //*****************************************************************
     
-    var playbackState: MenuRadioPlaybackState = .Stop {
-        didSet {
-            print("Playback state is: \(playbackState)")
-            switch playbackState {
-            case .Error:
-                setIconViewImage(withIconName: "iconError")
-            case .Playing:
-                setIconViewImage(withIconName: "iconPlaying")
-            case .Stop:
-                setIconViewImage(withIconName: "iconStop")
-            case .UrlNotSet:
-                setIconViewImage(withIconName: "iconUrlNotSet")
-            case .Loading:
-                setIconViewImage(withIconName: "iconLoading")
-            }
-        }
-    }
-    
-    //*****************************************************************
-    // MARK: - Menu creation
-    //*****************************************************************
+    let player = FRadioPlayer.shared
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     
     var iconView: LongPressButton?
+
+    //*****************************************************************
+    // MARK: - Initialization (Menu creation)
+    //*****************************************************************
     
     override func awakeFromNib() {
         if let icon = statusItem.button {
@@ -53,18 +37,12 @@ class MenuRadio: NSObject {
                 view.delegate = self
                 icon.addSubview(view)
                 iconView = view
-                print("IconView loaded")
-                playbackState = .Stop
+                print("View loaded")
             }
         }
+        player.delegate = self
+        player.radioURL = URL(string: "https://zzzzzpeacefulpiano.stream.publicradio.org/peacefulpiano.mp3")
     }
-    
-    func setIconViewImage(withIconName name: String) {
-        iconView?.image = NSImage(named: name)
-    }
-    
-
-    
     
     //*****************************************************************
     // MARK: - Popover management
@@ -128,18 +106,18 @@ extension MenuRadio: LongPressButtonDelegate {
     
     func click() {
         print("Mouse clicked")
-        switch playbackState {
-        case .Error:
-            playbackState = .Playing
-        case .Playing:
-            playbackState = .Stop
-        case .Stop:
-            playbackState = .UrlNotSet
-        case .UrlNotSet:
-            playbackState = .Error
-            togglePopover(self)
-        case .Loading:
-            playbackState = .Stop
+        togglePlayback()
+        
+    }
+    
+    func togglePlayback() {
+        switch player.playbackState {
+        case .paused:
+            player.play()
+        case .playing:
+            player.pause()
+        case .stopped:
+            player.play()
         }
     }
     
@@ -159,8 +137,8 @@ extension MenuRadio: NSPopoverDelegate {
     }
     
     func detachableWindow(for popover: NSPopover) -> NSWindow? {
-//        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: [.resizable], backing: NSWindow.BackingStoreType.buffered, defer: true)
-//        window = popover.contentViewController
+        //        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: [.resizable], backing: NSWindow.BackingStoreType.buffered, defer: true)
+        //        window = popover.contentViewController
         return nil
         
     }
@@ -192,4 +170,48 @@ extension MenuRadio: NSPopoverDelegate {
             print("closeReason: popover did detach")
         }
     }
+}
+
+//*****************************************************************
+// MARK: - FRadiostation delegation
+//*****************************************************************
+
+extension MenuRadio: FRadioPlayerDelegate {
+    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
+        switch state {
+        case .error:
+            setIconViewImage(withIconName: "iconError")
+            
+        case .loading:
+            setIconViewImage(withIconName: "iconLoading")
+            
+        case .loadingFinished, .readyToPlay:
+            switch player.playbackState {
+            case .paused, .stopped:
+                setIconViewImage(withIconName: "iconStop")
+                
+            case .playing:
+                setIconViewImage(withIconName: "iconPlaying")
+            }
+            
+        case .urlNotSet:
+            setIconViewImage(withIconName: "iconUrlNotSet")
+        }
+        
+    }
+    
+    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
+        switch state {
+        case .paused, .stopped:
+            setIconViewImage(withIconName: "iconStop")
+            
+        case .playing:
+            setIconViewImage(withIconName: "iconPlaying")
+        }
+    }
+    
+    func setIconViewImage(withIconName name: String) {
+        iconView?.image = NSImage(named: name)
+    }
+
 }
