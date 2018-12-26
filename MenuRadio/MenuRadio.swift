@@ -106,6 +106,8 @@ extension MenuRadio: LongPressButtonDelegate {
     
     func click() {
         print("Mouse clicked")
+        print(player.playbackState.description)
+        print(player.state.description)
         togglePlayback()
         
     }
@@ -117,7 +119,12 @@ extension MenuRadio: LongPressButtonDelegate {
         case .playing:
             player.pause()
         case .stopped:
-            player.play()
+            switch player.state {
+            case .error, .urlNotSet:
+                togglePopover(self)
+            default:
+                player.play()
+            }
         }
     }
     
