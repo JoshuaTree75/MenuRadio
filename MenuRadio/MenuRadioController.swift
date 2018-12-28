@@ -1,5 +1,5 @@
 //
-//  MenuRadio.swift
+//  MenuRadioController.swift
 //  MenuRadio
 //
 //  Created by Ken FUKUHARA on 23/12/2018.
@@ -10,44 +10,15 @@ import Foundation
 import AppKit
 
 /**
- This class manages the app. It handles the icon menu behaviour and appareance
+ This class controls the others objects: Menu remote, station manager, FPlayerRadio, Popover.
  */
-class MenuRadio: NSObject {
-    
-    
+class MenuRadioController: NSObject {
+
     //*****************************************************************
     // MARK: - Properties
     //*****************************************************************
-    
-    let player = FRadioPlayer.shared
-    
-    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-    
-    var iconView: LongPressButton?
 
-    //*****************************************************************
-    // MARK: - Initialization (Menu creation)
-    //*****************************************************************
-    
-    override func awakeFromNib() {
-        if let icon = statusItem.button {
-            if statusItem.button?.subviews.count == 0 {
-                let frame = statusItem.button!.frame
-                let view = LongPressButton.init(frame: frame)
-                view.delegate = self
-                icon.addSubview(view)
-                iconView = view
-                print("View loaded")
-            }
-        }
-        player.delegate = self
-        player.radioURL = URL(string: "https://zzzzzpeacefulpiano.stream.publicradio.org/peacefulpiano.mp3")
-    }
-    
-    //*****************************************************************
-    // MARK: - Popover management
-    //*****************************************************************
-    
+    var menuRemote = MenuRemote()
     
     lazy var popover: NSPopover = {
         let popover = NSPopover()
@@ -60,18 +31,34 @@ class MenuRadio: NSObject {
     
     var popoverTransiencyMonitor: NSEvent?
     
+    var stationManager = StationManager()
+    
+    //*****************************************************************
+    // MARK: - Initialization
+    //*****************************************************************
+
+    override init() {
+        super.init()
+        menuRemote.delegate = self
+    }
+    
+    //*****************************************************************
+    // MARK: - Popover management
+    //*****************************************************************
+    
+
     @objc func togglePopover(_ sender: Any?) {
         if popover.isShown {
             closePopover(sender: sender)
-            print("closePopover")
+            if kDebugLog { print("closePopover") }
         } else {
             showPopover(sender: sender)
-            print("showPopover")
+            if kDebugLog { print("showPopover") }
         }
     }
     
     func showPopover(sender: Any?) {
-        if let icon = statusItem.button {
+        if let icon = menuRemote.iconView {
             popover.show(relativeTo: icon.bounds, of: icon, preferredEdge: NSRectEdge.minY)
             if (popoverTransiencyMonitor == nil)
             {
@@ -102,42 +89,73 @@ class MenuRadio: NSObject {
 // MARK: - Menu button delegation
 //*****************************************************************
 
-extension MenuRadio: LongPressButtonDelegate {
-    
-    func click() {
-        print("Mouse clicked")
-        print(player.playbackState.description)
-        print(player.state.description)
+extension MenuRadioController: MenuRemoteDelegate {
+    func menuWasClicked() {
+        //        if kDebugLog { print(manager.player.playbackState.description) }
+        //        if kDebugLog { print(manager.player.state.description) }
         togglePlayback()
-        
     }
     
     func togglePlayback() {
-        switch player.playbackState {
+        switch stationManager.player.playbackState {
         case .paused:
-            player.play()
+            stationManager.player.play()
         case .playing:
-            player.pause()
+            stationManager.player.pause()
         case .stopped:
-            switch player.state {
+            switch stationManager.player.state {
             case .error, .urlNotSet:
                 togglePopover(self)
             default:
-                player.play()
+                stationManager.player.play()
             }
         }
     }
-    
-    func longPress() {
-        print("Mouse held")
-        togglePopover(self)
+
+    func menuWasHold() {
+        if popover.isShown { return }
+        showPopover(sender: nil)
     }
 }
+
+
+//*****************************************************************
+// MARK: - StationManager delegation
+//*****************************************************************
+
+extension MenuRadioController: StationManagerDelegate {
+    internal func stationsDidUpdate() {
+            DispatchQueue.main.async {
+                
+                // self.tableView.reloadData()
+                guard let currentStation = self.stationManager.selectedStation else { return }
+                
+                // Reset everything if the new stations list doesn't have the current station
+                if self.stationManager.stations.index(of: currentStation) == nil { self.stationManager.resetCurrentStation() }
+            }
+    }
+    
+    func statesDidChange(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) {
+        menuRemote.switchIcon(playerState, playbackState)
+    }
+    
+    func trackDidUpdate(_ track: Track?) {
+        
+    }
+    
+    func trackArtworkDidUpdate(_ track: Track?) {
+        
+    }
+
+}
+
+
+
 //*****************************************************************
 // MARK: - Popover delegation
 //*****************************************************************
 
-extension MenuRadio: NSPopoverDelegate {
+extension MenuRadioController: NSPopoverDelegate {
     
     func popoverShouldDetach(_ popover: NSPopover) -> Bool {
         return true
@@ -151,74 +169,30 @@ extension MenuRadio: NSPopoverDelegate {
     }
     
     func popoverDidShow(_ notification: Notification) {
-        print("popover did show")
+        if kDebugLog { print("popover did show") }
         
     }
     
     func popoverDidDetach(_ popover: NSPopover) {
-        print("popover did detach")
+        if kDebugLog { print("popover did detach") }
         //        if let vc = (popover.contentViewController as? PopoverViewController) {
         //            vc.isExpanded = true
-        //            print("vc.stackView: \(vc.stackView.subviews.description)")
+        //            if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
         //    }
     }
     
     func popoverDidClose(_ notification: Notification) {
         let closeReason = notification.userInfo![NSPopover.closeReasonUserInfoKey] as! String
         if (closeReason == NSPopover.CloseReason.standard.rawValue) {
-            print("closeReason: popover did close")
+            if kDebugLog { print("closeReason: popover did close") }
             //            if let vc = popover.contentViewController as? PopoverViewController {
             //                vc.isExpanded = false
-            //                print("vc.stackView: \(vc.stackView.subviews.description)")
+            //                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
             //    }
         }
         //Never called, don't know why -> popoverDidDetatch(:) used instead
         if (closeReason == NSPopover.CloseReason.detachToWindow.rawValue) {
-            print("closeReason: popover did detach")
+            if kDebugLog { print("closeReason: popover did detach") }
         }
     }
-}
-
-//*****************************************************************
-// MARK: - FRadiostation delegation
-//*****************************************************************
-
-extension MenuRadio: FRadioPlayerDelegate {
-    func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
-        switch state {
-        case .error:
-            setIconViewImage(withIconName: "iconError")
-            
-        case .loading:
-            setIconViewImage(withIconName: "iconLoading")
-            
-        case .loadingFinished, .readyToPlay:
-            switch player.playbackState {
-            case .paused, .stopped:
-                setIconViewImage(withIconName: "iconStop")
-                
-            case .playing:
-                setIconViewImage(withIconName: "iconPlaying")
-            }
-            
-        case .urlNotSet:
-            setIconViewImage(withIconName: "iconUrlNotSet")
-        }
-        
-    }
-    
-    func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
-        switch state {
-        case .paused, .stopped:
-            setIconViewImage(withIconName: "iconStop")
-            
-        case .playing:
-            setIconViewImage(withIconName: "iconPlaying")
-        }
-    }
-    
-    func setIconViewImage(withIconName name: String) {
-        iconView?.image = NSImage(named: name)
-    }
-
 }

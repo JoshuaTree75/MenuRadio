@@ -10,8 +10,8 @@
 		FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A41D21D041910076C4FD /* AppDelegate.swift */; };
 		FA10A42221D041930076C4FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA10A42121D041930076C4FD /* Assets.xcassets */; };
 		FA10A42521D041930076C4FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA10A42321D041930076C4FD /* Main.storyboard */; };
-		FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42D21D042030076C4FD /* MenuRadio.swift */; };
-		FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42F21D044D30076C4FD /* LongPressButton.swift */; };
+		FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42D21D042030076C4FD /* MenuRadioController.swift */; };
+		FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42F21D044D30076C4FD /* LongPressView.swift */; };
 		FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */; };
 		FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43521D188DD0076C4FD /* AnimatedView.swift */; };
 		FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */; };
@@ -19,6 +19,14 @@
 		FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44521D2FCBB0076C4FD /* Reachability.swift */; };
 		FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44621D2FCBB0076C4FD /* FRadioAPI.swift */; };
 		FA10A44A21D2FCBB0076C4FD /* FRadioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44721D2FCBB0076C4FD /* FRadioPlayer.swift */; };
+		FA10A44C21D40E840076C4FD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44B21D40E840076C4FD /* DataManager.swift */; };
+		FA10A44E21D40EE80076C4FD /* RadioStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44D21D40EE70076C4FD /* RadioStation.swift */; };
+		FA10A45021D420A20076C4FD /* InternalSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A44F21D420A20076C4FD /* InternalSettings.swift */; };
+		FA10A45221D4291F0076C4FD /* StationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45121D4291F0076C4FD /* StationManager.swift */; };
+		FA10A45921D4489F0076C4FD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45821D4489F0076C4FD /* Track.swift */; };
+		FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */; };
+		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
+		FA10A46221D5BF940076C4FD /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = FA10A46121D5BF930076C4FD /* stations.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +35,8 @@
 		FA10A42121D041930076C4FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA10A42421D041930076C4FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA10A42621D041930076C4FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA10A42721D041930076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
-		FA10A42D21D042030076C4FD /* MenuRadio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadio.swift; sourceTree = "<group>"; };
-		FA10A42F21D044D30076C4FD /* LongPressButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressButton.swift; sourceTree = "<group>"; };
+		FA10A42D21D042030076C4FD /* MenuRadioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadioController.swift; sourceTree = "<group>"; };
+		FA10A42F21D044D30076C4FD /* LongPressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LongPressView.swift; sourceTree = "<group>"; };
 		FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadioPlaybackState.swift; sourceTree = "<group>"; };
 		FA10A43521D188DD0076C4FD /* AnimatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedView.swift; sourceTree = "<group>"; };
 		FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +44,15 @@
 		FA10A44521D2FCBB0076C4FD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FA10A44621D2FCBB0076C4FD /* FRadioAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioAPI.swift; sourceTree = "<group>"; };
 		FA10A44721D2FCBB0076C4FD /* FRadioPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FRadioPlayer.swift; sourceTree = "<group>"; };
+		FA10A44B21D40E840076C4FD /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FA10A44D21D40EE70076C4FD /* RadioStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioStation.swift; sourceTree = "<group>"; };
+		FA10A44F21D420A20076C4FD /* InternalSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalSettings.swift; sourceTree = "<group>"; };
+		FA10A45121D4291F0076C4FD /* StationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManager.swift; sourceTree = "<group>"; };
+		FA10A45821D4489F0076C4FD /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRemote.swift; sourceTree = "<group>"; };
+		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
+		FA10A46121D5BF930076C4FD /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,18 +85,16 @@
 		FA10A41C21D041910076C4FD /* MenuRadio */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A42D21D042030076C4FD /* MenuRadioController.swift */,
+				FA10A45F21D5A62F0076C4FD /* Menu Remote */,
+				FA10A45421D429830076C4FD /* Popover */,
+				FA10A45521D429900076C4FD /* Station Manager */,
 				FA10A43E21D2F6210076C4FD /* FRadioPlayer */,
-				FA10A43721D1C13B0076C4FD /* Unused */,
-				FA10A41D21D041910076C4FD /* AppDelegate.swift */,
-				FA10A42D21D042030076C4FD /* MenuRadio.swift */,
+				FA10A45321D429430076C4FD /* System */,
 				FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */,
-				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
-				FA10A42F21D044D30076C4FD /* LongPressButton.swift */,
+				FA10A46121D5BF930076C4FD /* stations.json */,
 				FA10A42121D041930076C4FD /* Assets.xcassets */,
-				FA10A42321D041930076C4FD /* Main.storyboard */,
-				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
-				FA10A42621D041930076C4FD /* Info.plist */,
-				FA10A42721D041930076C4FD /* MenuRadio.entitlements */,
+				FA10A43721D1C13B0076C4FD /* Unused */,
 			);
 			path = MenuRadio;
 			sourceTree = "<group>";
@@ -88,6 +102,7 @@
 		FA10A43721D1C13B0076C4FD /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
 				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 			);
 			path = Unused;
@@ -101,6 +116,47 @@
 				FA10A44521D2FCBB0076C4FD /* Reachability.swift */,
 			);
 			path = FRadioPlayer;
+			sourceTree = "<group>";
+		};
+		FA10A45321D429430076C4FD /* System */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */,
+				FA10A41D21D041910076C4FD /* AppDelegate.swift */,
+				FA10A44F21D420A20076C4FD /* InternalSettings.swift */,
+				FA10A42621D041930076C4FD /* Info.plist */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		FA10A45421D429830076C4FD /* Popover */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A42321D041930076C4FD /* Main.storyboard */,
+				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
+			);
+			path = Popover;
+			sourceTree = "<group>";
+		};
+		FA10A45521D429900076C4FD /* Station Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A45121D4291F0076C4FD /* StationManager.swift */,
+				FA10A44D21D40EE70076C4FD /* RadioStation.swift */,
+				FA10A45821D4489F0076C4FD /* Track.swift */,
+				FA10A44B21D40E840076C4FD /* DataManager.swift */,
+				FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */,
+			);
+			path = "Station Manager";
+			sourceTree = "<group>";
+		};
+		FA10A45F21D5A62F0076C4FD /* Menu Remote */ = {
+			isa = PBXGroup;
+			children = (
+				FA10A42F21D044D30076C4FD /* LongPressView.swift */,
+				FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */,
+			);
+			path = "Menu Remote";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +227,7 @@
 			files = (
 				FA10A42221D041930076C4FD /* Assets.xcassets in Resources */,
 				FA10A42521D041930076C4FD /* Main.storyboard in Resources */,
+				FA10A46221D5BF940076C4FD /* stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,14 +239,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */,
+				FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */,
 				FA10A43B21D1D6EA0076C4FD /* PreferenceManager.swift in Sources */,
+				FA10A44E21D40EE80076C4FD /* RadioStation.swift in Sources */,
+				FA10A45021D420A20076C4FD /* InternalSettings.swift in Sources */,
 				FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */,
-				FA10A43021D044D30076C4FD /* LongPressButton.swift in Sources */,
-				FA10A42E21D042030076C4FD /* MenuRadio.swift in Sources */,
+				FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */,
+				FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */,
+				FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */,
 				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,
 				FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */,
 				FA10A44A21D2FCBB0076C4FD /* FRadioPlayer.swift in Sources */,
+				FA10A45921D4489F0076C4FD /* Track.swift in Sources */,
+				FA10A44C21D40E840076C4FD /* DataManager.swift in Sources */,
 				FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */,
+				FA10A45221D4291F0076C4FD /* StationManager.swift in Sources */,
 				FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,11 +391,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MenuRadio/MenuRadio.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MenuRadio/System/MenuRadio.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = LV53WDGC7X;
-				INFOPLIST_FILE = MenuRadio/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MenuRadio/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -346,11 +410,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MenuRadio/MenuRadio.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(SRCROOT)/MenuRadio/System/MenuRadio.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = LV53WDGC7X;
-				INFOPLIST_FILE = MenuRadio/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/MenuRadio/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

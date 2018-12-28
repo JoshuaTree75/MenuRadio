@@ -10,6 +10,15 @@ import Cocoa
 
 class PopoverViewController: NSViewController {
     
+    //*****************************************************************
+    // MARK: - IB Outlets
+    //*****************************************************************
+    
+    @IBOutlet weak var stationPopup: NSPopUpButton!
+    
+    @IBOutlet weak var stationInfo: NSTextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

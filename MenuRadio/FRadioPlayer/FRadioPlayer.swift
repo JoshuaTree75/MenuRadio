@@ -139,7 +139,7 @@ open class FRadioPlayer: NSObject {
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange rawValue: String?)
     {
         
-        print("metatdata did change")
+        if kDebugLog { print("metatdata did change") }
     }
     // MARK: - Properties
     

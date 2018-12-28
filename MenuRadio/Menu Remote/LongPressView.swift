@@ -45,7 +45,7 @@ import AppKit
 //            if mouseTimer != nil {
 //                mouseTimer!.invalidate()
 //                mouseTimer = nil
-//                printView("Short mouse click")
+//               if kDebugLog { print("Short mouse click") }
 //            }
 //        } else {
 //            self.mouseUp(with: event)
@@ -55,14 +55,14 @@ import AppKit
 //    //If the timer fires, then you know that the mouse button has been held down for your specified period of time, and you can take whatever action you like:
 //    @objc func longPress() {
 //        mouseTimer = nil
-//        print("Mouse held")
+//        if kDebugLog { print("Mouse held") }
 //        //Show popover
 //    }
 //}
 
-class LongPressButton: NSImageView {
+class LongPressView: NSImageView {
 
-    var delegate: LongPressButtonDelegate?
+    var delegate: LongPressViewDelegate?
     
     private var mouseTimer: Timer? = Timer()
     private let mouseHeldDelay: TimeInterval = 0.47
@@ -88,7 +88,7 @@ class LongPressButton: NSImageView {
     }
 }
 
-protocol LongPressButtonDelegate {
+protocol LongPressViewDelegate {
     func longPress()
     func click()
 }

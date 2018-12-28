@@ -64,7 +64,7 @@ class AnimatedView: NSImageView {
     
     private func setImage(frameCount: Int) {
         let imagePath = "\(imageNamePattern!) \(frameCount)"
-        print("Switching image to: \(imagePath)")
+        if kDebugLog { print("Switching image to: \(imagePath)") }
         let image = NSImage(named: NSImage.Name(imagePath))
         image?.isTemplate = true // best for dark mode
         self.imageScaling = .scaleProportionallyUpOrDown

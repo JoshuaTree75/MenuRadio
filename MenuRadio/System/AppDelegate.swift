@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        
+//        let menuRadio = MenuRadioController()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

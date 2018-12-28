@@ -675,9 +675,9 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MenuRadio" customModuleProvider="target"/>
+                <customObject id="Uzz-Ae-b0v" customClass="MenuRadioController" customModule="MenuRadio" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="vf0-Tr-J9z" customClass="MenuRadio" customModule="MenuRadio" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
@@ -698,16 +698,10 @@
                                 <subviews>
                                     <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-1V-q1T">
                                         <rect key="frame" x="-2" y="81" width="299" height="25"/>
-                                        <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="YCZ-N9-u2q" id="TlD-JK-lct">
+                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="TlD-JK-lct">
                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="menu"/>
-                                            <menu key="menu" id="80e-Dn-YeV">
-                                                <items>
-                                                    <menuItem title="Item 1" state="on" id="YCZ-N9-u2q"/>
-                                                    <menuItem title="Item 2" id="M9v-tw-IXt"/>
-                                                    <menuItem title="Item 3" id="qfG-3n-jbU"/>
-                                                </items>
-                                            </menu>
+                                            <menu key="menu" id="80e-Dn-YeV"/>
                                         </popUpButtonCell>
                                     </popUpButton>
                                     <textField horizontalHuggingPriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dWN-vx-Op3">
@@ -736,6 +730,10 @@
                             <constraint firstAttribute="bottom" secondItem="TfH-jc-Rpq" secondAttribute="bottom" constant="20" symbolic="YES" id="xU8-5M-mM2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="stationInfo" destination="dWN-vx-Op3" id="3s9-og-vEZ"/>
+                        <outlet property="stationPopup" destination="RTX-1V-q1T" id="ZQs-Sv-p7b"/>
+                    </connections>
                 </viewController>
                 <customObject id="9V6-PD-1Ag" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
