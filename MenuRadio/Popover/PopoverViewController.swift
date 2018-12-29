@@ -18,12 +18,23 @@ class PopoverViewController: NSViewController {
     
     @IBOutlet weak var stationInfo: NSTextField!
     
-    
+    var delegate: PopoverViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
+        //Load the popup list
+        
     }
     
+    func loadPopup(withStations stations: [RadioStation]) {
+        stationPopup.removeAllItems()
+        for station in stations {
+            stationPopup.addItem(withTitle: station.name)
+        }
+        if kDebugLog { print("Popup updated") }
+
+    }
+
     
     //*****************************************************************
     // MARK: - Storyboard instantiation
@@ -45,3 +56,6 @@ class PopoverViewController: NSViewController {
     }
 }
 
+protocol PopoverViewControllerDelegate {
+    func selectedStationDidChange()
+}

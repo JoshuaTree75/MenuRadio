@@ -42,7 +42,9 @@ class MenuRemote: NSObject {
             }
         }
     }
-    
+    func switchIcon(withImageNamed name: String, animated: Bool) {
+        
+    }
     func switchIcon(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) {
         switch playerState {
         case .error:

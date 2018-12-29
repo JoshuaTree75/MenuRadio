@@ -17,15 +17,7 @@ class StationManager: NSObject {
     var delegate: StationManagerDelegate?
     
     let player = FRadioPlayer.shared
-    
-    var stations = [RadioStation]() {
-        didSet {
-            guard stations != oldValue else { return }
-            delegate?.stationsDidUpdate()
-            if kDebugLog { print("Stations did update") }
-        }
-    }
-    
+        
     var selectedStation: RadioStation? {
         didSet { resetTrack(with: selectedStation) }
     }
@@ -38,32 +30,17 @@ class StationManager: NSObject {
     
     override init() {
         super.init()
-        // Get the Radio Stations
-        DataManager.getStationDataWithSuccess() { (data) in
-            
-            if kDebugLog { print("Stations JSON Found") }
-            
-            guard let data = data, let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data), let stationsArray = jsonDictionary["station"] else {
-                if kDebugLog { print("JSON Station Loading Error") }
-                return
-            }
-            
-            self.stations = stationsArray
-        }
         player.delegate = self
-        
+
     }
     
-    private func resetRadioPlayer() {
+     func resetRadioPlayer() {
         selectedStation = nil
         track = nil
         player.radioURL = nil
     }
     
-    // Reset all properties to default
-    func resetCurrentStation() {
-        resetRadioPlayer()
-    }
+
 
     
     // *****************************************************************
@@ -127,12 +104,12 @@ extension StationManager: FRadioPlayerDelegate {
     
     func radioPlayer(_ player: FRadioPlayer, playerStateDidChange state: FRadioPlayerState) {
         if kDebugLog { print("playerStateDidChange: \(state)") }
-        delegate?.statesDidChange(state, player.playbackState)
+        delegate?.playerStateDidChange(state)
     }
     
     func radioPlayer(_ player: FRadioPlayer, playbackStateDidChange state: FRadioPlaybackState) {
         if kDebugLog { print("playbackStateDidChange: \(state)") }
-        delegate?.statesDidChange(player.state, state)
+        delegate?.playbackStateDidChange(state)
     }
     
     func radioPlayer(_ player: FRadioPlayer, metadataDidChange artistName: String?, trackName: String?) {
@@ -161,17 +138,17 @@ extension StationManager: FRadioPlayerDelegate {
 //*****************************************************************
 
 protocol StationManagerDelegate {
-    func stationsDidUpdate()
-    func statesDidChange(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState)
-    //func playerStateDidChange(_ playerState: FRadioPlayerState)
-    //func playbackStateDidChange(_ playbackState: FRadioPlaybackState)
+    //func stationsDidUpdate()
+    //func statesDidChange(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState)
+    func playerStateDidChange(_ playerState: FRadioPlayerState)
+    func playbackStateDidChange(_ playbackState: FRadioPlaybackState)
     func trackDidUpdate(_ track: Track?)
     func trackArtworkDidUpdate(_ track: Track?)
 }
 
-/**
- Computed replicas of useful var from FRadioPlayer
- */
-extension StationManager {
-    
-}
+///**
+// Computed replicas of useful var from FRadioPlayer
+// */
+//extension StationManager {
+//
+//}
