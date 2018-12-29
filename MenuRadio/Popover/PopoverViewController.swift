@@ -14,25 +14,64 @@ class PopoverViewController: NSViewController {
     // MARK: - IB Outlets
     //*****************************************************************
     
+    @IBOutlet weak var popupLabel: NSTextField!
+    
     @IBOutlet weak var stationPopup: NSPopUpButton!
     
     @IBOutlet weak var stationInfo: NSTextField!
+    
+    
+    var selectedStation: RadioStation? {
+        didSet {
+            if selectedStation == nil {
+                if kDebugLog { print("No station selected") }
+            } else {
+            showStationInPopup(selectedStation!)
+            }
+        }
+    }
+    
     
     var delegate: PopoverViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //Load the popup list
-        
+        if kDebugLog { print("View did load") }
+
     }
     
-    func loadPopup(withStations stations: [RadioStation]) {
+    func refreshPopup(withStations stations: [RadioStation]) {
         stationPopup.removeAllItems()
         for station in stations {
             stationPopup.addItem(withTitle: station.name)
         }
+        
+        if selectedStation != nil {
+            popupLabel.stringValue = "Station:"
+            stationPopup.selectItem(withTitle: selectedStation!.name)
+        } else {
+            popupLabel.stringValue = "Choisissez une station:"
+            stationPopup.selectItem(at: -1)
+        }
         if kDebugLog { print("Popup updated") }
 
+    }
+    
+    private func showStationInPopup(_ station: RadioStation) {
+        stationPopup.selectItem(withTitle: station.name)
+    }
+
+    @IBAction func selectStation(_ sender: NSPopUpButton) {
+        delegate?.selectedStationDidChange()
+    }
+    
+    func updateTrack(_ track: Track?) {
+        stationInfo.stringValue = (track?.artist)! + " - " + (track?.title)!
+    }
+    
+    func updateTrackArtwork(_ track: Track?) {
+        
     }
 
     

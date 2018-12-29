@@ -27,6 +27,7 @@
 		FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */; };
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
 		FA10A46221D5BF940076C4FD /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = FA10A46121D5BF930076C4FD /* stations.json */; };
+		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRemote.swift; sourceTree = "<group>"; };
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
 		FA10A46121D5BF930076C4FD /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
+		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			children = (
 				FA10A42321D041930076C4FD /* Main.storyboard */,
 				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
+				FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				FA10A45021D420A20076C4FD /* InternalSettings.swift in Sources */,
 				FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */,
 				FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */,
+				FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */,
 				FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */,
 				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,

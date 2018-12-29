@@ -37,14 +37,14 @@ let searchable = false
 //**************************************
 
 // Set this to "false" to show the next/previous player buttons
-let hideNextPreviousButtons = true
+//let hideNextPreviousButtons = true
 
 //**************************************
 // ICON NAMES
 //**************************************
 
-let iconStopped = "iconStop"
-let iconPlaying = "iconPlay"
+let iconStopped = "iconStopped"
+let iconPlaying = "iconPlaying"
 let iconLoading = "iconLoading"
 let iconUrlNotSet = "iconUrlNotSet"
 let iconError = "iconError"

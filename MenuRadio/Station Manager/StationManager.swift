@@ -18,8 +18,8 @@ class StationManager: NSObject {
     
     let player = FRadioPlayer.shared
         
-    var selectedStation: RadioStation? {
-        didSet { resetTrack(with: selectedStation) }
+    var station: RadioStation? {
+        didSet { resetTrack(with: station) }
     }
     
     private(set) var track: Track?
@@ -35,7 +35,7 @@ class StationManager: NSObject {
     }
     
      func resetRadioPlayer() {
-        selectedStation = nil
+        station = nil
         track = nil
         player.radioURL = nil
     }
@@ -116,7 +116,7 @@ extension StationManager: FRadioPlayerDelegate {
         guard
             let artistName = artistName, !artistName.isEmpty,
             let trackName = trackName, !trackName.isEmpty else {
-                resetTrack(with: selectedStation)
+                resetTrack(with: station)
                 return
         }
         
@@ -124,10 +124,10 @@ extension StationManager: FRadioPlayerDelegate {
     }
     
     func radioPlayer(_ player: FRadioPlayer, artworkDidChange artworkURL: URL?) {
-        guard let artworkURL = artworkURL else { resetArtwork(with: selectedStation); return }
+        guard let artworkURL = artworkURL else { resetArtwork(with: station); return }
         
         ImageLoader.sharedLoader.imageForUrl(urlString: artworkURL.absoluteString) { (image, stringURL) in
-            guard let image = image else { self.resetArtwork(with: self.selectedStation); return }
+            guard let image = image else { self.resetArtwork(with: self.station); return }
             self.updateTrackArtwork(with: image, artworkLoaded: true)
         }
     }

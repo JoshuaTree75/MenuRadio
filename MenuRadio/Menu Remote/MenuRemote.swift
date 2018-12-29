@@ -37,35 +37,18 @@ class MenuRemote: NSObject {
                 view.delegate = self
                 icon.addSubview(view)
                 iconView = view
-                setIconViewImage(withIconName: iconStopped)
+                switchIcon(withImageNamed: iconStopped, animated: false)
                 if kDebugLog { print("View loaded") }
             }
         }
     }
     func switchIcon(withImageNamed name: String, animated: Bool) {
-        
-    }
-    func switchIcon(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) {
-        switch playerState {
-        case .error:
-            setIconViewImage(withIconName: iconError)
-        case .loading:
-            setIconViewImage(withIconName: iconLoading)
-        case .loadingFinished, .readyToPlay:
-            switch playbackState {
-            case .paused, .stopped:
-                setIconViewImage(withIconName: iconStopped)
-            case .playing:
-                setIconViewImage(withIconName: iconPlaying)
+        if animated {
+            
+        } else {
+            if iconView != nil {
+                iconView!.image = NSImage(named: name)
             }
-        case .urlNotSet:
-            setIconViewImage(withIconName: iconUrlNotSet)
-        }
-    }
-    
-    private func setIconViewImage(withIconName name: String) {
-        if iconView != nil {
-            iconView!.image = NSImage(named: name)
         }
     }
 }

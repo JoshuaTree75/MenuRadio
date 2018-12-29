@@ -369,6 +369,7 @@ open class FRadioPlayer: NSObject {
     
     private func timedMetadataDidChange(rawValue: String?) {
         let parts = rawValue?.components(separatedBy: " - ")
+        if kDebugLog { print(parts?.description) }
         delegate?.radioPlayer?(self, metadataDidChange: parts?.first, trackName: parts?.last)
         delegate?.radioPlayer?(self, metadataDidChange: rawValue)
         shouldGetArtwork(for: rawValue, enableArtwork)

@@ -67,47 +67,30 @@ class MenuRadioController: NSObject {
     internal func stationsDidUpdate() {
         DispatchQueue.main.async {
             let _ = self.popoverController!.view
-            self.popoverController!.loadPopup(withStations: self.stations)
+            self.popoverController!.refreshPopup(withStations: self.stations)
 
-            guard let currentStation = self.stationManager.selectedStation else { return }
+            guard let currentStation = self.stationManager.station else {
+                // No station selected
+                return
+            }
             
             // Reset everything if the new stations list doesn't have the current station
             if self.stations.index(of: currentStation) == nil {
                 self.resetCurrentStation()
-                if kDebugLog { print("Previous station lost")
-                }
+                if kDebugLog { print("Previous station lost") }
+            } else {
+                self.popoverController!.selectedStation = currentStation
             }
-            
+            if kDebugLog { print("Station selected in Popup") }
         }
     }
     
-    //*****************************************************************
-    // MARK: - Segue
-    //*****************************************************************
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard segue.identifier == "NowPlaying", let nowPlayingVC = segue.destination as? NowPlayingViewController else { return }
-//
-//        title = ""
-//
-//        let newStation: Bool
-//
-//        if let indexPath = (sender as? IndexPath) {
-//            // User clicked on row, load/reset station
-//            radioPlayer.station = searchController.isActive ? searchedStations[indexPath.row] : stations[indexPath.row]
-//            newStation = true
-//        } else {
-//            // User clicked on Now Playing button
-//            newStation = false
-//        }
-//
-//        nowPlayingViewController = nowPlayingVC
-//        nowPlayingVC.load(station: radioPlayer.station, track: radioPlayer.track, isNewStation: newStation)
-//        nowPlayingVC.delegate = self
-//    }
+
     
     // Reset all properties to default
     func resetCurrentStation() {
+        //deselect popUp
+        self.popoverController!.stationPopup.select(nil)
         stationManager.resetRadioPlayer()
     }
     
@@ -142,8 +125,12 @@ extension MenuRadioController: MenuRemoteDelegate {
     func menuWasClicked() {
         //        if kDebugLog { print(manager.player.playbackState.description) }
         //        if kDebugLog { print(manager.player.state.description) }
-       
-        stationManager.player.togglePlaying()
+        switch stationManager.player.state {
+        case .error, .urlNotSet:
+            togglePopover(self)
+        default:
+            stationManager.player.togglePlaying()
+        }
     }
     
     func menuWasHold() {
@@ -158,7 +145,8 @@ extension MenuRadioController: MenuRemoteDelegate {
 //*****************************************************************
 
 extension MenuRadioController: StationManagerDelegate {
-    func playerStateDidChange(_ playerState: FRadioPlayerState) {
+    
+    func iconNameForStates(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) -> String {
         var imageName: String
         
         switch playerState {
@@ -171,29 +159,29 @@ extension MenuRadioController: StationManagerDelegate {
             case .playing:
                 imageName = iconPlaying
             case .paused, .stopped:
-            imageName = iconStopped
+                imageName = iconStopped
             }
         case .urlNotSet:
             imageName = iconUrlNotSet
         }
-        menuRemote.switchIcon(withImageNamed: imageName, animated: false)
+        
+        return imageName
+    }
+    
+    func playerStateDidChange(_ playerState: FRadioPlayerState) {
+        
+        let iconName = iconNameForStates(playerState, stationManager.player.playbackState)
+        menuRemote.switchIcon(withImageNamed: iconName, animated: false)
     }
     
     func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
         
-        var imageName: String
-
-        switch playbackState {
-        case .paused, .stopped:
-            imageName = iconStopped
-        case .playing:
-            imageName = iconPlaying
-        }
-        menuRemote.switchIcon(withImageNamed: imageName, animated: false)
+        let iconName = iconNameForStates(stationManager.player.state, playbackState)
+        menuRemote.switchIcon(withImageNamed: iconName, animated: false)
     }
     
     func trackDidUpdate(_ track: Track?) {
-        
+        popoverController?.updateTrack(track)
     }
     
     func trackArtworkDidUpdate(_ track: Track?) {
@@ -211,10 +199,13 @@ extension MenuRadioController: PopoverViewControllerDelegate {
     //*****************************************************************
 
     func selectedStationDidChange() {
-        
+        if kDebugLog { print("selectedStationDidChange") }
+        if let index = popoverController?.stationPopup.indexOfSelectedItem {
+            stationManager.station = stations[index]
+            stationManager.player.radioURL = URL(string: stationManager.station!.streamURL)
+            if !popover.isDetached { closePopover(sender: self) }
+        }
     }
-    
-    
 }
 
 
