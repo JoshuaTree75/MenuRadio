@@ -118,13 +118,11 @@ class MenuRadioController: NSObject {
 }
 
 //*****************************************************************
-// MARK: - Menu Radio delegation
+// MARK: - Menu Remote delegation
 //*****************************************************************
 
 extension MenuRadioController: MenuRemoteDelegate {
     func menuWasClicked() {
-        //        if kDebugLog { print(manager.player.playbackState.description) }
-        //        if kDebugLog { print(manager.player.state.description) }
         switch stationManager.player.state {
         case .error, .urlNotSet:
             togglePopover(self)

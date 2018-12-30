@@ -48,6 +48,7 @@ class PopoverViewController: NSViewController {
         if selectedStation == nil {
             scrollingStationInfo.setup(string: "Choisissez une station:")
             stationPopup.selectItem(at: -1)
+            stationArtwork.image = NSImage(named: AppIcon)
             if kDebugLog { print("No station selected") }
         } else {
             showStationInPopup(selectedStation!)

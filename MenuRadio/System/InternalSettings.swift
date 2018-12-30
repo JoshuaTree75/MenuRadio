@@ -48,4 +48,4 @@ let iconPlaying = "iconPlaying"
 let iconLoading = "iconLoading"
 let iconUrlNotSet = "iconUrlNotSet"
 let iconError = "iconError"
-
+let AppIcon = "AppIcon"
