@@ -39,7 +39,7 @@ class MenuRadioController: NSObject {
         didSet {
             guard stations != oldValue else { return }
             stationsDidUpdate()
-            if kDebugLog { print("Stations did update") }
+            if kDebugLog { print("Stations list did update") }
         }
     }
     
@@ -77,15 +77,15 @@ class MenuRadioController: NSObject {
             // Reset everything if the new stations list doesn't have the current station
             if self.stations.index(of: currentStation) == nil {
                 self.resetCurrentStation()
-                if kDebugLog { print("Previous station lost") }
+                if kDebugLog { print("Previous station lost. None selected") }
             } else {
                 self.popoverController!.selectedStation = currentStation
+                if kDebugLog { print("Station selected in Popup") }
             }
-            if kDebugLog { print("Station selected in Popup") }
         }
     }
     
-
+    
     
     // Reset all properties to default
     func resetCurrentStation() {
@@ -185,7 +185,8 @@ extension MenuRadioController: StationManagerDelegate {
     }
     
     func trackArtworkDidUpdate(_ track: Track?) {
-        
+        popoverController?.updateTrackArtwork(track)
+
     }
     
 }

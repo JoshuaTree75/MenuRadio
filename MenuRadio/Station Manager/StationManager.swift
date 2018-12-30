@@ -119,7 +119,6 @@ extension StationManager: FRadioPlayerDelegate {
                 resetTrack(with: station)
                 return
         }
-        
         updateTrackMetadata(artistName: artistName, trackName: trackName)
     }
     
@@ -145,10 +144,3 @@ protocol StationManagerDelegate {
     func trackDidUpdate(_ track: Track?)
     func trackArtworkDidUpdate(_ track: Track?)
 }
-
-///**
-// Computed replicas of useful var from FRadioPlayer
-// */
-//extension StationManager {
-//
-//}
