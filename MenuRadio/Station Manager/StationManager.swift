@@ -19,7 +19,10 @@ class StationManager: NSObject {
     let player = FRadioPlayer.shared
         
     var station: RadioStation? {
-        didSet { resetTrack(with: station) }
+        didSet {
+            resetTrack(with: station)
+            UserDefaults.setValue(station, forKey: prefsS)
+        }
     }
     
     private(set) var track: Track?
