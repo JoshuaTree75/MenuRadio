@@ -762,6 +762,9 @@
                                                             <menuItem isSeparatorItem="YES" title="Notifications" id="S3K-SG-GhB"/>
                                                             <menuItem title="Quitter" id="T6t-oq-mx6">
                                                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                                                <connections>
+                                                                    <action selector="terminate:" target="9V6-PD-1Ag" id="C7O-go-N62"/>
+                                                                </connections>
                                                             </menuItem>
                                                         </items>
                                                     </menu>
@@ -862,6 +865,10 @@
                                                             </prototypeCellViews>
                                                         </tableColumn>
                                                     </tableColumns>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="6lT-Vv-cy7" id="QMc-ed-cI9"/>
+                                                        <outlet property="delegate" destination="6lT-Vv-cy7" id="JGc-FT-UGv"/>
+                                                    </connections>
                                                 </tableView>
                                             </subviews>
                                         </clipView>

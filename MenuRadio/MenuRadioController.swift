@@ -110,8 +110,9 @@ class MenuRadioController: NSObject {
         self.popoverController!.stationPopup.select(nil)
         stationManager.resetRadioPlayer()
     }
-
+    
 }
+
 
 //*****************************************************************
 // MARK: - Menu Remote delegation
@@ -224,6 +225,10 @@ extension MenuRadioController: PopoverViewControllerDelegate {
         default:
             if kDebugLog { print("This menu dosen't exist")}
         }
+    }
+    
+    func numberOfStations() -> Int {
+        return stations.count
     }
     
 }

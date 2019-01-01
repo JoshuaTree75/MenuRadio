@@ -33,6 +33,7 @@ class MenuRemote: NSObject {
         if let icon = statusItem.button {
             if statusItem.button?.subviews.count == 0 {
                 let frame = statusItem.button!.frame
+                
                 let view = LongPressView.init(frame: frame)
                 view.delegate = self
                 icon.addSubview(view)

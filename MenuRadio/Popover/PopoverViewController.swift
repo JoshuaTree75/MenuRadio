@@ -8,11 +8,20 @@
 
 import Cocoa
 
+
+protocol PopoverViewControllerDelegate {
+    func selectedStationDidChange()
+    func didPickPreference(menuItem: NSMenuItem)
+    func numberOfStations() -> Int
+}
+
 class PopoverViewController: NSViewController {
     
     //*****************************************************************
-    // MARK: - IB Outlets
+    // MARK: - Attached popover
     //*****************************************************************
+    
+    // MARK: - IB Outlets
     
     @IBOutlet weak var stationPopup: NSPopUpButton!
     
@@ -24,7 +33,6 @@ class PopoverViewController: NSViewController {
         didSet {
             if selectedStation != nil {
                 showStationInPopup(selectedStation!)
-                
             }
         }
     }
@@ -91,6 +99,10 @@ class PopoverViewController: NSViewController {
             switch item.title {
             case menuAbout:
                 print("A propos")
+                let alert = NSAlert()
+                alert.messageText = "MenuRadio 0.3.1"
+                alert.informativeText = "KFU ©2019"
+                alert.runModal()
             case menuQuit:
                 print("Quit")
             default:
@@ -115,23 +127,23 @@ class PopoverViewController: NSViewController {
     
     var isExpanded :Bool = false {
         willSet {
-            NSAnimationContext.beginGrouping()
-            NSAnimationContext.current.duration = 5.0
-            NSAnimationContext.current.allowsImplicitAnimation = true
-            if newValue {
-                stackPlayer.isHidden = true
-                //stackSearch.isHidden = false
-                stackRadioList.isHidden = false
-                //stackCopyright.isHidden = false
-                print("Popover expanded")
-            } else {
-                stackPlayer.isHidden = false
-                // stackSearch.isHidden = true
-                stackRadioList.isHidden = true
-                // stackCopyright.isHidden = true
-                print("Popover contracted")
-            }
-            NSAnimationContext.endGrouping()
+            //            NSAnimationContext.beginGrouping()
+            //            NSAnimationContext.current.duration = 5.0
+            //            NSAnimationContext.current.allowsImplicitAnimation = true
+            //            if newValue {
+            //                stackPlayer.isHidden = true
+            //                //stackSearch.isHidden = false
+            //                stackRadioList.isHidden = false
+            //                //stackCopyright.isHidden = false
+            //                print("Popover expanded")
+            //            } else {
+            //                stackPlayer.isHidden = false
+            //                // stackSearch.isHidden = true
+            //                stackRadioList.isHidden = true
+            //                // stackCopyright.isHidden = true
+            //                print("Popover contracted")
+            //            }
+            //            NSAnimationContext.endGrouping()
             
             
             //            NSAnimationContext.runAnimationGroup({_ in
@@ -181,7 +193,12 @@ class PopoverViewController: NSViewController {
     }
 }
 
-protocol PopoverViewControllerDelegate {
-    func selectedStationDidChange()
-    func didPickPreference(menuItem: NSMenuItem)
+extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return delegate?.numberOfStations() ?? 0
+    }
+    
+
+    
 }
