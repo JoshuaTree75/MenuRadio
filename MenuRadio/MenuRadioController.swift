@@ -38,11 +38,26 @@ class MenuRadioController: NSObject {
     var stations = [RadioStation]() {
         didSet {
             guard stations != oldValue else { return }
+            self.prefs.stations = self.stations
             stationsDidUpdate()
             if kDebugLog { print("Stations list did update") }
         }
     }
     
+    var selectedStation: RadioStation? {
+        didSet {
+            guard selectedStation != oldValue else { return }
+            stationManager.station = selectedStation
+            prefs.selectedStation = selectedStation
+        }
+    }
+    
+    //*****************************************************************
+    // MARK: - Preferences management
+    //*****************************************************************
+    
+    let prefs = PreferenceManager()
+
     //*****************************************************************
     // MARK: - Initialization
     //*****************************************************************
@@ -52,24 +67,24 @@ class MenuRadioController: NSObject {
         menuRemote.delegate = self
         popoverController = PopoverViewController.freshController()
         popoverController!.delegate = self
+        let _ = self.popoverController!.view // call the viewDidLoad() method
         stationManager.delegate = self
-        loadStationsFromJSON()
+        stations = prefs.stations
+        stationsDidUpdate()
+        selectedStation = prefs.selectedStation
+        stationManager.station = selectedStation
     }
     
     //*****************************************************************
     // MARK: - Private helpers
     //*****************************************************************
     
-    internal func changeToStation(_ station: RadioStation) {
-        
-    }
-    
     internal func stationsDidUpdate() {
         DispatchQueue.main.async {
-            let _ = self.popoverController!.view
+            //Refressh popover
             self.popoverController!.refreshPopup(withStations: self.stations)
 
-            guard let currentStation = self.stationManager.station else {
+            guard let currentStation = self.prefs.selectedStation else {
                 // No station selected
                 return
             }
@@ -80,12 +95,13 @@ class MenuRadioController: NSObject {
                 if kDebugLog { print("Previous station lost. None selected") }
             } else {
                 self.popoverController!.selectedStation = currentStation
-                if kDebugLog { print("Station selected in Popup") }
+                if kDebugLog { print("OKPrefs Selected station:\(self.prefs.selectedStation)") }
+                if kDebugLog { print("nilMenuRadioController Selected station:\(self.selectedStation)") }
+                if kDebugLog { print("nilStationManager Selected station:\(self.stationManager.station)") }
+                if kDebugLog { print("nilStation selected in Popup") }
             }
         }
     }
-    
-    
     
     // Reset all properties to default
     func resetCurrentStation() {
@@ -93,28 +109,7 @@ class MenuRadioController: NSObject {
         self.popoverController!.stationPopup.select(nil)
         stationManager.resetRadioPlayer()
     }
-    
-    func loadStationsFromJSON(){
-        // Get the Radio Stations
-        DataManager.getStationDataWithSuccess() { (data) in
-            
-            if kDebugLog { print("Stations JSON Found") }
-            
-            guard let data = data, let jsonDictionary = try? JSONDecoder().decode([String: [RadioStation]].self, from: data), let stationsArray = jsonDictionary["station"] else {
-                if kDebugLog { print("JSON Station Loading Error") }
-                return
-            }
-            
-            self.stations = stationsArray
-        }
-    }
 
-    
-    //*****************************************************************
-    // MARK: - Preferences management
-    //*****************************************************************
-    
-    let preferences = PreferenceManager()
 }
 
 //*****************************************************************
@@ -200,8 +195,7 @@ extension MenuRadioController: PopoverViewControllerDelegate {
     func selectedStationDidChange() {
         if kDebugLog { print("selectedStationDidChange") }
         if let index = popoverController?.stationPopup.indexOfSelectedItem {
-            stationManager.station = stations[index]
-            stationManager.player.radioURL = URL(string: stationManager.station!.streamURL)
+            selectedStation = stations[index]
             if !popover.isDetached { closePopover(sender: self) }
         }
     }

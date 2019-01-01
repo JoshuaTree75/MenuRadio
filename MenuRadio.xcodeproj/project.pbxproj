@@ -28,6 +28,7 @@
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
 		FA10A46221D5BF940076C4FD /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = FA10A46121D5BF930076C4FD /* stations.json */; };
 		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
+		FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
 		FA10A46121D5BF930076C4FD /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
+		FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultRadioStations.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				FA10A45321D429430076C4FD /* System */,
 				FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */,
 				FA10A46121D5BF930076C4FD /* stations.json */,
+				FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */,
 				FA10A42121D041930076C4FD /* Assets.xcassets */,
 				FA10A43721D1C13B0076C4FD /* Unused */,
 			);
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA10A42221D041930076C4FD /* Assets.xcassets in Resources */,
+				FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */,
 				FA10A42521D041930076C4FD /* Main.storyboard in Resources */,
 				FA10A46221D5BF940076C4FD /* stations.json in Resources */,
 			);

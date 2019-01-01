@@ -27,6 +27,7 @@ struct RadioStation: Codable {
         self.desc = desc
         self.longDesc = longDesc
     }
+    
 }
 
 extension RadioStation: Equatable {

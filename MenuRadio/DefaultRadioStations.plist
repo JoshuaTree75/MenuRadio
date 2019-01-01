@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>Classic Rock</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.streamguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>station-classicrock</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>France Musique</string>
+		<key>streamURL</key>
+		<string>http://direct.francemusique.fr/live/francemusiqueeasyclassique-hifi.mp3</string>
+		<key>imageURL</key>
+		<string></string>
+		<key>desc</key>
+		<string>Vous allez LA DO RÉ !</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Newport Folk Radio</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.streamguys1.com/Newport.mp3</string>
+		<key>imageURL</key>
+		<string>station-newportfolk.png</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Absolute Country Hits</string>
+		<key>streamURL</key>
+		<string>http://strm112.1.fm/acountry_mobile_mp3</string>
+		<key>imageURL</key>
+		<string>station-absolutecountry.png</string>
+		<key>desc</key>
+		<string>The Music Starts Here</string>
+	</dict>
+</array>
+</plist>

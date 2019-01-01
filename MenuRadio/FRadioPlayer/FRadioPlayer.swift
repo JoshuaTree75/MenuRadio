@@ -161,7 +161,7 @@ open class FRadioPlayer: NSObject {
     
     
     /// The player starts playing when the radioURL property gets set. (default == true)
-    open var isAutoPlay = true
+    open var isAutoPlay = false
     
     /// Enable fetching albums artwork from the iTunes API. (default == true)
     open var enableArtwork = true

@@ -24,6 +24,7 @@ class PopoverViewController: NSViewController {
         didSet {
             if selectedStation != nil {
                 showStationInPopup(selectedStation!)
+                
           }
         }
     }
@@ -68,16 +69,15 @@ class PopoverViewController: NSViewController {
     func updateTrack(_ track: Track?) {
         if track != nil {
             let string = (track!.artist) + " - " + (track!.title)
-            if kDebugLog { print("String: \(string)")
-                scrollingStationInfo.setup(string: string)
-            }
+            if kDebugLog { print("String: \(string)") }
+            scrollingStationInfo.setup(string: string)
         }
     }
     
     func updateTrackArtwork(_ track: Track?) {
         stationArtwork.image = track?.artworkImage
     }
-
+    
     
     //*****************************************************************
     // MARK: - Storyboard instantiation

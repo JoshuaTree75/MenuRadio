@@ -21,7 +21,7 @@ class StationManager: NSObject {
     var station: RadioStation? {
         didSet {
             resetTrack(with: station)
-            UserDefaults.setValue(station, forKey: prefsS)
+            player.radioURL = URL(string: station!.streamURL)
         }
     }
     
