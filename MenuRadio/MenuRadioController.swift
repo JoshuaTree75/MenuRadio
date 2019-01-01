@@ -47,8 +47,11 @@ class MenuRadioController: NSObject {
     var selectedStation: RadioStation? {
         didSet {
             guard selectedStation != oldValue else { return }
-            stationManager.station = selectedStation
-            prefs.selectedStation = selectedStation
+            if selectedStation != nil {
+                stationManager.station = selectedStation
+                prefs.selectedStation = selectedStation
+                stationManager.player.radioURL = URL(string: selectedStation!.streamURL)
+            }
         }
     }
     
@@ -58,6 +61,7 @@ class MenuRadioController: NSObject {
     
     let prefs = PreferenceManager()
 
+    
     //*****************************************************************
     // MARK: - Initialization
     //*****************************************************************
@@ -95,10 +99,7 @@ class MenuRadioController: NSObject {
                 if kDebugLog { print("Previous station lost. None selected") }
             } else {
                 self.popoverController!.selectedStation = currentStation
-                if kDebugLog { print("OKPrefs Selected station:\(self.prefs.selectedStation)") }
-                if kDebugLog { print("nilMenuRadioController Selected station:\(self.selectedStation)") }
-                if kDebugLog { print("nilStationManager Selected station:\(self.stationManager.station)") }
-                if kDebugLog { print("nilStation selected in Popup") }
+                if kDebugLog { print("Station selected in Popup") }
             }
         }
     }
@@ -199,6 +200,32 @@ extension MenuRadioController: PopoverViewControllerDelegate {
             if !popover.isDetached { closePopover(sender: self) }
         }
     }
+    
+    func didPickPreference(menuItem: NSMenuItem) {
+        var newState: Bool
+        
+        if menuItem.state == .on {
+            menuItem.state = .off
+            newState = false
+        } else {
+            menuItem.state = .on
+            newState = false
+        }
+        
+        switch menuItem.title {
+        case menuLaunchAtStartup:
+            prefs.launchAtStartup = newState
+        case menuAutoPlay:
+            prefs.autoplay = newState
+        case menuNotifications:
+            prefs.notifications = newState
+        case menuAnimatedIcon:
+            prefs.animatedIcon = newState
+        default:
+            if kDebugLog { print("This menu dosen't exist")}
+        }
+    }
+    
 }
 
 
@@ -213,8 +240,9 @@ extension MenuRadioController: NSPopoverDelegate {
     }
     
     func detachableWindow(for popover: NSPopover) -> NSWindow? {
-        //        let window = NSWindow(contentRect: NSRect(x: 0, y: 0, width: 0, height: 0), styleMask: [.resizable], backing: NSWindow.BackingStoreType.buffered, defer: true)
-        //        window = popover.contentViewController
+//        let translucentView = NSVisualEffectView(frame: <#T##NSRect#>)
+//       let panel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 300, height: 300), styleMask: [.resizable, .closable, .titled], backing: NSWindow.BackingStoreType.buffered, defer: true)
+//       panel.contentViewController = popover.contentViewController
         return nil
         
     }
@@ -226,20 +254,20 @@ extension MenuRadioController: NSPopoverDelegate {
     
     func popoverDidDetach(_ popover: NSPopover) {
         if kDebugLog { print("popover did detach") }
-        //        if let vc = (popover.contentViewController as? PopoverViewController) {
-        //            vc.isExpanded = true
-        //            if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
-        //    }
+        if let vc = (popover.contentViewController as? PopoverViewController) {
+            vc.isExpanded = true
+            print("vc.stackView: \(vc.stackView.subviews.description)")
+        }
     }
     
     func popoverDidClose(_ notification: Notification) {
         let closeReason = notification.userInfo![NSPopover.closeReasonUserInfoKey] as! String
         if (closeReason == NSPopover.CloseReason.standard.rawValue) {
             if kDebugLog { print("closeReason: popover did close") }
-            //            if let vc = popover.contentViewController as? PopoverViewController {
-            //                vc.isExpanded = false
-            //                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
-            //    }
+            if let vc = popover.contentViewController as? PopoverViewController {
+                vc.isExpanded = false
+                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
+            }
         }
         //Never called, don't know why -> popoverDidDetatch(:) used instead
         if (closeReason == NSPopover.CloseReason.detachToWindow.rawValue) {

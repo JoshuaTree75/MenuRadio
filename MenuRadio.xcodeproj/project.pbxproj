@@ -26,7 +26,6 @@
 		FA10A45921D4489F0076C4FD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45821D4489F0076C4FD /* Track.swift */; };
 		FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */; };
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
-		FA10A46221D5BF940076C4FD /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = FA10A46121D5BF930076C4FD /* stations.json */; };
 		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
 		FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */; };
 /* End PBXBuildFile section */
@@ -54,7 +53,6 @@
 		FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRemote.swift; sourceTree = "<group>"; };
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
-		FA10A46121D5BF930076C4FD /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = "<group>"; };
 		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultRadioStations.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +94,6 @@
 				FA10A43E21D2F6210076C4FD /* FRadioPlayer */,
 				FA10A45321D429430076C4FD /* System */,
 				FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */,
-				FA10A46121D5BF930076C4FD /* stations.json */,
 				FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */,
 				FA10A42121D041930076C4FD /* Assets.xcassets */,
 				FA10A43721D1C13B0076C4FD /* Unused */,
@@ -107,6 +104,7 @@
 		FA10A43721D1C13B0076C4FD /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A44B21D40E840076C4FD /* DataManager.swift */,
 				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
 				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 			);
@@ -150,7 +148,6 @@
 				FA10A45121D4291F0076C4FD /* StationManager.swift */,
 				FA10A44D21D40EE70076C4FD /* RadioStation.swift */,
 				FA10A45821D4489F0076C4FD /* Track.swift */,
-				FA10A44B21D40E840076C4FD /* DataManager.swift */,
 				FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */,
 			);
 			path = "Station Manager";
@@ -234,7 +231,6 @@
 				FA10A42221D041930076C4FD /* Assets.xcassets in Resources */,
 				FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */,
 				FA10A42521D041930076C4FD /* Main.storyboard in Resources */,
-				FA10A46221D5BF940076C4FD /* stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

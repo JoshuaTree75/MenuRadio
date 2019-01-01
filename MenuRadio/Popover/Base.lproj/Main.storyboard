@@ -702,25 +702,22 @@
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="82M-Nl-iKo"/>
                                             </imageView>
-                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="248" verticalStackHuggingPriority="1000" horizontalClippingResistancePriority="248" horizontalHuggingPriority="249" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBs-YQ-6OB">
-                                                <rect key="frame" x="45" y="0.0" width="299" height="40"/>
+                                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="1000" horizontalHuggingPriority="249" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBs-YQ-6OB">
+                                                <rect key="frame" x="45" y="0.0" width="256" height="40"/>
                                                 <subviews>
                                                     <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="751" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="RTX-1V-q1T">
-                                                        <rect key="frame" x="0.0" y="21" width="170" height="19"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="170" id="1Bu-DV-bEC"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="21" width="256" height="19"/>
                                                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" controlSize="small" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TlD-JK-lct">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <menu key="menu" id="80e-Dn-YeV"/>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <action selector="selectStation:" target="6lT-Vv-cy7" id="R9i-Um-lXl"/>
+                                                            <action selector="pickPrefsMenu:" target="6lT-Vv-cy7" id="R9i-Um-lXl"/>
                                                         </connections>
                                                     </popUpButton>
-                                                    <customView horizontalHuggingPriority="249" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-hc-rWL" customClass="ScrollingTextView" customModule="MenuRadio" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="170" height="17"/>
+                                                    <customView horizontalHuggingPriority="249" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-hc-rWL" customClass="ScrollingTextView" customModule="MenuRadio" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="9yl-Gk-ziz"/>
                                                         </constraints>
@@ -738,23 +735,60 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
+                                            <popUpButton translatesAutoresizingMaskIntoConstraints="NO" id="JIx-NW-owv">
+                                                <rect key="frame" x="306" y="0.0" width="38" height="40"/>
+                                                <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="zvz-FB-nMW">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="4Ca-sa-UVh">
+                                                        <items>
+                                                            <menuItem state="on" image="NSActionTemplate" hidden="YES" id="kUR-KI-T2U"/>
+                                                            <menuItem title="A propos de MenuRadio…" id="jqA-yd-ZMx">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem isSeparatorItem="YES" id="tQa-iK-bgG"/>
+                                                            <menuItem title="Lancer au démarrage" id="lju-4e-G19">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Lecture automatique" id="H85-Tn-GR8">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Notifications" id="hMu-hq-Kqf">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem title="Icône animée" id="ddf-oV-Cmu">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                            <menuItem isSeparatorItem="YES" title="Notifications" id="S3K-SG-GhB"/>
+                                                            <menuItem title="Quitter" id="T6t-oq-mx6">
+                                                                <modifierMask key="keyEquivalentModifierMask"/>
+                                                            </menuItem>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="pickPrefsMenu:" target="6lT-Vv-cy7" id="twf-6g-gLB"/>
+                                                </connections>
+                                            </popUpButton>
                                         </subviews>
                                         <visibilityPriorities>
+                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkI-tJ-6Ls">
+                                    <scrollView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" borderType="none" autohidesScrollers="YES" horizontalLineScroll="16" horizontalPageScroll="10" verticalLineScroll="16" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pkI-tJ-6Ls">
                                         <rect key="frame" x="0.0" y="0.0" width="344" height="203"/>
                                         <clipView key="contentView" id="69o-hT-ue6">
                                             <rect key="frame" x="0.0" y="0.0" width="344" height="203"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="mbl-jg-OVM" viewBased="YES" id="Edx-z3-8O2">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" rowSizeStyle="automatic" headerView="mbl-jg-OVM" viewBased="YES" id="Edx-z3-8O2">
                                                     <rect key="frame" x="0.0" y="0.0" width="344" height="178"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -767,8 +801,8 @@
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="NAn-5C-QHQ">
-                                                                <font key="font" metaFont="system"/>
+                                                            <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="NAn-5C-QHQ">
+                                                                <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -779,10 +813,10 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lQf-SR-DzQ">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="116" height="14"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="frj-gl-pqK">
-                                                                                <font key="font" metaFont="system"/>
+                                                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="frj-gl-pqK">
+                                                                                <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -800,8 +834,8 @@
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jbP-M7-PXc">
-                                                                <font key="font" metaFont="system"/>
+                                                            <textFieldCell key="dataCell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jbP-M7-PXc">
+                                                                <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
@@ -812,10 +846,10 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODE-BI-peI">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="222" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="222" height="14"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="dpc-9J-Jo0">
-                                                                                <font key="font" metaFont="system"/>
+                                                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="dpc-9J-Jo0">
+                                                                                <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
@@ -863,7 +897,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="prefsPopup" destination="JIx-NW-owv" id="a6c-b1-D60"/>
                         <outlet property="scrollingStationInfo" destination="1SL-hc-rWL" id="wZX-de-GbC"/>
+                        <outlet property="stackPlayer" destination="QTY-S4-Rc3" id="ECF-J6-HIq"/>
+                        <outlet property="stackRadioList" destination="pkI-tJ-6Ls" id="Vhn-KX-RKw"/>
+                        <outlet property="stackView" destination="TfH-jc-Rpq" id="d4C-7A-ZuR"/>
                         <outlet property="stationArtwork" destination="s4H-VP-AN7" id="K6z-Q1-C8l"/>
                         <outlet property="stationPopup" destination="RTX-1V-q1T" id="ZQs-Sv-p7b"/>
                     </connections>
@@ -873,4 +911,7 @@
             <point key="canvasLocation" x="-139" y="385.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
 </document>
