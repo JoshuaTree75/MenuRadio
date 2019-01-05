@@ -41,19 +41,19 @@ class PreferenceManager {
         userDefaults.register(defaults: defaults)
     }
     
-    var autoplay: Bool? {
+    var autoplay: Bool {
         set { userDefaults.set(newValue, forKey: autoplayKey) }
         get { return userDefaults.bool(forKey: autoplayKey) }
     }
-    var launchAtStartup: Bool? {
+    var launchAtStartup: Bool {
         set { userDefaults.set(newValue, forKey: launchAtStartupKey) }
         get { return userDefaults.bool(forKey: launchAtStartupKey) }
     }
-    var notifications: Bool? {
+    var notifications: Bool {
         set { userDefaults.set(newValue, forKey: notificationsKey) }
         get { return userDefaults.bool(forKey: notificationsKey) }
     }
-    var animatedIcon: Bool? {
+    var animatedIcon: Bool {
         set { userDefaults.set(newValue, forKey: animatedIconKey) }
         get { return userDefaults.bool(forKey: animatedIconKey) }
     }

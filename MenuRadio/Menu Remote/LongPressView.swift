@@ -60,7 +60,7 @@ import AppKit
 //    }
 //}
 
-class LongPressView: NSImageView {
+class LongPressView: AnimatedView {
 
     var delegate: LongPressViewDelegate?
     

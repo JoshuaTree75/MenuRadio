@@ -166,13 +166,13 @@ extension MenuRadioController: StationManagerDelegate {
     func playerStateDidChange(_ playerState: FRadioPlayerState) {
         
         let iconName = iconNameForStates(playerState, stationManager.player.playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: false)
+        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
     }
     
     func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
         
         let iconName = iconNameForStates(stationManager.player.state, playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: false)
+        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
     }
     
     func trackDidUpdate(_ track: Track?) {
@@ -297,7 +297,7 @@ extension MenuRadioController: NSPopoverDelegate {
     }
     
     func showPopover(sender: Any?) {
-        if let icon = menuRemote.iconView {
+        if let icon = menuRemote.menuView {
             popover.show(relativeTo: icon.bounds, of: icon, preferredEdge: NSRectEdge.minY)
             if (popoverTransiencyMonitor == nil)
             {

@@ -106,7 +106,6 @@
 			children = (
 				FA10A44B21D40E840076C4FD /* DataManager.swift */,
 				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
-				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -156,6 +155,7 @@
 		FA10A45F21D5A62F0076C4FD /* Menu Remote */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 				FA10A42F21D044D30076C4FD /* LongPressView.swift */,
 				FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */,
 			);

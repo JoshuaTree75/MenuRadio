@@ -18,7 +18,7 @@ class MenuRemote: NSObject {
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     
-    var iconView: LongPressView?
+    var menuView: LongPressView?
     
     //*****************************************************************
     // MARK: - Initialization (Menu creation)
@@ -32,23 +32,30 @@ class MenuRemote: NSObject {
     func addMenuView() {
         if let icon = statusItem.button {
             if statusItem.button?.subviews.count == 0 {
-                let frame = statusItem.button!.frame
+                let buttonView = LongPressView()
+                buttonView.frame = statusItem.button!.frame
+                buttonView.delegate = self
+                buttonView.imageNamePattern = iconStopped
                 
-                let view = LongPressView.init(frame: frame)
-                view.delegate = self
-                icon.addSubview(view)
-                iconView = view
-                switchIcon(withImageNamed: iconStopped, animated: false)
+                //let iconView = AnimatedView(imageNamePattern: iconStopped, imageCount: 12, frame: frame)
+                
+               // iconView.addSubview(buttonView)
+                icon.addSubview(buttonView)
+                menuView = buttonView
+                
+                //switchIcon(withImageNamed: iconStopped, animated: false)
                 if kDebugLog { print("View loaded") }
             }
         }
     }
+    
     func switchIcon(withImageNamed name: String, animated: Bool) {
-        if animated {
-            
-        } else {
-            if iconView != nil {
-                iconView!.image = NSImage(named: name)
+        if menuView != nil {
+            menuView?.imageNamePattern = name
+            if animated {
+                menuView?.startAnimating()
+            } else {
+                menuView?.stopAnimating()
             }
         }
     }
