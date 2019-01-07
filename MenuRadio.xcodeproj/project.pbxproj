@@ -28,6 +28,7 @@
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
 		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
 		FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */; };
+		FAD0757B21E0DF010022C56A /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
 		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultRadioStations.plist; sourceTree = "<group>"; };
+		FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				FA10A42321D041930076C4FD /* Main.storyboard */,
 				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
 				FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */,
+				FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				FA10A45921D4489F0076C4FD /* Track.swift in Sources */,
 				FA10A44C21D40E840076C4FD /* DataManager.swift in Sources */,
 				FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */,
+				FAD0757B21E0DF010022C56A /* TableViewDelegate.swift in Sources */,
 				FA10A45221D4291F0076C4FD /* StationManager.swift in Sources */,
 				FA10A43221D047800076C4FD /* MenuRadioPlaybackState.swift in Sources */,
 			);

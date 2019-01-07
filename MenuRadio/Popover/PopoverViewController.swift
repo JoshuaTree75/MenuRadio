@@ -146,6 +146,7 @@ class PopoverViewController: NSViewController {
             //            NSAnimationContext.endGrouping()
             
             
+            //WWDC
             //            NSAnimationContext.runAnimationGroup({_ in
             //                //Indicate the duration of the animation
             //                NSAnimationContext.current.duration = 2.0
@@ -193,12 +194,3 @@ class PopoverViewController: NSViewController {
     }
 }
 
-extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
-    
-    func numberOfRows(in tableView: NSTableView) -> Int {
-        return delegate?.numberOfStations() ?? 0
-    }
-    
-
-    
-}

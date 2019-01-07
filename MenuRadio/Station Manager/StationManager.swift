@@ -92,11 +92,11 @@ class StationManager: NSObject {
         if station.imageURL.range(of: "http") != nil {
             // load current station image from network
             ImageLoader.sharedLoader.imageForUrl(urlString: station.imageURL) { (image, stringURL) in
-                completionHandler(image ?? #imageLiteral(resourceName: "Playing 6"))
+                completionHandler(image ?? #imageLiteral(resourceName: "iconLoading 7"))
             }
         } else {
             // load local station image
-            let image = NSImage(named: station.imageURL) ?? #imageLiteral(resourceName: "Playing 6")
+            let image = NSImage(named: station.imageURL) ?? #imageLiteral(resourceName: "iconLoading 7")
             completionHandler(image)
         }
     }

@@ -49,7 +49,8 @@ class MenuRadioController: NSObject {
             guard selectedStation != oldValue else { return }
             if selectedStation != nil {
                 stationManager.station = selectedStation
-                prefs.selectedStation = selectedStation
+                let index = stations.firstIndex(of: selectedStation!)
+                prefs.selectedStation = index ?? 0
                 stationManager.player.radioURL = URL(string: selectedStation!.streamURL)
             }
         }
@@ -75,9 +76,7 @@ class MenuRadioController: NSObject {
         stationManager.delegate = self
         stations = prefs.stations
         stationsDidUpdate()
-        selectedStation = prefs.selectedStation
-        stationManager.station = selectedStation
-    }
+
     
     //*****************************************************************
     // MARK: - Private helpers
@@ -87,19 +86,21 @@ class MenuRadioController: NSObject {
         DispatchQueue.main.async {
             //Refressh popover
             self.popoverController!.refreshPopup(withStations: self.stations)
-
-            guard let currentStation = self.prefs.selectedStation else {
-                // No station selected
-                return
-            }
             
-            // Reset everything if the new stations list doesn't have the current station
-            if self.stations.index(of: currentStation) == nil {
-                self.resetCurrentStation()
-                if kDebugLog { print("Previous station lost. None selected") }
-            } else {
-                self.popoverController!.selectedStation = currentStation
-                if kDebugLog { print("Station selected in Popup") }
+            //A station is selected
+            if self.selectedStation != nil {
+                
+                if self.stations.index(of: self.selectedStation!) == nil { //Selected not in the new list
+                    self.resetCurrentStation()
+                    if kDebugLog { print("Previous station lost. None selected") }
+                } else {
+                    self.popoverController!.selectedStation = self.selectedStation!
+                    //Saving the new index of the selected station into prefs.
+                    let newIndex = self.stations.index(of: self.selectedStation!)
+                    self.prefs.selectedStation = newIndex
+                    if kDebugLog { print("Station selected in Popup") }
+                }
+                
             }
         }
     }

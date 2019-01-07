@@ -16,7 +16,7 @@
 		<key>name</key>
 		<string>France Musique</string>
 		<key>streamURL</key>
-		<string>http://direct.francekmusique.fr/live/francemusiqueeasyclassique-hifi.mp3</string>
+		<string>http://direct.francemusique.fr/live/francemusiqueeasyclassique-hifi.mp3</string>
 		<key>imageURL</key>
 		<string></string>
 		<key>desc</key>
@@ -33,6 +33,8 @@
 		<string>Are you ready to Folk?</string>
 	</dict>
 	<dict>
+		<key>New item</key>
+		<string></string>
 		<key>name</key>
 		<string>Absolute Country Hits</string>
 		<key>streamURL</key>
@@ -41,6 +43,12 @@
 		<string>station-absolutecountry.png</string>
 		<key>desc</key>
 		<string>The Music Starts Here</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>Radio Classique</string>
+		<key>streamURL</key>
+		<string>http://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3</string>
 	</dict>
 </array>
 </plist>

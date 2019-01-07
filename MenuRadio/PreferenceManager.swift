@@ -15,6 +15,11 @@ private let animatedIconKey = "animatedIcon"
 private let selectedStationKey = "selectedStation"
 private let stationsKey = "stations"
 
+private let  nameKey = "name"
+private let  streamURLKey = "streamURL"
+private let  imageURLKey = "imageURL"
+private let  descKey = "desc"
+
 class PreferenceManager {
     
     private let userDefaults = UserDefaults.standard
@@ -27,17 +32,17 @@ class PreferenceManager {
         
         let stations = defaultStationsFromFile()
         
-        let station = stations[0]
+//        let station = 0
         
-        let encodedStation = try? PropertyListEncoder().encode(station)
-        let encodedStations = try? PropertyListEncoder().encode(stations)
+        //let encodedStation = try? PropertyListEncoder().encode(station)
+        //let encodedStations = try? PropertyListEncoder().encode(stations)
         
         let defaults: [String : Any] = [autoplayKey: true,
                                         launchAtStartupKey: true,
                                         notificationsKey: false,
                                         animatedIconKey: false,
-                                        selectedStationKey: encodedStation ?? "",
-                                        stationsKey: encodedStations ?? ""]
+                                        selectedStationKey: 0,
+                                        stationsKey: stations]
         userDefaults.register(defaults: defaults)
     }
     
@@ -57,39 +62,43 @@ class PreferenceManager {
         set { userDefaults.set(newValue, forKey: animatedIconKey) }
         get { return userDefaults.bool(forKey: animatedIconKey) }
     }
-    var selectedStation: RadioStation? {
-        set {
-            if newValue != nil {
-                do { try userDefaults.set(PropertyListEncoder().encode(newValue), forKey: selectedStationKey) }
-                catch { if kDebugLog { print("Unable to write the new selected station")} }
-            }
-        }
-        get {
-            do {
-                let encodedStation = userDefaults.object(forKey: selectedStationKey) as! Data
-                let station = try PropertyListDecoder().decode(RadioStation.self, from: encodedStation)
-                return station
-            }
-            catch { if kDebugLog { print("Unable to get the selected station")} }
-            return nil
-        }
+    var selectedStation: Int? {
+        set { userDefaults.set(newValue, forKey: selectedStationKey) }
+        get { return userDefaults.integer(forKey: selectedStationKey) }
     }
     var stations: [RadioStation] {
         set {
             if !newValue.isEmpty {
-                do { try userDefaults.set(PropertyListEncoder().encode(newValue), forKey: stationsKey)}
-                catch { if kDebugLog { print("Unable to write the station list")} }
+                var stationsArray = [[String: String]]()
+                for station in newValue {
+                    let stationDictionary = [nameKey: station.name,
+                                             streamURLKey: station.streamURL,
+                                             imageURLKey: station.imageURL,
+                                             descKey: station.desc]
+                    stationsArray.append(stationDictionary)
+                }
+                userDefaults.set(stationsArray, forKey: stationsKey)
+//                do { try userDefaults.set(PropertyListEncoder().encode(newValue), forKey: stationsKey)}
+//                catch { if kDebugLog { print("Unable to write the station list")} }
             }
         }
         get {
-            do {
-                //typealias RadioStationArray = [RadioStation]
-                let encodedStation = userDefaults.object(forKey: stationsKey) as! Data
-                let stations = try PropertyListDecoder().decode([RadioStation].self, from: encodedStation)
-                return stations
+            var stations = [RadioStation]()
+            if let arrayOfDictionaries = userDefaults.array(forKey: stationsKey) as! [[String: String]]? {
+            for dict in arrayOfDictionaries {
+                let station = RadioStation(name: dict[nameKey] ?? "", streamURL: dict[streamURLKey] ?? "", imageURL: dict[imageURLKey]!, desc: dict[descKey]!)
+                
+                stations.append(station)
+                }
             }
-            catch { if kDebugLog { print("Unable to get the station list")} }
-            return []
+            return stations
+//            do {
+//                let encodedStation = userDefaults.object(forKey: stationsKey) as! Data
+//                let stations = try PropertyListDecoder().decode([RadioStation].self, from: encodedStation)
+//                return stations
+//            }
+//            catch { if kDebugLog { print("Unable to get the station list")} }
+//            return []
         }
     }
     
@@ -98,9 +107,9 @@ class PreferenceManager {
     //*****************************************************************
     
     
-    func defaultStationsFromFile() -> [RadioStation] {
+    func defaultStationsFromFile() -> [[String: String]] {
         
-        var stations: [RadioStation] = []
+        var stations: [[String: String]] = []
         
         if let path = Bundle.main.path(forResource: "DefaultRadioStations", ofType: "plist") {
             if let data = NSArray(contentsOfFile: path) {
@@ -110,7 +119,7 @@ class PreferenceManager {
                         let imageURL = stationData["imageURL"],
                         let desc = stationData["desc"]
                     {
-                        let newStation = RadioStation(name: name, streamURL: streamURL, imageURL: imageURL, desc: desc)
+                        let newStation = [nameKey: name, streamURLKey: streamURL, imageURLKey: imageURL, descKey: desc]
                         stations.append(newStation)
                     }
                 }
