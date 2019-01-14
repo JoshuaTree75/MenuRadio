@@ -25,7 +25,7 @@ class PopoverViewController: NSViewController {
     
     // MARK: - IB Outlets
     
-    @IBOutlet weak var stationPopup: NSPopUpButton!
+//    @IBOutlet weak var stationPopup: NSPopUpButton!
     
     @IBOutlet weak var scrollingStationInfo: ScrollingTextView!
     
@@ -37,6 +37,8 @@ class PopoverViewController: NSViewController {
         didSet {
             if selectedStation != nil {
                // showStationInPopup(selectedStation!)
+                delegate?.selectedStationDidChange()
+
             }
         }
     }
@@ -129,45 +131,45 @@ class PopoverViewController: NSViewController {
     }
     
     
-    
+
     //*****************************************************************
     // MARK: - StackView management
     //*****************************************************************
     
-    @IBOutlet weak var stackView: NSStackView!
-    @IBOutlet weak var stackPlayer: NSStackView!
+  //  @IBOutlet weak var stackView: NSStackView!
+   // @IBOutlet weak var stackPlayer: NSStackView!
     // @IBOutlet weak var stackSearch: NSStackView!
-    @IBOutlet weak var stackRadioList: NSStackView!
+   // @IBOutlet weak var stackRadioList: NSStackView!
     //@IBOutlet weak var stackCopyright: NSStackView!
     
     
-    var isExpanded :Bool = false {
-        willSet {
-                    //   NSAnimationContext.beginGrouping()
-                    //    NSAnimationContext.current.duration = 5.0
-                   //     NSAnimationContext.current.allowsImplicitAnimation = true
-                        if newValue {
-                            
-                           // stackPlayer.isHidden = true
-                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
-                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
-            //                //stackSearch.isHidden = false
-                          //  stackRadioList.isHidden = false
-                            
-                            
-            //                //stackCopyright.isHidden = false
-                            print("Popover expanded")
-                        } else {
-                            
-                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
-                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
-                            
+//    var isExpanded :Bool = false {
+//        willSet {
+//                    //   NSAnimationContext.beginGrouping()
+//                    //    NSAnimationContext.current.duration = 5.0
+//                   //     NSAnimationContext.current.allowsImplicitAnimation = true
+//                        if newValue {
+//
+//                           // stackPlayer.isHidden = true
+//                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
+//                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
+//            //                //stackSearch.isHidden = false
+//                          //  stackRadioList.isHidden = false
+//
+//
+//            //                //stackCopyright.isHidden = false
+//                            print("Popover expanded")
+//                        } else {
+//
+//                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
+//                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
+    
 //                            stackPlayer.isHidden = false
             //                // stackSearch.isHidden = true
 //                            stackRadioList.isHidden = true
             //                // stackCopyright.isHidden = true
             //                print("Popover contracted")
-                        }
+//                        }
                 //        NSAnimationContext.endGrouping()
             
             
@@ -195,10 +197,10 @@ class PopoverViewController: NSViewController {
             
             
             //            stackView.addView(radioListView, in: NSStackView.Gravity.bottom)
-        }
-        
-    }
-    
+//        }
+//
+//    }
+
     //*****************************************************************
     // MARK: - Storyboard instantiation
     //*****************************************************************

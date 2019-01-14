@@ -17,10 +17,10 @@ extension MenuRadioController: PopoverViewControllerDelegate {
     
     func selectedStationDidChange() {
         if kDebugLog { print("selectedStationDidChange") }
-        if let index = popoverController?.stationPopup.indexOfSelectedItem {
+       // if let index = popoverController?.stationPopup.indexOfSelectedItem {
            // selectedStation = stations[index]
-            if !popover.isDetached { closePopover(sender: self) }
-        }
+         //   if !popover.isDetached { closePopover(sender: self) }
+       // }
     }
     
     func didPickPreference(menuItem: NSMenuItem) {

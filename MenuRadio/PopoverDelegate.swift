@@ -33,10 +33,10 @@ extension MenuRadioController: NSPopoverDelegate {
         let closeReason = notification.userInfo![NSPopover.closeReasonUserInfoKey] as! String
         if (closeReason == NSPopover.CloseReason.standard.rawValue) {
             if kDebugLog { print("closeReason: popover did close") }
-            if let vc = popover.contentViewController as? PopoverViewController {
-                vc.isExpanded = false
-                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
-            }
+//            if let vc = popover.contentViewController as? PopoverViewController {
+//                vc.isExpanded = false
+//                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
+//            }
         }
         //Never called, don't know why -> popoverDidDetatch(:) used instead
         if (closeReason == NSPopover.CloseReason.detachToWindow.rawValue) {
@@ -63,12 +63,12 @@ extension MenuRadioController: NSPopoverDelegate {
     func showPopover(sender: Any?) {
         if let icon = menuRemote.menuView {
             popover.show(relativeTo: icon.bounds, of: icon, preferredEdge: NSRectEdge.minY)
-            if (popoverTransiencyMonitor == nil)
-            {
-                popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown], handler: {event in
-                    self.closePopover(sender: sender)
-                }) as? NSEvent
-            }
+//            if (popoverTransiencyMonitor == nil)
+//            {
+//                popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown], handler: {event in
+//                    self.closePopover(sender: sender)
+//                }) as? NSEvent
+//            }
         }
     }
     

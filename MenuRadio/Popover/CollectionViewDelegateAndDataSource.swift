@@ -8,22 +8,14 @@
 
 import AppKit
 
-extension PopoverViewController: NSCollectionViewDelegateFlowLayout {
-    static let sectionWidth = 300.0
-    static let sectionHeight = 24.0
-    static let itemSide = 52.0
-    static let interitemSpacing = 7.0
-    //total: 244
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return NSSize(width: PopoverViewController.sectionWidth, height: PopoverViewController.sectionHeight)
-    }
-    
-    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return CGSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide)
-    }
-    
+//MARK: Helper functions
+extension PopoverViewController {
     func configureCollectionView() {
         // 1
+        radioListCollection.dataSource = self
+        radioListCollection.delegate = self
+        
+        //2
         let flowLayout = NSCollectionViewFlowLayout()
         flowLayout.itemSize = NSSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide)
         flowLayout.sectionInset = NSEdgeInsets(top: CGFloat(PopoverViewController.interitemSpacing),
@@ -42,6 +34,24 @@ extension PopoverViewController: NSCollectionViewDelegateFlowLayout {
     }
 }
 
+//MARK: NSCollectionViewDelegateFlowLayout
+extension PopoverViewController: NSCollectionViewDelegateFlowLayout {
+    static let sectionWidth = 300.0
+    static let sectionHeight = 24.0
+    static let itemSide = 52.0
+    static let interitemSpacing = 7.0
+    //total: 244
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: PopoverViewController.sectionWidth, height: PopoverViewController.sectionHeight)
+    }
+    
+    func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
+        return CGSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide)
+    }
+    
+
+}
+// MARK: NSCollectionViewDataSource
 extension PopoverViewController: NSCollectionViewDataSource {
     var stations: [String: [RadioStation]]? { return delegate?.getStationsForCollectionView()}
     
@@ -75,6 +85,7 @@ extension PopoverViewController: NSCollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        
         let view = collectionView.makeSupplementaryView(ofKind: NSCollectionView.elementKindSectionHeader, withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "HeaderView"), for: indexPath) as! HeaderView
         // 2
 
@@ -84,5 +95,18 @@ extension PopoverViewController: NSCollectionViewDataSource {
 //            view.imageCount.stringValue = "\(numberOfItemsInSection) image files"
         }
         return view
+    }
+}
+
+// MARK: NSCollectionViewDelegate
+extension PopoverViewController: NSCollectionViewDelegate {
+    func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
+        if let station = stations?[sections[(indexPaths.first?.section)!]]?[(indexPaths.first?.item)!] {
+            selectedStation = station
+        }
+    }
+    func collectionView(_ collectionView: NSCollectionView, shouldSelectItemsAt indexPaths: Set<IndexPath>) -> Set<IndexPath> {
+        print("kjhhjkfkj")
+        return indexPaths
     }
 }

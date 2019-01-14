@@ -25,6 +25,7 @@ import Cocoa
 
 class CollectionItem: NSCollectionViewItem {
 
+    
     // 1
     var radioStation: RadioStation? {
         didSet {
@@ -43,15 +44,17 @@ class CollectionItem: NSCollectionViewItem {
     @IBOutlet weak var stationName: NSTextField!
     @IBOutlet weak var editButton: NSButton!
     @IBAction func editStation(_ sender: NSButton) {
+        print("edit")
     }
     
     // 2
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.wantsLayer = true
+       // view.wantsLayer = true
         
         let area = NSTrackingArea.init(rect: iconView.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
         iconView.addTrackingArea(area)
+
     }
     override func mouseEntered(with event: NSEvent) {
        editButton.isHidden = false
@@ -60,4 +63,5 @@ class CollectionItem: NSCollectionViewItem {
     override func mouseExited(with event: NSEvent) {
         editButton.isHidden = true
     }
+ 
 }

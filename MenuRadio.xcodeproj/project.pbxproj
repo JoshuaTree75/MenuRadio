@@ -115,6 +115,7 @@
 				FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */,
 				FA10A45F21D5A62F0076C4FD /* Menu Remote */,
 				FA10A45421D429830076C4FD /* Popover */,
+				FA4E2F4221E8EBAF00A32169 /* CollectionView */,
 				FA10A45521D429900076C4FD /* Station Manager */,
 				FA10A43E21D2F6210076C4FD /* FRadioPlayer */,
 				FA10A45321D429430076C4FD /* System */,
@@ -160,7 +161,6 @@
 		FA10A45421D429830076C4FD /* Popover */ = {
 			isa = PBXGroup;
 			children = (
-				FA4E2F4221E8EBAF00A32169 /* CollectionView */,
 				FA10A42321D041930076C4FD /* Main.storyboard */,
 				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
 				FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */,
