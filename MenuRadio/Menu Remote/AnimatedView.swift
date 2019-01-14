@@ -58,7 +58,6 @@ class AnimatedView: NSImageView {
     
     private func setImage(frameCount: Int) {
         let imagePath = "\(imageNamePattern) \(frameCount)"
-        print("Switching image to: \(imagePath)")
         guard let image =  NSImage(named: NSImage.Name(imagePath)) else {return }
         
         
@@ -67,7 +66,7 @@ class AnimatedView: NSImageView {
         
         DispatchQueue.main.async {
             self.image = image
-            print("Showing image to: \(imagePath)")
+            print("Switching image to: \(imagePath)")
         }
     }
     

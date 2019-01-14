@@ -41,15 +41,14 @@ public class ImageLoader {
             
             if let dataCache = self.cache.object(forKey: urlString as NSString){
                 data = (dataCache) as NSData
-                
-            }else{
+            } else {
                 if (URL(string: urlString) != nil)
                 {
                     data = NSData(contentsOf: URL(string: urlString)!)
                     if data != nil {
                         self.cache.setObject(data!, forKey: urlString as NSString)
                     }
-                }else{
+                } else {
                     return
                 }
             }
@@ -79,7 +78,32 @@ public class ImageLoader {
                 }
             })
             downloadTask.resume()
-            
+        }
+    }
+}
+
+//Pas encore utilisé
+extension NSBitmapImageRep {
+    var png: Data? {
+        return representation(using: .png, properties: [:])
+    }
+}
+extension Data {
+    var bitmap: NSBitmapImageRep? {
+        return NSBitmapImageRep(data: self)
+    }
+}
+extension NSImage {
+    var png: Data? {
+        return tiffRepresentation?.bitmap?.png
+    }
+    func savePNG(to url: URL) -> Bool {
+        do {
+            try png?.write(to: url)
+            return true
+        } catch {
+            print(error)
+            return false
         }
         
     }

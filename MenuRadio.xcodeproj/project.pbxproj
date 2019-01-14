@@ -28,6 +28,16 @@
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
 		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
 		FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */; };
+		FA4E2F1921E56E2900A32169 /* PopoverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */; };
+		FA4E2F1B21E5702B00A32169 /* PopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */; };
+		FA4E2F1D21E5706600A32169 /* StationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */; };
+		FA4E2F3E21E8CF0400A32169 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F3C21E8CF0400A32169 /* CollectionItem.swift */; };
+		FA4E2F3F21E8CF0400A32169 /* CollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E2F3D21E8CF0400A32169 /* CollectionItem.xib */; };
+		FA4E2F4121E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F4021E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift */; };
+		FA4E2F4421E8F2BD00A32169 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA4E2F4321E8F2BD00A32169 /* HeaderView.xib */; };
+		FA4E2F4621E8F3A700A32169 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F4521E8F3A700A32169 /* HeaderView.swift */; };
+		FAA1526321EC6EDA00557D0E /* EditStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1526121EC6EDA00557D0E /* EditStationView.swift */; };
+		FAA1526421EC6EDA00557D0E /* EditStationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA1526221EC6EDA00557D0E /* EditStationView.xib */; };
 		FAD0757B21E0DF010022C56A /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +66,16 @@
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
 		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
 		FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultRadioStations.plist; sourceTree = "<group>"; };
+		FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverDelegate.swift; sourceTree = "<group>"; };
+		FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
+		FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManagerDelegate.swift; sourceTree = "<group>"; };
+		FA4E2F3C21E8CF0400A32169 /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
+		FA4E2F3D21E8CF0400A32169 /* CollectionItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionItem.xib; sourceTree = "<group>"; };
+		FA4E2F4021E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegateAndDataSource.swift; sourceTree = "<group>"; };
+		FA4E2F4321E8F2BD00A32169 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		FA4E2F4521E8F3A700A32169 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		FAA1526121EC6EDA00557D0E /* EditStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStationView.swift; sourceTree = "<group>"; };
+		FAA1526221EC6EDA00557D0E /* EditStationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditStationView.xib; sourceTree = "<group>"; };
 		FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,6 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				FA10A42D21D042030076C4FD /* MenuRadioController.swift */,
+				FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */,
+				FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */,
+				FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */,
 				FA10A45F21D5A62F0076C4FD /* Menu Remote */,
 				FA10A45421D429830076C4FD /* Popover */,
 				FA10A45521D429900076C4FD /* Station Manager */,
@@ -106,6 +129,7 @@
 		FA10A43721D1C13B0076C4FD /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */,
 				FA10A44B21D40E840076C4FD /* DataManager.swift */,
 				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
 			);
@@ -136,10 +160,11 @@
 		FA10A45421D429830076C4FD /* Popover */ = {
 			isa = PBXGroup;
 			children = (
+				FA4E2F4221E8EBAF00A32169 /* CollectionView */,
 				FA10A42321D041930076C4FD /* Main.storyboard */,
 				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
 				FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */,
-				FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */,
+				FA4E2F4021E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -163,6 +188,19 @@
 				FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */,
 			);
 			path = "Menu Remote";
+			sourceTree = "<group>";
+		};
+		FA4E2F4221E8EBAF00A32169 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				FA4E2F3C21E8CF0400A32169 /* CollectionItem.swift */,
+				FA4E2F3D21E8CF0400A32169 /* CollectionItem.xib */,
+				FA4E2F4521E8F3A700A32169 /* HeaderView.swift */,
+				FA4E2F4321E8F2BD00A32169 /* HeaderView.xib */,
+				FAA1526121EC6EDA00557D0E /* EditStationView.swift */,
+				FAA1526221EC6EDA00557D0E /* EditStationView.xib */,
+			);
+			path = CollectionView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,7 +270,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA10A42221D041930076C4FD /* Assets.xcassets in Resources */,
+				FA4E2F4421E8F2BD00A32169 /* HeaderView.xib in Resources */,
 				FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */,
+				FAA1526421EC6EDA00557D0E /* EditStationView.xib in Resources */,
+				FA4E2F3F21E8CF0400A32169 /* CollectionItem.xib in Resources */,
 				FA10A42521D041930076C4FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -248,16 +289,23 @@
 				FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */,
 				FA10A43B21D1D6EA0076C4FD /* PreferenceManager.swift in Sources */,
 				FA10A44E21D40EE80076C4FD /* RadioStation.swift in Sources */,
+				FA4E2F4121E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift in Sources */,
+				FAA1526321EC6EDA00557D0E /* EditStationView.swift in Sources */,
 				FA10A45021D420A20076C4FD /* InternalSettings.swift in Sources */,
+				FA4E2F1D21E5706600A32169 /* StationManagerDelegate.swift in Sources */,
+				FA4E2F3E21E8CF0400A32169 /* CollectionItem.swift in Sources */,
 				FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */,
 				FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */,
 				FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */,
 				FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */,
+				FA4E2F1B21E5702B00A32169 /* PopoverViewControllerDelegate.swift in Sources */,
 				FA10A43621D188DD0076C4FD /* AnimatedView.swift in Sources */,
+				FA4E2F4621E8F3A700A32169 /* HeaderView.swift in Sources */,
 				FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */,
 				FA10A44A21D2FCBB0076C4FD /* FRadioPlayer.swift in Sources */,
 				FA10A45921D4489F0076C4FD /* Track.swift in Sources */,
+				FA4E2F1921E56E2900A32169 /* PopoverDelegate.swift in Sources */,
 				FA10A44C21D40E840076C4FD /* DataManager.swift in Sources */,
 				FA10A44821D2FCBB0076C4FD /* Reachability.swift in Sources */,
 				FAD0757B21E0DF010022C56A /* TableViewDelegate.swift in Sources */,

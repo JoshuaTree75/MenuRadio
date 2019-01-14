@@ -12,8 +12,10 @@ import Cocoa
 protocol PopoverViewControllerDelegate {
     func selectedStationDidChange()
     func didPickPreference(menuItem: NSMenuItem)
-    func numberOfStations() -> Int
+    func getStationsForCollectionView() -> [String: [RadioStation]]
 }
+
+
 
 class PopoverViewController: NSViewController {
     
@@ -27,12 +29,14 @@ class PopoverViewController: NSViewController {
     
     @IBOutlet weak var scrollingStationInfo: ScrollingTextView!
     
+    @IBOutlet weak var radioListCollection: NSCollectionView!
+   
     @IBOutlet weak var stationArtwork: NSImageView!
     
     var selectedStation: RadioStation? {
         didSet {
             if selectedStation != nil {
-                showStationInPopup(selectedStation!)
+               // showStationInPopup(selectedStation!)
             }
         }
     }
@@ -46,35 +50,47 @@ class PopoverViewController: NSViewController {
         super.viewDidLoad()
         scrollingStationInfo.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
         scrollingStationInfo.textColor = NSColor.secondaryLabelColor
-        
+        configureCollectionView()
         if kDebugLog { print("View did load") }
         
     }
+
     
-    func refreshPopup(withStations stations: [RadioStation]) {
-        stationPopup.removeAllItems()
-        for station in stations {
-            stationPopup.addItem(withTitle: station.name)
-        }
-        if selectedStation == nil {
-            scrollingStationInfo.setup(string: "Choisissez une station:")
-            stationPopup.selectItem(at: -1)
-            stationArtwork.image = NSImage(named: AppIcon)
-            if kDebugLog { print("No station selected") }
-        } else {
-            showStationInPopup(selectedStation!)
-        }
-        if kDebugLog { print("Popup updated") }
-    }
+//    func refreshPopup(withStationsIn groups: [String: [RadioStation]]) {
+//        stationPopup.removeAllItems()
+//        if !groups.isEmpty {
+//            let menu = NSMenu()
+//            for group in groups.keys {
+//                let groupMenu = NSMenu(title: group)
+//                for station in groups[group]! {
+//                    groupMenu.addItem(withTitle: station.name, action: #selector(selectStation(_: )), keyEquivalent: "")
+//                }
+//                let menuItem = NSMenuItem(title: group, action: nil, keyEquivalent: "")
+//                menu.addItem(menuItem)
+//                menu.setSubmenu(groupMenu, for: menuItem)
+//            }
+//            stationPopup.menu = menu
+//
+//            if selectedStation == nil {
+//                scrollingStationInfo.setup(string: "Choisissez une station:")
+//                stationPopup.selectItem(at: -1)
+//                stationArtwork.image = NSImage(named: AppIcon)
+//                if kDebugLog { print("No station selected") }
+//            } else {
+//                showStationInPopup(selectedStation!)
+//            }
+//            if kDebugLog { print("Popup updated") }
+//        }
+//    }
     
-    private func showStationInPopup(_ station: RadioStation) {
-        stationPopup.selectItem(withTitle: station.name)
-        scrollingStationInfo.setup(string: "")
-    }
+//    private func showStationInPopup(_ station: RadioStation) {
+//        stationPopup.selectItem(withTitle: station.name)
+//        scrollingStationInfo.setup(string: "")
+//    }
     
-    @IBAction func selectStation(_ sender: NSPopUpButton) {
-        delegate?.selectedStationDidChange()
-    }
+//    @IBAction func selectStation(_ sender: NSPopUpButton) {
+//        delegate?.selectedStationDidChange()
+//    }
     
     func updateTrack(_ track: Track?) {
         if track != nil {
@@ -121,29 +137,38 @@ class PopoverViewController: NSViewController {
     @IBOutlet weak var stackView: NSStackView!
     @IBOutlet weak var stackPlayer: NSStackView!
     // @IBOutlet weak var stackSearch: NSStackView!
-    @IBOutlet weak var stackRadioList: NSScrollView!
+    @IBOutlet weak var stackRadioList: NSStackView!
     //@IBOutlet weak var stackCopyright: NSStackView!
     
     
     var isExpanded :Bool = false {
         willSet {
-            //            NSAnimationContext.beginGrouping()
-            //            NSAnimationContext.current.duration = 5.0
-            //            NSAnimationContext.current.allowsImplicitAnimation = true
-            //            if newValue {
-            //                stackPlayer.isHidden = true
+                    //   NSAnimationContext.beginGrouping()
+                    //    NSAnimationContext.current.duration = 5.0
+                   //     NSAnimationContext.current.allowsImplicitAnimation = true
+                        if newValue {
+                            
+                           // stackPlayer.isHidden = true
+                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
+                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
             //                //stackSearch.isHidden = false
-            //                stackRadioList.isHidden = false
+                          //  stackRadioList.isHidden = false
+                            
+                            
             //                //stackCopyright.isHidden = false
-            //                print("Popover expanded")
-            //            } else {
-            //                stackPlayer.isHidden = false
+                            print("Popover expanded")
+                        } else {
+                            
+                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
+                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
+                            
+//                            stackPlayer.isHidden = false
             //                // stackSearch.isHidden = true
-            //                stackRadioList.isHidden = true
+//                            stackRadioList.isHidden = true
             //                // stackCopyright.isHidden = true
             //                print("Popover contracted")
-            //            }
-            //            NSAnimationContext.endGrouping()
+                        }
+                //        NSAnimationContext.endGrouping()
             
             
             //WWDC

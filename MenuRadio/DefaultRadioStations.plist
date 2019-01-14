@@ -3,6 +3,130 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Benoit</string>
+		<key>sreamURL</key>
+		<string>aehaehaelkh</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Bernard</string>
+		<key>sreamURL</key>
+		<string>aekljkjhoo</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Benedicte</string>
+		<key>sreamURL</key>
+		<string>oihosnvkjnwqf</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Barnabé</string>
+		<key>sreamURL</key>
+		<string>adsfouhonboqenf</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Bertrand</string>
+		<key>sreamURL</key>
+		<string>lkjglufqsvdqs</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Bob</string>
+		<key>sreamURL</key>
+		<string>kjblkaedvlkblew</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>B</string>
+		<key>name</key>
+		<string>Benjamin</string>
+		<key>sreamURL</key>
+		<string>aehaehet</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>A</string>
+		<key>name</key>
+		<string>Aline</string>
+		<key>sreamURL</key>
+		<string>dfaadfsbf`xznvxh</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>A</string>
+		<key>name</key>
+		<string>Anatole</string>
+		<key>sreamURL</key>
+		<string>eahaefhaethjtedfz`badfva</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>A</string>
+		<key>name</key>
+		<string>Antoine</string>
+		<key>sreamURL</key>
+		<string>eahaefhaeaetatea</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>A</string>
+		<key>name</key>
+		<string>André</string>
+		<key>sreamURL</key>
+		<string>argrge</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Classique</string>
+		<key>name</key>
+		<string>Radio Classique</string>
+		<key>streamURL</key>
+		<string>http://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3</string>
+		<key>imageURL</key>
+		<string>RadioClassique</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
+		<key>name</key>
+		<string>Test 3</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.stresgdshamguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>Skyrock</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
+		<key>name</key>
+		<string>Test 4</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.streamsdgsdgguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>RTL</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Classic Rock</string>
 		<key>streamURL</key>
@@ -18,9 +142,47 @@
 		<key>streamURL</key>
 		<string>http://direct.francemusique.fr/live/francemusiqueeasyclassique-hifi.mp3</string>
 		<key>imageURL</key>
-		<string></string>
+		<string>FranceMusique</string>
 		<key>desc</key>
 		<string>Vous allez LA DO RÉ !</string>
+		<key>group</key>
+		<string>Classique</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
+		<key>name</key>
+		<string>Test 5</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.streamsdfsdguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>RFI</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
+		<key>name</key>
+		<string>test 2</string>
+		<key>streamURL</key>
+		<string>http://rfcmedia.strearhaehehtamguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>FranceInter</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
+	</dict>
+	<dict>
+		<key>group</key>
+		<string>Rock</string>
+		<key>name</key>
+		<string>test 1</string>
+		<key>streamURL</key>
+		<string>http://rfcmedadhaethia.streamguys1.com/classicrock.mp3</string>
+		<key>imageURL</key>
+		<string>https://www.francebleu.fr/img/logo-france-bleu-seo.jpg</string>
+		<key>desc</key>
+		<string>Are you ready to Folk?</string>
 	</dict>
 	<dict>
 		<key>name</key>
@@ -33,22 +195,16 @@
 		<string>Are you ready to Folk?</string>
 	</dict>
 	<dict>
-		<key>New item</key>
-		<string></string>
+		<key>group</key>
+		<string>Rock/Pop</string>
 		<key>name</key>
-		<string>Absolute Country Hits</string>
+		<string>Country Radio</string>
 		<key>streamURL</key>
 		<string>http://strm112.1.fm/acountry_mobile_mp3</string>
 		<key>imageURL</key>
 		<string>station-absolutecountry.png</string>
 		<key>desc</key>
 		<string>The Music Starts Here</string>
-	</dict>
-	<dict>
-		<key>name</key>
-		<string>Radio Classique</string>
-		<key>streamURL</key>
-		<string>http://radioclassique.ice.infomaniak.ch/radioclassique-high.mp3</string>
 	</dict>
 </array>
 </plist>

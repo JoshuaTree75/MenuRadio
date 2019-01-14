@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="CollectionItem" customModule="MenuRadio" customModuleProvider="target">
+            <connections>
+                <outlet property="editButton" destination="asr-pj-atd" id="q47-gO-SKH"/>
+                <outlet property="iconView" destination="H3v-0f-4Iv" id="arc-mM-AUg"/>
+                <outlet property="stationName" destination="oWk-1f-tWf" id="hU1-Dd-0Mg"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="H3v-0f-4Iv">
+                    <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="XGR-Zg-e1l"/>
+                        <constraint firstAttribute="width" secondItem="H3v-0f-4Iv" secondAttribute="height" multiplier="1:1" id="vKt-Ju-pOv"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="FranceMusique" id="OV5-9c-93Z"/>
+                </imageView>
+                <button hidden="YES" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="asr-pj-atd">
+                    <rect key="frame" x="32" y="32" width="18" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="D6Y-3t-Rz4"/>
+                        <constraint firstAttribute="width" constant="18" id="jEf-As-Fn8"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="EditButton" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="yyO-dm-Qa6">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="editStation:" target="-2" id="5dS-Iz-8cu"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oWk-1f-tWf">
+                    <rect key="frame" x="0.0" y="0.0" width="52" height="55"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="sfv-DH-Rb7"/>
+                    </constraints>
+                    <textFieldCell key="cell" controlSize="mini" truncatesLastVisibleLine="YES" alignment="center" title="Radio France Luxembourg Australie" drawsBackground="YES" id="v0S-TD-uJC">
+                        <font key="font" metaFont="miniSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="H3v-0f-4Iv" secondAttribute="trailing" id="HRS-6F-mA3"/>
+                <constraint firstItem="H3v-0f-4Iv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="LJW-YL-zfn"/>
+                <constraint firstItem="oWk-1f-tWf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Per-5M-f3W"/>
+                <constraint firstItem="asr-pj-atd" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="2" id="PgG-Er-Fod"/>
+                <constraint firstAttribute="trailing" secondItem="oWk-1f-tWf" secondAttribute="trailing" id="Vk4-tr-gK9"/>
+                <constraint firstAttribute="trailing" secondItem="asr-pj-atd" secondAttribute="trailing" constant="2" id="ZTB-3C-mEI"/>
+                <constraint firstAttribute="bottom" secondItem="H3v-0f-4Iv" secondAttribute="bottom" id="cu3-uO-y7Y"/>
+                <constraint firstItem="H3v-0f-4Iv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="jdC-yz-NVx"/>
+                <constraint firstAttribute="bottom" secondItem="oWk-1f-tWf" secondAttribute="bottom" id="sXo-ZP-TrC"/>
+            </constraints>
+            <point key="canvasLocation" x="-124" y="197"/>
+        </customView>
+        <collectionViewItem id="VMJ-Ml-K7r" customClass="CollectionItem" customModule="MenuRadio" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="EditButton" width="12" height="12"/>
+        <image name="FranceMusique" width="1024" height="1024"/>
+    </resources>
+</document>

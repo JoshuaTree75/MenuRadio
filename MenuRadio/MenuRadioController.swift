@@ -18,7 +18,7 @@ class MenuRadioController: NSObject {
     // MARK: - Properties
     //*****************************************************************
     
-    var menuRemote = MenuRemote()
+    let menuRemote = MenuRemote()
     
     lazy var popover: NSPopover = {
         let popover = NSPopover()
@@ -33,12 +33,14 @@ class MenuRadioController: NSObject {
     
     var popoverController: PopoverViewController?
     
-    var stationManager = StationManager()
+    let stationManager = StationManager()
     
     var stations = [RadioStation]() {
         didSet {
             guard stations != oldValue else { return }
-            self.prefs.stations = self.stations
+            let dict = stations.sorted(by: {$0.name < $1.name})
+            stations = dict
+            self.prefs.stations = dict
             stationsDidUpdate()
             if kDebugLog { print("Stations list did update") }
         }
@@ -49,8 +51,7 @@ class MenuRadioController: NSObject {
             guard selectedStation != oldValue else { return }
             if selectedStation != nil {
                 stationManager.station = selectedStation
-                let index = stations.firstIndex(of: selectedStation!)
-                prefs.selectedStation = index ?? 0
+                //prefs.selectedStationIndex = stations.index(of: selectedStation!)
                 stationManager.player.radioURL = URL(string: selectedStation!.streamURL)
             }
         }
@@ -61,7 +62,6 @@ class MenuRadioController: NSObject {
     //*****************************************************************
     
     let prefs = PreferenceManager()
-
     
     //*****************************************************************
     // MARK: - Initialization
@@ -72,11 +72,12 @@ class MenuRadioController: NSObject {
         menuRemote.delegate = self
         popoverController = PopoverViewController.freshController()
         popoverController!.delegate = self
-        let _ = self.popoverController!.view // call the viewDidLoad() method
+        let _ = self.popoverController!.view // call viewDidLoad()
         stationManager.delegate = self
         stations = prefs.stations
+        //selectedStation = stations[prefs.selectedStationIndex!]
         stationsDidUpdate()
-
+    }
     
     //*****************************************************************
     // MARK: - Private helpers
@@ -85,30 +86,31 @@ class MenuRadioController: NSObject {
     internal func stationsDidUpdate() {
         DispatchQueue.main.async {
             //Refressh popover
-            self.popoverController!.refreshPopup(withStations: self.stations)
+           // self.popoverController!.refreshPopup(withStationsIn: self.stations)
+            //self.popoverController!.radioListTableView.reloadData()
             
             //A station is selected
-            if self.selectedStation != nil {
-                
-                if self.stations.index(of: self.selectedStation!) == nil { //Selected not in the new list
-                    self.resetCurrentStation()
-                    if kDebugLog { print("Previous station lost. None selected") }
-                } else {
-                    self.popoverController!.selectedStation = self.selectedStation!
-                    //Saving the new index of the selected station into prefs.
-                    let newIndex = self.stations.index(of: self.selectedStation!)
-                    self.prefs.selectedStation = newIndex
-                    if kDebugLog { print("Station selected in Popup") }
-                }
-                
-            }
+//            if self.prefs.selectedStationIndex != nil {
+//
+//                if self.stations.index(of: self.selectedStation!) == nil { //Selected not in the new list
+//                    self.resetCurrentStation()
+//                    if kDebugLog { print("Previous station lost. None selected") }
+//                } else {
+//                    self.popoverController!.selectedStation = self.selectedStation!
+//                    //Saving the new index of the selected station into prefs.
+//                    let newIndex = self.stations.index(of: self.selectedStation!)
+//                    self.prefs.selectedStationIndex = newIndex
+//                    if kDebugLog { print("Station selected in Popup") }
+//                }
+//
+//            }
         }
     }
     
     // Reset all properties to default
     func resetCurrentStation() {
         //deselect popUp
-        self.popoverController!.stationPopup.select(nil)
+      //  self.popoverController!.stationPopup.select(nil)
         stationManager.resetRadioPlayer()
     }
     
@@ -135,187 +137,3 @@ extension MenuRadioController: MenuRemoteDelegate {
     }
 }
 
-
-//*****************************************************************
-// MARK: - StationManager delegation
-//*****************************************************************
-
-extension MenuRadioController: StationManagerDelegate {
-    
-    func iconNameForStates(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) -> String {
-        var imageName: String
-        
-        switch playerState {
-        case .error:
-            imageName = iconError
-        case .loading:
-            imageName = iconLoading
-        case .loadingFinished, .readyToPlay:
-            switch stationManager.player.playbackState {
-            case .playing:
-                imageName = iconPlaying
-            case .paused, .stopped:
-                imageName = iconStopped
-            }
-        case .urlNotSet:
-            imageName = iconUrlNotSet
-        }
-        
-        return imageName
-    }
-    
-    func playerStateDidChange(_ playerState: FRadioPlayerState) {
-        
-        let iconName = iconNameForStates(playerState, stationManager.player.playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
-    }
-    
-    func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
-        
-        let iconName = iconNameForStates(stationManager.player.state, playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
-    }
-    
-    func trackDidUpdate(_ track: Track?) {
-        popoverController?.updateTrack(track)
-    }
-    
-    func trackArtworkDidUpdate(_ track: Track?) {
-        popoverController?.updateTrackArtwork(track)
-
-    }
-    
-}
-
-//*****************************************************************
-
-extension MenuRadioController: PopoverViewControllerDelegate {
-
-    //*****************************************************************
-    // MARK: - PopoverViewControllerDelegate
-    //*****************************************************************
-
-    func selectedStationDidChange() {
-        if kDebugLog { print("selectedStationDidChange") }
-        if let index = popoverController?.stationPopup.indexOfSelectedItem {
-            selectedStation = stations[index]
-            if !popover.isDetached { closePopover(sender: self) }
-        }
-    }
-    
-    func didPickPreference(menuItem: NSMenuItem) {
-        var newState: Bool
-        
-        if menuItem.state == .on {
-            menuItem.state = .off
-            newState = false
-        } else {
-            menuItem.state = .on
-            newState = false
-        }
-        
-        switch menuItem.title {
-        case menuLaunchAtStartup:
-            prefs.launchAtStartup = newState
-        case menuAutoPlay:
-            prefs.autoplay = newState
-        case menuNotifications:
-            prefs.notifications = newState
-        case menuAnimatedIcon:
-            prefs.animatedIcon = newState
-        default:
-            if kDebugLog { print("This menu dosen't exist")}
-        }
-    }
-    
-    func numberOfStations() -> Int {
-        return stations.count
-    }
-    
-}
-
-
-extension MenuRadioController: NSPopoverDelegate {
-    
-    //*****************************************************************
-    // MARK: - Popover delegation
-    //*****************************************************************
-
-    func popoverShouldDetach(_ popover: NSPopover) -> Bool {
-        return true
-    }
-    
-    func detachableWindow(for popover: NSPopover) -> NSWindow? {
-//        let translucentView = NSVisualEffectView(frame: <#T##NSRect#>)
-//       let panel = NSPanel(contentRect: NSRect(x: 0, y: 0, width: 300, height: 300), styleMask: [.resizable, .closable, .titled], backing: NSWindow.BackingStoreType.buffered, defer: true)
-//       panel.contentViewController = popover.contentViewController
-        return nil
-        
-    }
-    
-    func popoverDidShow(_ notification: Notification) {
-        if kDebugLog { print("popover did show") }
-        
-    }
-    
-    func popoverDidDetach(_ popover: NSPopover) {
-        if kDebugLog { print("popover did detach") }
-        if let vc = (popover.contentViewController as? PopoverViewController) {
-            vc.isExpanded = true
-            print("vc.stackView: \(vc.stackView.subviews.description)")
-        }
-    }
-    
-    func popoverDidClose(_ notification: Notification) {
-        let closeReason = notification.userInfo![NSPopover.closeReasonUserInfoKey] as! String
-        if (closeReason == NSPopover.CloseReason.standard.rawValue) {
-            if kDebugLog { print("closeReason: popover did close") }
-            if let vc = popover.contentViewController as? PopoverViewController {
-                vc.isExpanded = false
-                if kDebugLog { print("vc.stackView: \(vc.stackView.subviews.description)") }
-            }
-        }
-        //Never called, don't know why -> popoverDidDetatch(:) used instead
-        if (closeReason == NSPopover.CloseReason.detachToWindow.rawValue) {
-            if kDebugLog { print("closeReason: popover did detach") }
-        }
-    }
-    
-    
-    //*****************************************************************
-    // MARK: - Popover management
-    //*****************************************************************
-    
-    
-    @objc func togglePopover(_ sender: Any?) {
-        if popover.isShown {
-            closePopover(sender: sender)
-            if kDebugLog { print("closePopover") }
-        } else {
-            showPopover(sender: sender)
-            if kDebugLog { print("showPopover") }
-        }
-    }
-    
-    func showPopover(sender: Any?) {
-        if let icon = menuRemote.menuView {
-            popover.show(relativeTo: icon.bounds, of: icon, preferredEdge: NSRectEdge.minY)
-            if (popoverTransiencyMonitor == nil)
-            {
-                popoverTransiencyMonitor = NSEvent.addGlobalMonitorForEvents(matching: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown], handler: {event in
-                    self.closePopover(sender: sender)
-                }) as? NSEvent
-            }
-        }
-    }
-    
-    func closePopover(sender: Any?) {
-        if popoverTransiencyMonitor != nil {
-            NSEvent.removeMonitor(popoverTransiencyMonitor!)
-            popoverTransiencyMonitor = nil;
-        }
-        popover.performClose(sender)
-        
-    }
-    
-}

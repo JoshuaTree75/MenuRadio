@@ -96,7 +96,7 @@ class StationManager: NSObject {
             }
         } else {
             // load local station image
-            let image = NSImage(named: station.imageURL) ?? #imageLiteral(resourceName: "iconLoading 7")
+            let image = NSImage(named: station.imageURL) ?? #imageLiteral(resourceName: "iconUrlNotSet")
             completionHandler(image)
         }
     }
