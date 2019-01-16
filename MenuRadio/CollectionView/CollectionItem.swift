@@ -50,8 +50,25 @@ class CollectionItem: NSCollectionViewItem {
     // 2
     override func viewDidLoad() {
         super.viewDidLoad()
-       // view.wantsLayer = true
-        
+        view.wantsLayer = true
+     view.layer?.masksToBounds = false
+        view.layer?.shadowColor = NSColor.controlAccentColor.cgColor
+        view.layer?.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        view.layer?.shadowRadius = 4.0
+
+//
+       // editButton.wantsLayer = true
+//        editButton.layer?.masksToBounds = false
+        print("editButton.layer?.contentsRect: \(editButton.layer?.contentsRect)")
+//        editButton.layer?.isOpaque = false //keep for performance
+       // editButton.layer?.masksToBounds = true
+        //editButton.layer?.backgroundColor = CGColor.clear
+    //    editButton.alphaValue = 0.75
+        //editButton.contentTintColor = NSColor.controlAccentColor
+       // view.layer?.borderColor = NSColor.controlAccentColor.cgColor
+       // view.layer?.cornerRadius = 8.0
+        //view.layer?.shadowOffset = CGSize(width: 0.0, height: -7.0)
+
         let area = NSTrackingArea.init(rect: iconView.bounds, options: [NSTrackingArea.Options.mouseEnteredAndExited, NSTrackingArea.Options.activeAlways], owner: self, userInfo: nil)
         iconView.addTrackingArea(area)
 
@@ -64,4 +81,10 @@ class CollectionItem: NSCollectionViewItem {
         editButton.isHidden = true
     }
  
+    func setHighlight(selected: Bool) {
+  //      view.layer?.borderColor = NSColor.controlAccentColor.cgColor
+    //    view.layer?.borderWidth = selected ? 3.0 : 0.0
+       view.layer?.backgroundColor = selected ? NSColor.controlAccentColor.cgColor : CGColor.clear
+        view.layer?.shadowOpacity = selected ? 1.0 : 0.0
+    }
 }

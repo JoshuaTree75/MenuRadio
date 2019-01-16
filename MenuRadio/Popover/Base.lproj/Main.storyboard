@@ -686,14 +686,14 @@
             <objects>
                 <viewController storyboardIdentifier="PopoverViewController" id="6lT-Vv-cy7" customClass="PopoverViewController" customModule="MenuRadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="c0E-oa-Fr2">
-                        <rect key="frame" x="0.0" y="0.0" width="246" height="427"/>
+                        <rect key="frame" x="0.0" y="0.0" width="304" height="403"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="5" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" horizontalClippingResistancePriority="250" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TfH-jc-Rpq">
-                                <rect key="frame" x="0.0" y="0.0" width="246" height="427"/>
+                                <rect key="frame" x="0.0" y="0.0" width="304" height="403"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="5" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" horizontalClippingResistancePriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QTY-S4-Rc3">
-                                        <rect key="frame" x="0.0" y="388" width="246" height="34"/>
+                                        <rect key="frame" x="0.0" y="364" width="304" height="34"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s4H-VP-AN7">
                                                 <rect key="frame" x="4" y="0.0" width="34" height="34"/>
@@ -703,7 +703,7 @@
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="82M-Nl-iKo"/>
                                             </imageView>
                                             <customView horizontalHuggingPriority="249" horizontalCompressionResistancePriority="249" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="1SL-hc-rWL" customClass="ScrollingTextView" customModule="MenuRadio" customModuleProvider="target">
-                                                <rect key="frame" x="43" y="0.0" width="199" height="34"/>
+                                                <rect key="frame" x="43" y="0.0" width="257" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="9yl-Gk-ziz"/>
                                                 </constraints>
@@ -720,16 +720,16 @@
                                         </customSpacing>
                                     </stackView>
                                     <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" horizontalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vO1-9V-Xd6">
-                                        <rect key="frame" x="0.0" y="29" width="246" height="354"/>
+                                        <rect key="frame" x="0.0" y="31" width="304" height="328"/>
                                         <subviews>
                                             <scrollView wantsLayer="YES" verticalHuggingPriority="254" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRZ-Wq-pB2">
-                                                <rect key="frame" x="0.0" y="0.0" width="246" height="354"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="328"/>
                                                 <clipView key="contentView" copiesOnScroll="NO" id="B3Y-jR-DA5">
-                                                    <rect key="frame" x="1" y="1" width="244" height="352"/>
+                                                    <rect key="frame" x="1" y="1" width="302" height="326"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <collectionView selectable="YES" id="a0A-cd-jf6">
-                                                            <rect key="frame" x="0.0" y="0.0" width="244" height="352"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="302" height="326"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" sectionHeadersPinToVisibleBounds="YES" id="Two-JO-qEd">
                                                                 <size key="itemSize" width="50" height="50"/>
@@ -750,7 +750,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="N5W-IA-yXb">
-                                                    <rect key="frame" x="229" y="1" width="16" height="352"/>
+                                                    <rect key="frame" x="287" y="1" width="16" height="326"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -762,19 +762,33 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqV-zc-Mge">
-                                        <rect key="frame" x="0.0" y="5" width="246" height="19"/>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="750" verticalClippingResistancePriority="750" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqV-zc-Mge">
+                                        <rect key="frame" x="0.0" y="5" width="304" height="21"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="qYc-Rr-DrW">
-                                                <rect key="frame" x="-2" y="4" width="212" height="11"/>
+                                            <segmentedControl horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Joe-0o-J2u">
+                                                <rect key="frame" x="2" y="-2" width="112" height="24"/>
+                                                <segmentedCell key="cell" scrollable="YES" lineBreakMode="clipping" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="LKa-By-26L">
+                                                    <font key="font" metaFont="system"/>
+                                                    <segments>
+                                                        <segment image="FavoritesSortButton" width="32"/>
+                                                        <segment image="AlphabeticalSortButton" width="32" selected="YES" tag="1"/>
+                                                        <segment image="GroupSortButton" width="40"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                                <connections>
+                                                    <action selector="sort:" target="6lT-Vv-cy7" id="fFA-NS-PIQ"/>
+                                                </connections>
+                                            </segmentedControl>
+                                            <textField horizontalHuggingPriority="249" verticalHuggingPriority="752" translatesAutoresizingMaskIntoConstraints="NO" id="qYc-Rr-DrW">
+                                                <rect key="frame" x="110" y="5" width="154" height="11"/>
                                                 <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" alignment="right" title="KFU ©2019" id="dzp-nq-BAD">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <popUpButton horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JIx-NW-owv">
-                                                <rect key="frame" x="208" y="0.0" width="38" height="19"/>
+                                            <popUpButton horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="JIx-NW-owv">
+                                                <rect key="frame" x="262" y="0.0" width="38" height="21"/>
                                                 <popUpButtonCell key="cell" type="square" bezelStyle="shadowlessSquare" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="zvz-FB-nMW">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -812,11 +826,14 @@
                                                 </connections>
                                             </popUpButton>
                                         </subviews>
+                                        <edgeInsets key="edgeInsets" left="4" right="4" top="0.0" bottom="0.0"/>
                                         <visibilityPriorities>
+                                            <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
@@ -846,15 +863,20 @@
                         <outlet property="prefsPopup" destination="JIx-NW-owv" id="a6c-b1-D60"/>
                         <outlet property="radioListCollection" destination="a0A-cd-jf6" id="7mI-1A-dFS"/>
                         <outlet property="scrollingStationInfo" destination="1SL-hc-rWL" id="wZX-de-GbC"/>
+                        <outlet property="sort" destination="Joe-0o-J2u" id="CoO-Yr-HjN"/>
+                        <outlet property="sortingSegmentedButton" destination="Joe-0o-J2u" id="vDN-vQ-GhB"/>
                         <outlet property="stationArtwork" destination="s4H-VP-AN7" id="K6z-Q1-C8l"/>
                     </connections>
                 </viewController>
                 <customObject id="9V6-PD-1Ag" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-488" y="280.5"/>
+            <point key="canvasLocation" x="-488" y="268.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="AlphabeticalSortButton" width="24" height="24"/>
+        <image name="FavoritesSortButton" width="24" height="24"/>
+        <image name="GroupSortButton" width="24" height="24"/>
         <image name="NSActionTemplate" width="14" height="14"/>
     </resources>
 </document>

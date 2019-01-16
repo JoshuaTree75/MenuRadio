@@ -18,7 +18,11 @@ extension MenuRadioController: PopoverViewControllerDelegate {
     func selectedStationDidChange() {
         if kDebugLog { print("selectedStationDidChange") }
        // if let index = popoverController?.stationPopup.indexOfSelectedItem {
-           // selectedStation = stations[index]
+      //  stationManager.station = selectedStation
+        //prefs.selectedStationIndex = stations.index(of: selectedStation!)
+        if let stream = prefs.selectedStation?.streamURL {
+            stationManager.player.radioURL = URL(string: stream)
+        }
          //   if !popover.isDetached { closePopover(sender: self) }
        // }
     }
@@ -49,7 +53,7 @@ extension MenuRadioController: PopoverViewControllerDelegate {
         }
     }
     
-    func getStationsForCollectionView() -> [String: [RadioStation]] {
-        return prefs.stationsByAlphabetical
+    func getStationsForCollectionView() -> [RadioStation] {
+        return prefs.stations
     }
 }

@@ -12,20 +12,54 @@ import Cocoa
 protocol PopoverViewControllerDelegate {
     func selectedStationDidChange()
     func didPickPreference(menuItem: NSMenuItem)
-    func getStationsForCollectionView() -> [String: [RadioStation]]
+    func getStationsForCollectionView() -> [RadioStation]
 }
-
 
 
 class PopoverViewController: NSViewController {
     
     //*****************************************************************
-    // MARK: - Attached popover
+    // MARK: - Collection view
     //*****************************************************************
     
-    // MARK: - IB Outlets
+    enum SortingPredicate: Int {
+        case favorites = 1
+        case alphabetical
+        case groups
+    }
     
-//    @IBOutlet weak var stationPopup: NSPopUpButton!
+    @IBOutlet weak var sortingSegmentedButton: NSSegmentedControl!
+
+    @IBAction func sort(_ sender: NSSegmentedControl) {
+        radioListCollection.reloadData()
+        
+        if let selectedStation = selectedStation {
+            for (group, stations) in orderedStations {
+                if stations.contains(selectedStation) {
+                    if let section = orderedSections.firstIndex(where: { $0 == group }),
+                        let item = stations.firstIndex(where: { $0 == selectedStation }) {
+                        var set = Set<IndexPath>()
+                        let indexPath = IndexPath(item: item, section: section)
+                        set.insert(indexPath)
+                        radioListCollection.selectItems(at: set, scrollPosition: .centeredVertically)
+                    }
+                }
+            }
+        }
+    }
+
+    var sortingPredicate: SortingPredicate {
+        switch sortingSegmentedButton!.indexOfSelectedItem {
+        case 0:
+            return SortingPredicate.favorites
+        case 1:
+            return SortingPredicate.alphabetical
+        case 2:
+            return SortingPredicate.groups
+        default:
+            return SortingPredicate.alphabetical
+        }
+    }
     
     @IBOutlet weak var scrollingStationInfo: ScrollingTextView!
     
@@ -37,6 +71,7 @@ class PopoverViewController: NSViewController {
         didSet {
             if selectedStation != nil {
                // showStationInPopup(selectedStation!)
+                PreferenceManager.shared.selectedStation = selectedStation
                 delegate?.selectedStationDidChange()
 
             }

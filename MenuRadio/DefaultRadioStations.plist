@@ -3,54 +3,74 @@
 <plist version="1.0">
 <array>
 	<dict>
+		<key>favorite</key>
+		<true/>
+		<key>imageURL</key>
+		<string>ad</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Benoit</string>
 		<key>sreamURL</key>
 		<string>aehaehaelkh</string>
 	</dict>
 	<dict>
+		<key>favorite</key>
+		<true/>
+		<key>imageURL</key>
+		<string>ae</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Bernard</string>
 		<key>sreamURL</key>
 		<string>aekljkjhoo</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>af</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Benedicte</string>
 		<key>sreamURL</key>
 		<string>oihosnvkjnwqf</string>
 	</dict>
 	<dict>
+		<key>favorite</key>
+		<true/>
+		<key>imageURL</key>
+		<string>ag</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Barnabé</string>
 		<key>sreamURL</key>
 		<string>adsfouhonboqenf</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>al</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Bertrand</string>
 		<key>sreamURL</key>
 		<string>lkjglufqsvdqs</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>am</string>
 		<key>group</key>
-		<string>B</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Bob</string>
 		<key>sreamURL</key>
 		<string>kjblkaedvlkblew</string>
 	</dict>
 	<dict>
+		<key>New item</key>
+		<string>ao</string>
 		<key>group</key>
 		<string>B</string>
 		<key>name</key>
@@ -59,6 +79,8 @@
 		<string>aehaehet</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>ar</string>
 		<key>group</key>
 		<string>A</string>
 		<key>name</key>
@@ -67,14 +89,18 @@
 		<string>dfaadfsbf`xznvxh</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>at</string>
 		<key>group</key>
-		<string>A</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>Anatole</string>
 		<key>sreamURL</key>
 		<string>eahaefhaethjtedfz`badfva</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>au</string>
 		<key>group</key>
 		<string>A</string>
 		<key>name</key>
@@ -83,8 +109,10 @@
 		<string>eahaefhaeaetatea</string>
 	</dict>
 	<dict>
+		<key>imageURL</key>
+		<string>az</string>
 		<key>group</key>
-		<string>A</string>
+		<string>Rock</string>
 		<key>name</key>
 		<string>André</string>
 		<key>sreamURL</key>
@@ -132,7 +160,7 @@
 		<key>streamURL</key>
 		<string>http://rfcmedia.streamguys1.com/classicrock.mp3</string>
 		<key>imageURL</key>
-		<string>station-classicrock</string>
+		<string>ba</string>
 		<key>desc</key>
 		<string>Are you ready to Folk?</string>
 	</dict>
@@ -152,15 +180,17 @@
 		<key>group</key>
 		<string>Rock</string>
 		<key>name</key>
-		<string>Test 5</string>
+		<string>Peaceful piano</string>
 		<key>streamURL</key>
-		<string>http://rfcmedia.streamsdfsdguys1.com/classicrock.mp3</string>
+		<string>https://peacefulpiano.stream.publicradio.org/peacefulpiano.mp3</string>
 		<key>imageURL</key>
-		<string>RFI</string>
+		<string>PeacefulPiano</string>
 		<key>desc</key>
-		<string>Are you ready to Folk?</string>
+		<string>In the key of serene.</string>
 	</dict>
 	<dict>
+		<key>favorite</key>
+		<true/>
 		<key>group</key>
 		<string>Rock</string>
 		<key>name</key>
@@ -180,7 +210,7 @@
 		<key>streamURL</key>
 		<string>http://rfcmedadhaethia.streamguys1.com/classicrock.mp3</string>
 		<key>imageURL</key>
-		<string>https://www.francebleu.fr/img/logo-france-bleu-seo.jpg</string>
+		<string>bb</string>
 		<key>desc</key>
 		<string>Are you ready to Folk?</string>
 	</dict>
@@ -190,7 +220,7 @@
 		<key>streamURL</key>
 		<string>http://rfcmedia.streamguys1.com/Newport.mp3</string>
 		<key>imageURL</key>
-		<string>station-newportfolk.png</string>
+		<string>bd</string>
 		<key>desc</key>
 		<string>Are you ready to Folk?</string>
 	</dict>
@@ -202,7 +232,7 @@
 		<key>streamURL</key>
 		<string>http://strm112.1.fm/acountry_mobile_mp3</string>
 		<key>imageURL</key>
-		<string>station-absolutecountry.png</string>
+		<string>be</string>
 		<key>desc</key>
 		<string>The Music Starts Here</string>
 	</dict>

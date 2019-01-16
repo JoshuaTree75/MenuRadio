@@ -50,9 +50,9 @@ class MenuRadioController: NSObject {
         didSet {
             guard selectedStation != oldValue else { return }
             if selectedStation != nil {
-                stationManager.station = selectedStation
-                //prefs.selectedStationIndex = stations.index(of: selectedStation!)
-                stationManager.player.radioURL = URL(string: selectedStation!.streamURL)
+//                stationManager.station = selectedStation
+//                //prefs.selectedStationIndex = stations.index(of: selectedStation!)
+//                stationManager.player.radioURL = URL(string: selectedStation!.streamURL)
             }
         }
     }
@@ -61,7 +61,7 @@ class MenuRadioController: NSObject {
     // MARK: - Preferences management
     //*****************************************************************
     
-    let prefs = PreferenceManager()
+    let prefs = PreferenceManager.shared
     
     //*****************************************************************
     // MARK: - Initialization

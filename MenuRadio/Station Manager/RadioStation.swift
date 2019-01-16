@@ -19,13 +19,15 @@ struct RadioStation: Codable {
     var imageURL: String
     var desc: String
     var group: String
+    var favorite: Bool
 
-    init(name: String, streamURL: String, imageURL: String = "", desc: String = "", group: String = "Without group") {
+    init(name: String, streamURL: String, imageURL: String = "", desc: String = "", group: String = "Without group", favorite: Bool = false) {
         self.name = name
         self.streamURL = streamURL
         self.imageURL = imageURL
         self.desc = desc
         self.group = group
+        self.favorite = favorite
     }
 }
 

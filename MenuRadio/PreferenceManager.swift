@@ -21,10 +21,13 @@ private let  streamURLKey = "streamURL"
 private let  imageURLKey = "imageURL"
 private let  descKey = "desc"
 private let  groupKey = "group"
+private let favoriteKey = "favorite"
 
 class PreferenceManager {
     
-  
+    /// Returns the singleton `PreferenceManager` instance.
+    public static let shared = PreferenceManager()
+
     private let userDefaults = UserDefaults.standard
     
     init() {
@@ -58,7 +61,7 @@ class PreferenceManager {
         set { userDefaults.set(newValue, forKey: animatedIconKey) }
         get { return userDefaults.bool(forKey: animatedIconKey) }
     }
-    var selectedStationIndex: RadioStation? {
+    var selectedStation: RadioStation? {
         set { if newValue != nil {
             userDefaults.set(newValue!.streamURL, forKey: selectedStationKey) }
         }
@@ -70,53 +73,30 @@ class PreferenceManager {
     var stations: [RadioStation] {
         set {
             if !newValue.isEmpty {
-                let array = newValue.map { [nameKey: $0.name , streamURLKey: $0.streamURL, imageURLKey: $0.imageURL, descKey: $0.desc, groupKey: $0.group] }
+                let array = newValue.map { [nameKey: $0.name , streamURLKey: $0.streamURL, imageURLKey: $0.imageURL, descKey: $0.desc, groupKey: $0.group, favoriteKey: $0.favorite] }
                 userDefaults.set(array, forKey: stationsKey)
             }
         }
         get {
-            if let data = userDefaults.array(forKey: stationsKey) as! [[String: String]]? {
-                let stationsArray = data.map { RadioStation(name: $0[nameKey] ?? "", streamURL: $0[streamURLKey] ?? "", imageURL: $0[imageURLKey] ?? "", desc: $0[descKey] ?? "", group: $0[groupKey] ?? "")}
+            if let data = userDefaults.array(forKey: stationsKey) as! [[String: Any]]? {
+                let stationsArray = data.map { RadioStation(name: $0[nameKey] as? String ?? "", streamURL: $0[streamURLKey] as? String ?? "", imageURL: $0[imageURLKey] as? String ?? "", desc: $0[descKey] as? String ?? "", group: $0[groupKey] as? String ?? "", favorite: $0[favoriteKey] as? Bool ?? false)}
                 return stationsArray
             } else {
                 return []
             }
         }
     }
-    
-    var stationsByGroups: [String : [RadioStation]] {
-        let list = stations.sorted { $0.group < $1.group }
-            .reduce(into: [String : [RadioStation]]()) { (newDict, station) in
-                if newDict.keys.contains(station.group) {
-                    newDict[station.group]!.append(station)
-                } else {
-                    newDict[station.group] = [station].sorted(by: { $0.name < $1.name })
-                }
-        }
-        return list
-    }
-    
-    var stationsByAlphabetical: [String : [RadioStation]] {
-        let list = stations.reduce(into: [String : [RadioStation]]()) { (newDict, station) in
-                let group = String(station.name.uppercased().first!)
-                if newDict.keys.contains(group) {
-                    newDict[group]!.append(station)
-                } else {
-                    newDict[group] = [station]
-                }
-            }
-        return list.mapValues { $0.sorted { $0.name.localizedCompare($1.name) == .orderedAscending  }}
-    }
+
 
     //*****************************************************************
     // Load default radio stations
 //*****************************************************************
     
     
-    func defaultStationsFromFile() -> [[String: String]] {
+    func defaultStationsFromFile() -> [[String: Any]] {
         
         if let path = Bundle.main.path(forResource: "DefaultRadioStations", ofType: "plist") {
-            if let dataArray = NSArray(contentsOfFile: path) as! [[String: String]]? {
+            if let dataArray = NSArray(contentsOfFile: path) as! [[String: Any]]? {
                 return dataArray
                 //stations = data.map { station -> RadioStation in
                 //if let streamURL = station[streamURLKey], let name = station[nameKey] {

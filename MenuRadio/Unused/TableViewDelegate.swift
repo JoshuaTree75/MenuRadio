@@ -11,21 +11,21 @@ import AppKit
 
 extension PopoverViewController: NSTableViewDelegate, NSTableViewDataSource {
     
-    var stationsWithHeaders: [String: [RadioStation]] {
-        get {
-            let stations = delegate?.getStationsForCollectionView() ?? [:]
-            //            if stations.count > 0 {
-            //                var groups: [String] = []
-            //                for station in stations {
-            //                    if !groups.contains(station.group) {
-            //                        groups.append(station.group)
-            //                    }
-            //                }
-            //if $1.group == $0.group {add
-            return stations
-        }
-        
-    }
+//    var stationsWithHeaders: [String: [RadioStation]] {
+//        get {
+//            let stations = delegate?.getStationsForCollectionView() ?? [:]
+//            //            if stations.count > 0 {
+//            //                var groups: [String] = []
+//            //                for station in stations {
+//            //                    if !groups.contains(station.group) {
+//            //                        groups.append(station.group)
+//            //                    }
+//            //                }
+//            //if $1.group == $0.group {add
+//            return stations
+//        }
+//        
+//    }
     
     
     func numberOfRows(in tableView: NSTableView) -> Int {
