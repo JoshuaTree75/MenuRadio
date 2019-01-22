@@ -11,7 +11,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Benoit</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>aehaehaelkh</string>
 	</dict>
 	<dict>
@@ -23,7 +23,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Bernard</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>aekljkjhoo</string>
 	</dict>
 	<dict>
@@ -33,7 +33,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Benedicte</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>oihosnvkjnwqf</string>
 	</dict>
 	<dict>
@@ -45,7 +45,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Barnabé</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>adsfouhonboqenf</string>
 	</dict>
 	<dict>
@@ -55,7 +55,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Bertrand</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>lkjglufqsvdqs</string>
 	</dict>
 	<dict>
@@ -65,7 +65,7 @@
 		<string>Rock</string>
 		<key>name</key>
 		<string>Bob</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>kjblkaedvlkblew</string>
 	</dict>
 	<dict>
@@ -75,47 +75,47 @@
 		<string>B</string>
 		<key>name</key>
 		<string>Benjamin</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>aehaehet</string>
 	</dict>
 	<dict>
 		<key>imageURL</key>
 		<string>ar</string>
 		<key>group</key>
-		<string>A</string>
+		<string>Podcasts</string>
 		<key>name</key>
 		<string>Aline</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>dfaadfsbf`xznvxh</string>
 	</dict>
 	<dict>
 		<key>imageURL</key>
 		<string>at</string>
 		<key>group</key>
-		<string>Rock</string>
+		<string>Podcasts</string>
 		<key>name</key>
 		<string>Anatole</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>eahaefhaethjtedfz`badfva</string>
 	</dict>
 	<dict>
 		<key>imageURL</key>
 		<string>au</string>
 		<key>group</key>
-		<string>A</string>
+		<string>Podcasts</string>
 		<key>name</key>
 		<string>Antoine</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>eahaefhaeaetatea</string>
 	</dict>
 	<dict>
 		<key>imageURL</key>
 		<string>az</string>
 		<key>group</key>
-		<string>Rock</string>
+		<string>Podcasts</string>
 		<key>name</key>
 		<string>André</string>
-		<key>sreamURL</key>
+		<key>streamURL</key>
 		<string>argrge</string>
 	</dict>
 	<dict>
@@ -132,7 +132,7 @@
 		<key>group</key>
 		<string>Rock</string>
 		<key>name</key>
-		<string>Test 3</string>
+		<string>Europe 1</string>
 		<key>streamURL</key>
 		<string>http://rfcmedia.stresgdshamguys1.com/classicrock.mp3</string>
 		<key>imageURL</key>
@@ -144,7 +144,7 @@
 		<key>group</key>
 		<string>Rock</string>
 		<key>name</key>
-		<string>Test 4</string>
+		<string>BFM</string>
 		<key>streamURL</key>
 		<string>http://rfcmedia.streamsdgsdgguys1.com/classicrock.mp3</string>
 		<key>imageURL</key>
@@ -194,7 +194,7 @@
 		<key>group</key>
 		<string>Rock</string>
 		<key>name</key>
-		<string>test 2</string>
+		<string>NRJ 12</string>
 		<key>streamURL</key>
 		<string>http://rfcmedia.strearhaehehtamguys1.com/classicrock.mp3</string>
 		<key>imageURL</key>
@@ -204,7 +204,7 @@
 	</dict>
 	<dict>
 		<key>group</key>
-		<string>Rock</string>
+		<string>Podcasts</string>
 		<key>name</key>
 		<string>test 1</string>
 		<key>streamURL</key>

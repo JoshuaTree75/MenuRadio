@@ -22,6 +22,9 @@ import Cocoa
 //        return CGSize(width: img.size.width * ratio, height: img.size.height * ratio)
 //    }
 //}
+protocol CollectionItemDelegate {
+    func didModifyStation()
+}
 
 class CollectionItem: NSCollectionViewItem {
 
@@ -30,9 +33,12 @@ class CollectionItem: NSCollectionViewItem {
     var radioStation: RadioStation? {
         didSet {
             guard isViewLoaded else { return }
+            print("Radiostation: \(radioStation)")
             if let radioStation = radioStation {
                 self.iconView.image = NSImage(named: radioStation.imageURL) ?? #imageLiteral(resourceName: "iconUrlNotSet")
                 stationName.stringValue = radioStation.name
+                favoriteButton.state = radioStation.favorite ? .on : .off
+                favoriteButton.isHidden = !radioStation.favorite
             } else {
                 iconView.image = nil
                 stationName.stringValue = ""
@@ -43,6 +49,18 @@ class CollectionItem: NSCollectionViewItem {
     @IBOutlet weak var iconView: NSImageView!
     @IBOutlet weak var stationName: NSTextField!
     @IBOutlet weak var editButton: NSButton!
+    @IBOutlet weak var favoriteButton: NSButton! {
+        didSet {
+        }
+    }
+    
+    @IBAction func setFavorite(_ sender: NSButton) {
+        if radioStation != nil {
+            radioStation!.favorite = favoriteButton.state == .on ? true: false
+           print(favoriteButton.state)
+           print(radioStation!.favorite)
+        }
+    }
     @IBAction func editStation(_ sender: NSButton) {
         print("edit")
     }
@@ -59,7 +77,7 @@ class CollectionItem: NSCollectionViewItem {
 //
        // editButton.wantsLayer = true
 //        editButton.layer?.masksToBounds = false
-        print("editButton.layer?.contentsRect: \(editButton.layer?.contentsRect)")
+ //       print("editButton.layer?.contentsRect: \(editButton.layer?.contentsRect)")
 //        editButton.layer?.isOpaque = false //keep for performance
        // editButton.layer?.masksToBounds = true
         //editButton.layer?.backgroundColor = CGColor.clear
@@ -75,16 +93,25 @@ class CollectionItem: NSCollectionViewItem {
     }
     override func mouseEntered(with event: NSEvent) {
        editButton.isHidden = false
+        favoriteButton.isHidden = false
+      print((favoriteButton.cell as! NSButtonCell).highlightsBy)
+//        = .changeBackgroundCellMask
+//        view.setNeedsDisplay(favoriteButton.frame)
+//
     }
     
     override func mouseExited(with event: NSEvent) {
         editButton.isHidden = true
+        if radioStation != nil {
+            if !radioStation!.favorite { favoriteButton.isHidden = true }
+            else { favoriteButton.isHidden = false }
+        }
     }
  
     func setHighlight(selected: Bool) {
-  //      view.layer?.borderColor = NSColor.controlAccentColor.cgColor
-    //    view.layer?.borderWidth = selected ? 3.0 : 0.0
-       view.layer?.backgroundColor = selected ? NSColor.controlAccentColor.cgColor : CGColor.clear
+        view.layer?.borderColor = NSColor.controlAccentColor.cgColor
+       view.layer?.borderWidth = selected ? 3.0 : 0.0
+      // view.layer?.backgroundColor = selected ? NSColor.controlAccentColor.cgColor : CGColor.clear
         view.layer?.shadowOpacity = selected ? 1.0 : 0.0
     }
 }

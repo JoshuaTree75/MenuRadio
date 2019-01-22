@@ -1,6 +1,6 @@
 import Cocoa
 
-open class ScrollingTextView: NSView {
+open class MarqueeView: NSView {
     // MARK: - Open variables
 
     /// Text to scroll
@@ -75,7 +75,7 @@ open class ScrollingTextView: NSView {
 }
 
 // MARK: - Private extension
-private extension ScrollingTextView {
+private extension MarqueeView {
     func setSpeed(newInterval: TimeInterval) {
         clearTimer()
         timeInterval = newInterval
@@ -126,7 +126,7 @@ private extension ScrollingTextView {
 }
 
 // MARK: - Overrides
-extension ScrollingTextView {
+extension MarqueeView {
     override open func draw(_ dirtyRect: NSRect) {
         if point.x + stringSize.width < 0 {
             point.x += stringSize.width + spacing

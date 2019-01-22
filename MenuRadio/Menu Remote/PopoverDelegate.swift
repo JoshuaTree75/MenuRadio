@@ -14,7 +14,7 @@ import AppKit
 //        return frameSize
 //    }
 //}
-extension MenuRadioController: NSPopoverDelegate {
+extension MenuRemote: NSPopoverDelegate {
     
     //*****************************************************************
     // MARK: - Popover delegation
@@ -61,7 +61,7 @@ extension MenuRadioController: NSPopoverDelegate {
     }
     
     func showPopover(sender: Any?) {
-        if let icon = menuRemote.menuView {
+        if let icon = menuView {
             popover.show(relativeTo: icon.bounds, of: icon, preferredEdge: NSRectEdge.minY)
 //            if (popoverTransiencyMonitor == nil)
 //            {

@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-extension MenuRadioController: StationManagerDelegate {
+extension MenuRemote: StationManagerDelegate {
     
     func iconNameForStates(_ playerState: FRadioPlayerState, _ playbackState: FRadioPlaybackState) -> String {
         var imageName: String
@@ -36,13 +36,13 @@ extension MenuRadioController: StationManagerDelegate {
     func playerStateDidChange(_ playerState: FRadioPlayerState) {
         
         let iconName = iconNameForStates(playerState, stationManager.player.playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
+        switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
     }
     
     func playbackStateDidChange(_ playbackState: FRadioPlaybackState) {
         
         let iconName = iconNameForStates(stationManager.player.state, playbackState)
-        menuRemote.switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
+        switchIcon(withImageNamed: iconName, animated: prefs.animatedIcon)
     }
     
     func trackDidUpdate(_ track: Track?) {

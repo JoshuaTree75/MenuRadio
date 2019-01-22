@@ -14,7 +14,7 @@ class HeaderView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-        NSColor.headerColor.set()
+        NSColor.textBackgroundColor.set()
         //NSColor(calibratedWhite: 0.8 , alpha: 0.0).set()
         __NSRectFillUsingOperation(dirtyRect, NSCompositingOperation.sourceOver)
     }

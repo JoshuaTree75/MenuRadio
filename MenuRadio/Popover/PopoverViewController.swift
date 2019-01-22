@@ -8,60 +8,182 @@
 
 import Cocoa
 
+ let sectionWidth = 300.0
+ let sectionHeight = 20.0
+ let itemSide = 52.0
+ let interitemSpacing = 7.0
+
+//itemSide 54*4 = 216
+//interItem 7*5 = 35
+
+//total: 244
 
 protocol PopoverViewControllerDelegate {
     func selectedStationDidChange()
     func didPickPreference(menuItem: NSMenuItem)
     func getStationsForCollectionView() -> [RadioStation]
+//    func stationsDidChange()
+
 }
 
 
 class PopoverViewController: NSViewController {
     
     //*****************************************************************
-    // MARK: - Collection view
+    // MARK: - Initialisation
     //*****************************************************************
     
-    enum SortingPredicate: Int {
-        case favorites = 1
-        case alphabetical
-        case groups
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupSearchField()
+        scrollingStationInfo.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
+        scrollingStationInfo.textColor = NSColor.secondaryLabelColor
+        configureCollectionView()
+        sortingSegmentedButton.selectedSegment = PreferenceManager.shared.sortingPredicate.rawValue
+        favoritesButton.state = PreferenceManager.shared.favoritesOnly ? .on : .off
+        updateStationsDictionaries()
+        if kDebugLog { print("View did load") }
+        
     }
+    
+    //*****************************************************************
+    // MARK: - Sorting methods
+    //*****************************************************************
+
+    private var orderedStations: [String: [RadioStation]] = [:]
+    
+    var orderedSections: [String] = []
     
     @IBOutlet weak var sortingSegmentedButton: NSSegmentedControl!
 
-    @IBAction func sort(_ sender: NSSegmentedControl) {
-        radioListCollection.reloadData()
-        
-        if let selectedStation = selectedStation {
-            for (group, stations) in orderedStations {
-                if stations.contains(selectedStation) {
-                    if let section = orderedSections.firstIndex(where: { $0 == group }),
-                        let item = stations.firstIndex(where: { $0 == selectedStation }) {
-                        var set = Set<IndexPath>()
-                        let indexPath = IndexPath(item: item, section: section)
-                        set.insert(indexPath)
-                        radioListCollection.selectItems(at: set, scrollPosition: .centeredVertically)
+    @IBAction func sortSegmentedControl(_ sender: NSSegmentedControl) {
+        if sender.indexOfSelectedItem != sortingPredicate.rawValue {
+            sortingPredicate = SortingPredicate(rawValue: sender.indexOfSelectedItem) ?? .alphabetical
+        }
+    }
+    
+    var sortingPredicate: SortingPredicate = .alphabetical {
+        didSet {
+            PreferenceManager.shared.sortingPredicate = sortingPredicate
+            updateStationsDictionaries()
+        }
+    }
+    
+    func sortStations(_ stations: [RadioStation], by predicate: SortingPredicate) -> [String : [RadioStation]] {
+        //By group
+        var list = [String : [RadioStation]]()
+        switch predicate {
+        case .groups:
+            list = stations.sorted { $0.group < $1.group }
+                .reduce(into: [String : [RadioStation]]()) { (newDict, station) in
+                    if newDict.keys.contains(station.group) {
+                        newDict[station.group]!.append(station)
+                    } else {
+                        newDict[station.group] = [station].sorted(by: { $0.name < $1.name })
                     }
+            }
+            if list.keys.contains("") { switchKey(&list, fromKey: "", toKey: "Sans groupe")}
+        case .alphabetical:
+            list = stations.reduce(into: [String : [RadioStation]]())
+            { (newDict, station) in
+                let group = String(station.name.uppercased().first!)
+                if newDict.keys.contains(group) { newDict[group]!.append(station) }
+                else { newDict[group] = [station] }
+                }
+                .mapValues { $0.sorted { $0.name.localizedCompare($1.name) == .orderedAscending  }}
+        }
+        //list[""] = []
+        return list
+    }
+
+    //*****************************************************************
+    // MARK: - Filtering favorites methods
+    //*****************************************************************
+   
+    var filterActivated: Bool = false
+    var filteredStations: [String: [RadioStation]] {
+        
+        let stations = orderedStations.reduce(into: [String:[RadioStation]]()) { (newDict, group) in
+            let filtered = group.value.filter { ($0.favorite || $0.favorite == filterActivated) }//.count
+            if filtered.count > 0 {
+                newDict[group.key] = filtered
+            }
+        }
+        return stations
+        
+    }
+
+    @IBOutlet weak var favoritesButton: NSButton!
+    
+    @IBAction func toggleFavorites(_ sender: NSButton) {
+        filterActivated = !filterActivated
+        updateStationsDictionaries()
+    }
+    
+    
+    //*****************************************************************
+    // MARK: - Searching methods
+    //*****************************************************************
+
+    let searchWIdthClosed: CGFloat = 28.0
+    let searchWidthOpened:CGFloat = 200.0 //200.0
+    
+    @IBOutlet weak var toolBarStackView: NSStackView!
+    @IBOutlet weak var searchField: NSSearchField!
+    @IBOutlet weak var searchFieldConstraint: NSLayoutConstraint!
+    
+    fileprivate func setupSearchField() {
+        searchField.delegate = self
+        searchField.focusRingType = .none
+        searchField.bezelStyle = .roundedBezel
+        searchField.isBezeled = false
+        searchField.drawsBackground = false
+        let area = NSTrackingArea.init(rect: searchField.bounds, options: [ .mouseEnteredAndExited, .activeAlways, .inVisibleRect ], owner: self, userInfo: nil)
+        searchField.addTrackingArea(area)
+        expand(false)
+        searchFieldConstraint.constant = searchWIdthClosed
+    }
+    //*****************************************************************
+    // MARK: - Helper methods
+    //*****************************************************************
+
+    func switchKey<T, U>(_ myDict: inout [T:U], fromKey: T, toKey: T) {
+        if let entry = myDict.removeValue(forKey: fromKey) {
+            myDict[toKey] = entry }
+    }
+    
+    private func refreshSelectedStation() {
+        guard let previousSelectedStation = selectedStation else { return }
+        for (key, stations) in orderedStations {
+            if orderedStations[key]!.contains(previousSelectedStation) {
+                if let section = self.orderedSections.firstIndex(where: { $0 == key }),
+                    let item = stations.firstIndex(where: { $0 == previousSelectedStation })
+                {
+                    self.radioListCollection.selectionIndexPaths = []
+                    self.radioListCollection.selectItems(at: [IndexPath(item: item, section: section)], scrollPosition: .top)
+                     break
                 }
             }
         }
     }
-
-    var sortingPredicate: SortingPredicate {
-        switch sortingSegmentedButton!.indexOfSelectedItem {
-        case 0:
-            return SortingPredicate.favorites
-        case 1:
-            return SortingPredicate.alphabetical
-        case 2:
-            return SortingPredicate.groups
-        default:
-            return SortingPredicate.alphabetical
-        }
-    }
     
-    @IBOutlet weak var scrollingStationInfo: ScrollingTextView!
+    private func updateStationsDictionaries() {
+        print("State: \(favoritesButton.state)")
+        let stations = delegate?.getStationsForCollectionView() ?? []
+        orderedStations = sortStations(stations, by: sortingPredicate)
+        orderedSections = Array(filteredStations.keys).sorted { $0.localizedCompare($1) == .orderedAscending }
+        if kDebugLog { print("Stations did update:\n Sections: \(orderedSections.count)\n Stations: \(orderedStations.description)") }
+        radioListCollection.reloadData()
+        refreshSelectedStation()
+        }
+
+    
+//    func updateStationsToPrefs() {
+//        delegate?.stationsDidChange()
+//    }
+   
+    @IBOutlet weak var scrollingStationInfo: MarqueeView!
     
     @IBOutlet weak var radioListCollection: NSCollectionView!
    
@@ -81,53 +203,14 @@ class PopoverViewController: NSViewController {
     
     var delegate: PopoverViewControllerDelegate?
     
+    @IBOutlet weak var infoMetadataConstraint: NSLayoutConstraint!
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        scrollingStationInfo.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
-        scrollingStationInfo.textColor = NSColor.secondaryLabelColor
-        configureCollectionView()
-        if kDebugLog { print("View did load") }
+    func toggleInfoMetadataConstraint() {
         
     }
 
-    
-//    func refreshPopup(withStationsIn groups: [String: [RadioStation]]) {
-//        stationPopup.removeAllItems()
-//        if !groups.isEmpty {
-//            let menu = NSMenu()
-//            for group in groups.keys {
-//                let groupMenu = NSMenu(title: group)
-//                for station in groups[group]! {
-//                    groupMenu.addItem(withTitle: station.name, action: #selector(selectStation(_: )), keyEquivalent: "")
-//                }
-//                let menuItem = NSMenuItem(title: group, action: nil, keyEquivalent: "")
-//                menu.addItem(menuItem)
-//                menu.setSubmenu(groupMenu, for: menuItem)
-//            }
-//            stationPopup.menu = menu
-//
-//            if selectedStation == nil {
-//                scrollingStationInfo.setup(string: "Choisissez une station:")
-//                stationPopup.selectItem(at: -1)
-//                stationArtwork.image = NSImage(named: AppIcon)
-//                if kDebugLog { print("No station selected") }
-//            } else {
-//                showStationInPopup(selectedStation!)
-//            }
-//            if kDebugLog { print("Popup updated") }
-//        }
-//    }
-    
-//    private func showStationInPopup(_ station: RadioStation) {
-//        stationPopup.selectItem(withTitle: station.name)
-//        scrollingStationInfo.setup(string: "")
-//    }
-    
-//    @IBAction func selectStation(_ sender: NSPopUpButton) {
-//        delegate?.selectedStationDidChange()
-//    }
+ 
+
     
     func updateTrack(_ track: Track?) {
         if track != nil {
@@ -165,76 +248,6 @@ class PopoverViewController: NSViewController {
         
     }
     
-    
-
-    //*****************************************************************
-    // MARK: - StackView management
-    //*****************************************************************
-    
-  //  @IBOutlet weak var stackView: NSStackView!
-   // @IBOutlet weak var stackPlayer: NSStackView!
-    // @IBOutlet weak var stackSearch: NSStackView!
-   // @IBOutlet weak var stackRadioList: NSStackView!
-    //@IBOutlet weak var stackCopyright: NSStackView!
-    
-    
-//    var isExpanded :Bool = false {
-//        willSet {
-//                    //   NSAnimationContext.beginGrouping()
-//                    //    NSAnimationContext.current.duration = 5.0
-//                   //     NSAnimationContext.current.allowsImplicitAnimation = true
-//                        if newValue {
-//
-//                           // stackPlayer.isHidden = true
-//                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
-//                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
-//            //                //stackSearch.isHidden = false
-//                          //  stackRadioList.isHidden = false
-//
-//
-//            //                //stackCopyright.isHidden = false
-//                            print("Popover expanded")
-//                        } else {
-//
-//                            stackRadioList.setClippingResistancePriority(NSLayoutConstraint.Priority.defaultLow, for: NSLayoutConstraint.Orientation.vertical)
-//                            stackPlayer.setClippingResistancePriority(NSLayoutConstraint.Priority.required, for: NSLayoutConstraint.Orientation.vertical)
-    
-//                            stackPlayer.isHidden = false
-            //                // stackSearch.isHidden = true
-//                            stackRadioList.isHidden = true
-            //                // stackCopyright.isHidden = true
-            //                print("Popover contracted")
-//                        }
-                //        NSAnimationContext.endGrouping()
-            
-            
-            //WWDC
-            //            NSAnimationContext.runAnimationGroup({_ in
-            //                //Indicate the duration of the animation
-            //                NSAnimationContext.current.duration = 2.0
-            //                //What is being animated? In this example I’m making a view transparent
-            //                stackView.animator().addView(radioListView, in: NSStackView.Gravity.bottom)
-            //            }, completionHandler: {
-            //                //In here we add the code that should be triggered after the animation completes.
-            //                print("Animation completed")
-            //            })
-            
-            
-            //            NSAnimationContext.runAnimationGroup({_ in
-            //                //Indicate the duration of the animation
-            //                NSAnimationContext.current().duration = 5.0
-            //                //What is being animated? In this example I’m making a view transparent
-            //                stackView.animator().addSubview(radioListView)
-            //            }, completionHandler {
-            //                //In here we add the code that should be triggered after the animation completes.
-            //                print("Animation completed")
-            //            })
-            
-            
-            //            stackView.addView(radioListView, in: NSStackView.Gravity.bottom)
-//        }
-//
-//    }
 
     //*****************************************************************
     // MARK: - Storyboard instantiation

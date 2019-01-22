@@ -17,14 +17,14 @@ extension PopoverViewController {
         
         //2
         let flowLayout = NSCollectionViewFlowLayout()
-        flowLayout.itemSize = NSSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide)
-        flowLayout.sectionInset = NSEdgeInsets(top: CGFloat(PopoverViewController.interitemSpacing),
-                                               left: CGFloat(PopoverViewController.interitemSpacing),
-                                               bottom: CGFloat(PopoverViewController.interitemSpacing),
-                                               right: CGFloat(PopoverViewController.interitemSpacing))
+        flowLayout.itemSize = NSSize(width: itemSide, height: itemSide)
+        flowLayout.sectionInset = NSEdgeInsets(top: CGFloat(interitemSpacing),
+                                               left: CGFloat(interitemSpacing),
+                                               bottom: CGFloat(interitemSpacing),
+                                               right: CGFloat(interitemSpacing))
         
-        flowLayout.minimumInteritemSpacing = CGFloat(PopoverViewController.interitemSpacing)
-        flowLayout.minimumLineSpacing = CGFloat(PopoverViewController.interitemSpacing)
+        flowLayout.minimumInteritemSpacing = CGFloat(interitemSpacing)
+        flowLayout.minimumLineSpacing = CGFloat(interitemSpacing)
         radioListCollection.collectionViewLayout = flowLayout
         flowLayout.sectionHeadersPinToVisibleBounds = true
         // 2
@@ -36,20 +36,16 @@ extension PopoverViewController {
 
 //MARK: NSCollectionViewDelegateFlowLayout
 extension PopoverViewController: NSCollectionViewDelegateFlowLayout {
-    static let sectionWidth = 300.0
-    static let sectionHeight = 24.0
-    static let itemSide = 52.0
-    static let interitemSpacing = 7.0
-    //total: 244
+
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
-        return NSSize(width: PopoverViewController.sectionWidth, height: PopoverViewController.sectionHeight)
+        return NSSize(width: sectionWidth, height: sectionHeight)
     }
     
     func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
 //        if selectionIndexPath == indexPath {
 //            return CGSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide*2)
 //        } else {
-        return CGSize(width: PopoverViewController.itemSide, height: PopoverViewController.itemSide)
+        return CGSize(width: itemSide, height: itemSide)
 //        }
         
     }
@@ -58,61 +54,20 @@ extension PopoverViewController: NSCollectionViewDelegateFlowLayout {
 }
 // MARK: NSCollectionViewDataSource
 extension PopoverViewController: NSCollectionViewDataSource {
-    
-    var unorderedStations: [RadioStation] {
-        return delegate?.getStationsForCollectionView() ?? []
-    }
-    
-    var orderedStations: [String: [RadioStation]] {
-        return sortStations(by: sortingPredicate)
-    }
-    
-    var orderedSections: [String] {
-        return Array(orderedStations.keys).sorted { $0.localizedCompare($1) == .orderedAscending }
-    }
-    
-    func sortStations(by predicate: SortingPredicate) -> [String : [RadioStation]] {
-        //By group
-        switch predicate {
-        case .groups:
-            let list = unorderedStations.sorted { $0.group < $1.group }
-                .reduce(into: [String : [RadioStation]]()) { (newDict, station) in
-                    if newDict.keys.contains(station.group) {
-                        newDict[station.group]!.append(station)
-                    } else {
-                        newDict[station.group] = [station].sorted(by: { $0.name < $1.name })
-                    }
-            }
-            return list
-        case .alphabetical:
-            let list = unorderedStations.reduce(into: [String : [RadioStation]]()) { (newDict, station) in
-                let group = String(station.name.uppercased().first!)
-                if newDict.keys.contains(group) {
-                    newDict[group]!.append(station)
-                } else {
-                    newDict[group] = [station]
-                }
-            }
-            return list.mapValues { $0.sorted { $0.name.localizedCompare($1.name) == .orderedAscending  }}
-        case .favorites:
-            let list = unorderedStations.filter { $0.favorite }
-                .sorted { $0.name.localizedCompare($1.name) == .orderedAscending }
-            var dict: [String: [RadioStation]] = [:]
-            dict["Favoris"] = list
-            return dict
-        }
-    }
+
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-            return orderedStations[orderedSections[section]]!.count
+            return filteredStations[orderedSections[section]]!.count
 //            let group = Array(stations.keys)[section]
 //            return stations[group]!.count
     }
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let item = collectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CollectionItem"), for: indexPath) as! CollectionItem
-        let stationsInGroup = orderedStations[orderedSections[indexPath.section]]
+        let stationsInGroup = filteredStations[orderedSections[indexPath.section]]
         item.radioStation = stationsInGroup![indexPath.item]
+        let isItemSelected = collectionView.selectionIndexPaths.contains(indexPath as IndexPath)
+        item.setHighlight(selected: isItemSelected)
         return item
     }
     
@@ -142,7 +97,9 @@ extension PopoverViewController: NSCollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: NSCollectionView, didSelectItemsAt indexPaths: Set<IndexPath>) {
-        if let station = orderedStations[orderedSections[(indexPaths.first?.section)!]]?[(indexPaths.first?.item)!] {
+        if let station = filteredStations[orderedSections[(indexPaths.first!.section)]]?[(indexPaths.first!.item)] {
+            print("SelectedStation: \(selectedStation?.description))")
+            print("Cliqued Station: \(String(describing: station.description)) [\(String(describing: indexPaths.first!.section)),\(String(describing: indexPaths.first!.item))]")
             selectedStation = station
             highlightItems(selected: true, at: indexPaths.first!)
         }

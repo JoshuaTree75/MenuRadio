@@ -9,12 +9,15 @@
 import Foundation
 import AppKit
 
+
 private let autoplayKey = "autoPlay"
 private let launchAtStartupKey = "launchAtStartup"
 private let notificationsKey = "notifications"
 private let animatedIconKey = "animatedIcon"
 private let selectedStationKey = "selectedStation"
 private let stationsKey = "stations"
+private let sortingPredicateKey = "sortingPredicate"
+private let favoritesOnlyKey = "favoritesOnly"
 
 private let  nameKey = "name"
 private let  streamURLKey = "streamURL"
@@ -22,6 +25,12 @@ private let  imageURLKey = "imageURL"
 private let  descKey = "desc"
 private let  groupKey = "group"
 private let favoriteKey = "favorite"
+
+
+enum SortingPredicate: Int {
+    case alphabetical
+    case groups
+}
 
 class PreferenceManager {
     
@@ -40,6 +49,8 @@ class PreferenceManager {
                                         launchAtStartupKey: true,
                                         notificationsKey: false,
                                         animatedIconKey: false,
+                                        sortingPredicateKey: 0,  //alphabetical
+                                        favoritesOnlyKey: false,
                                         selectedStationKey: "", //a streamURL
                                         stationsKey: stations]
         userDefaults.register(defaults: defaults)
@@ -60,6 +71,14 @@ class PreferenceManager {
     var animatedIcon: Bool {
         set { userDefaults.set(newValue, forKey: animatedIconKey) }
         get { return userDefaults.bool(forKey: animatedIconKey) }
+    }
+    var sortingPredicate: SortingPredicate {
+        set { userDefaults.set(newValue.rawValue, forKey: sortingPredicateKey) }
+        get { return SortingPredicate(rawValue: userDefaults.integer(forKey: sortingPredicateKey)) ?? .alphabetical }
+    }
+    var favoritesOnly: Bool {
+        set {userDefaults.set(newValue, forKey: favoritesOnlyKey)}
+        get { return userDefaults.bool(forKey: favoritesOnlyKey)}
     }
     var selectedStation: RadioStation? {
         set { if newValue != nil {

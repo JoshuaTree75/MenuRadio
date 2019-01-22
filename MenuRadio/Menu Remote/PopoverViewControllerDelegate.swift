@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-extension MenuRadioController: PopoverViewControllerDelegate {
+extension MenuRemote: PopoverViewControllerDelegate {
     
     //*****************************************************************
     // MARK: - PopoverViewControllerDelegate
@@ -26,6 +26,10 @@ extension MenuRadioController: PopoverViewControllerDelegate {
          //   if !popover.isDetached { closePopover(sender: self) }
        // }
     }
+    
+//    func stationsDidChange() {
+//        PreferenceManager.shared.stations = stations
+//    }
     
     func didPickPreference(menuItem: NSMenuItem) {
         var newState: Bool
@@ -47,7 +51,7 @@ extension MenuRadioController: PopoverViewControllerDelegate {
             prefs.notifications = newState
         case menuAnimatedIcon:
             prefs.animatedIcon = newState
-            menuRemote.switchIcon(withImageNamed: iconNameForStates(stationManager.player.state, stationManager.player.playbackState), animated: newState)
+            switchIcon(withImageNamed: iconNameForStates(stationManager.player.state, stationManager.player.playbackState), animated: newState)
         default:
             if kDebugLog { print("This menu dosen't exist")}
         }

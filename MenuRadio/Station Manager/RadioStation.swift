@@ -12,7 +12,7 @@ import Foundation
 // Radio Station
 //*****************************************************************
 
-struct RadioStation: Codable {
+class RadioStation: Codable {
     
     var name: String
     var streamURL: String
@@ -20,6 +20,9 @@ struct RadioStation: Codable {
     var desc: String
     var group: String
     var favorite: Bool
+//    var country: String
+//    var website: String
+//    var categories: [String]
 
     init(name: String, streamURL: String, imageURL: String = "", desc: String = "", group: String = "Without group", favorite: Bool = false) {
         self.name = name
@@ -29,6 +32,10 @@ struct RadioStation: Codable {
         self.group = group
         self.favorite = favorite
     }
+    
+    var description: String {
+        return "Name: \(name) (groupe: \(group))"
+    }
 }
 
 extension RadioStation: Equatable {
@@ -36,4 +43,6 @@ extension RadioStation: Equatable {
     static func ==(lhs: RadioStation, rhs: RadioStation) -> Bool {
         return (lhs.name == rhs.name) && (lhs.streamURL == rhs.streamURL) && (lhs.imageURL == rhs.imageURL) && (lhs.desc == rhs.desc) && (lhs.group == rhs.group)
     }
+    
+
 }

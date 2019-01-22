@@ -9,42 +9,30 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CollectionItem" customModule="MenuRadio" customModuleProvider="target">
             <connections>
                 <outlet property="editButton" destination="asr-pj-atd" id="q47-gO-SKH"/>
+                <outlet property="favoriteButton" destination="B2Y-Rd-6Yw" id="gEY-HK-gqi"/>
                 <outlet property="iconView" destination="H3v-0f-4Iv" id="arc-mM-AUg"/>
-                <outlet property="stationName" destination="oWk-1f-tWf" id="hU1-Dd-0Mg"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView wantsLayer="YES" misplaced="YES" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="56" height="54"/>
+        <customView wantsLayer="YES" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="H3v-0f-4Iv">
-                    <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                <imageView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="H3v-0f-4Iv" customClass="AspectFillImageView" customModule="MenuRadio" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="54" id="XGR-Zg-e1l"/>
+                        <constraint firstAttribute="width" constant="52" id="XGR-Zg-e1l"/>
                         <constraint firstAttribute="width" secondItem="H3v-0f-4Iv" secondAttribute="height" multiplier="1:1" id="vKt-Ju-pOv"/>
                     </constraints>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="FranceMusique" id="OV5-9c-93Z"/>
                 </imageView>
-                <textField hidden="YES" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="oWk-1f-tWf">
-                    <rect key="frame" x="0.0" y="0.0" width="12" height="330"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="12" id="QFk-wA-SCu"/>
-                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="sfv-DH-Rb7"/>
-                    </constraints>
-                    <textFieldCell key="cell" controlSize="mini" truncatesLastVisibleLine="YES" alignment="center" title="Radio France Luxembourg Australie" drawsBackground="YES" id="v0S-TD-uJC">
-                        <font key="font" metaFont="miniSystem"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button hidden="YES" verticalHuggingPriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="asr-pj-atd">
-                    <rect key="frame" x="27" y="3" width="24" height="24"/>
+                    <rect key="frame" x="21" y="3" width="28" height="9"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="24" id="D6Y-3t-Rz4"/>
-                        <constraint firstAttribute="width" constant="24" id="jEf-As-Fn8"/>
+                        <constraint firstAttribute="height" constant="9" id="D6Y-3t-Rz4"/>
+                        <constraint firstAttribute="width" constant="28" id="jEf-As-Fn8"/>
                     </constraints>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="EditButton" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="yyO-dm-Qa6">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -55,24 +43,51 @@
                         <action selector="editStation:" target="-2" id="5dS-Iz-8cu"/>
                     </connections>
                 </button>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gb7-Az-p1S">
+                    <rect key="frame" x="17" y="20" width="37" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="zVT-RQ-J4c">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B2Y-Rd-6Yw">
+                    <rect key="frame" x="28" y="30" width="24" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="XR6-oG-6ca"/>
+                        <constraint firstAttribute="width" secondItem="B2Y-Rd-6Yw" secondAttribute="height" multiplier="15:14" id="yGm-sk-hhk"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="FavoritesButton" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="LbA-TY-8IL">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="setFavorite:" target="-2" id="crE-zo-KtT"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="B2Y-Rd-6Yw" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="149-UF-Co9"/>
                 <constraint firstAttribute="trailing" secondItem="H3v-0f-4Iv" secondAttribute="trailing" id="HRS-6F-mA3"/>
                 <constraint firstAttribute="trailing" secondItem="asr-pj-atd" secondAttribute="trailing" constant="3" id="IMZ-Ew-5hq"/>
                 <constraint firstItem="H3v-0f-4Iv" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="LJW-YL-zfn"/>
-                <constraint firstItem="oWk-1f-tWf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Per-5M-f3W"/>
-                <constraint firstAttribute="trailing" secondItem="oWk-1f-tWf" secondAttribute="trailing" id="Vk4-tr-gK9"/>
+                <constraint firstAttribute="trailing" secondItem="B2Y-Rd-6Yw" secondAttribute="trailing" id="NVO-oB-16r"/>
                 <constraint firstAttribute="bottom" secondItem="asr-pj-atd" secondAttribute="bottom" constant="3" id="aEL-T1-crp"/>
                 <constraint firstAttribute="bottom" secondItem="H3v-0f-4Iv" secondAttribute="bottom" id="cu3-uO-y7Y"/>
                 <constraint firstItem="H3v-0f-4Iv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="jdC-yz-NVx"/>
-                <constraint firstAttribute="bottom" secondItem="oWk-1f-tWf" secondAttribute="bottom" id="sXo-ZP-TrC"/>
             </constraints>
             <point key="canvasLocation" x="-124" y="197"/>
         </customView>
-        <collectionViewItem id="VMJ-Ml-K7r" customClass="CollectionItem" customModule="MenuRadio" customModuleProvider="target"/>
+        <collectionViewItem id="VMJ-Ml-K7r" customClass="CollectionItem" customModule="MenuRadio" customModuleProvider="target">
+            <connections>
+                <outlet property="stationName" destination="gb7-Az-p1S" id="clV-co-N9b"/>
+            </connections>
+        </collectionViewItem>
     </objects>
     <resources>
-        <image name="EditButton" width="24" height="24"/>
+        <image name="EditButton" width="28" height="9"/>
+        <image name="FavoritesButton" width="28" height="26"/>
         <image name="FranceMusique" width="1024" height="1024"/>
     </resources>
 </document>

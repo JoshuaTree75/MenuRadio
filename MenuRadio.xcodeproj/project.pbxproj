@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA08F92F21F3A7FF004D7517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA08F92E21F3A7FF004D7517 /* Assets.xcassets */; };
 		FA10A41E21D041910076C4FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A41D21D041910076C4FD /* AppDelegate.swift */; };
-		FA10A42221D041930076C4FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA10A42121D041930076C4FD /* Assets.xcassets */; };
 		FA10A42521D041930076C4FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA10A42321D041930076C4FD /* Main.storyboard */; };
 		FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42D21D042030076C4FD /* MenuRadioController.swift */; };
 		FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A42F21D044D30076C4FD /* LongPressView.swift */; };
@@ -26,8 +26,10 @@
 		FA10A45921D4489F0076C4FD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45821D4489F0076C4FD /* Track.swift */; };
 		FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */; };
 		FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */; };
-		FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */; };
+		FA229CCF21D817BA00F1FC0B /* MarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA229CCE21D817BA00F1FC0B /* MarqueeView.swift */; };
 		FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */; };
+		FA2CBE1421EF4A1500A60AA2 /* AspectFillImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2CBE1321EF4A1500A60AA2 /* AspectFillImageView.swift */; };
+		FA2CBE1721EF4B3700A60AA2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2CBE1621EF4B3700A60AA2 /* QuartzCore.framework */; };
 		FA4E2F1921E56E2900A32169 /* PopoverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */; };
 		FA4E2F1B21E5702B00A32169 /* PopoverViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */; };
 		FA4E2F1D21E5706600A32169 /* StationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */; };
@@ -39,12 +41,13 @@
 		FAA1526321EC6EDA00557D0E /* EditStationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA1526121EC6EDA00557D0E /* EditStationView.swift */; };
 		FAA1526421EC6EDA00557D0E /* EditStationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAA1526221EC6EDA00557D0E /* EditStationView.xib */; };
 		FAD0757B21E0DF010022C56A /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */; };
+		FAF6323221F578260081F344 /* NSSearchFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF6323121F578260081F344 /* NSSearchFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA08F92E21F3A7FF004D7517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA10A41A21D041910076C4FD /* MenuRadio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuRadio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA10A41D21D041910076C4FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FA10A42121D041930076C4FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA10A42421D041930076C4FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA10A42621D041930076C4FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA10A42D21D042030076C4FD /* MenuRadioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRadioController.swift; sourceTree = "<group>"; };
@@ -64,8 +67,10 @@
 		FA10A45B21D44D3A0076C4FD /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRemote.swift; sourceTree = "<group>"; };
 		FA10A46021D5B7080076C4FD /* MenuRadio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MenuRadio.entitlements; sourceTree = "<group>"; };
-		FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollingTextView.swift; sourceTree = "<group>"; };
+		FA229CCE21D817BA00F1FC0B /* MarqueeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeView.swift; sourceTree = "<group>"; };
 		FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = DefaultRadioStations.plist; sourceTree = "<group>"; };
+		FA2CBE1321EF4A1500A60AA2 /* AspectFillImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectFillImageView.swift; sourceTree = "<group>"; };
+		FA2CBE1621EF4B3700A60AA2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverDelegate.swift; sourceTree = "<group>"; };
 		FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopoverViewControllerDelegate.swift; sourceTree = "<group>"; };
 		FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationManagerDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +82,7 @@
 		FAA1526121EC6EDA00557D0E /* EditStationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditStationView.swift; sourceTree = "<group>"; };
 		FAA1526221EC6EDA00557D0E /* EditStationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditStationView.xib; sourceTree = "<group>"; };
 		FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		FAF6323121F578260081F344 /* NSSearchFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSSearchFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2CBE1721EF4B3700A60AA2 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +102,7 @@
 			children = (
 				FA10A41C21D041910076C4FD /* MenuRadio */,
 				FA10A41B21D041910076C4FD /* Products */,
+				FA2CBE1521EF4B3600A60AA2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,11 +117,8 @@
 		FA10A41C21D041910076C4FD /* MenuRadio */ = {
 			isa = PBXGroup;
 			children = (
-				FA10A42D21D042030076C4FD /* MenuRadioController.swift */,
-				FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */,
-				FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */,
-				FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */,
 				FA10A45F21D5A62F0076C4FD /* Menu Remote */,
+				FA08F92E21F3A7FF004D7517 /* Assets.xcassets */,
 				FA10A45421D429830076C4FD /* Popover */,
 				FA4E2F4221E8EBAF00A32169 /* CollectionView */,
 				FA10A45521D429900076C4FD /* Station Manager */,
@@ -121,7 +126,6 @@
 				FA10A45321D429430076C4FD /* System */,
 				FA10A43A21D1D6EA0076C4FD /* PreferenceManager.swift */,
 				FA229CD021DA7B7D00F1FC0B /* DefaultRadioStations.plist */,
-				FA10A42121D041930076C4FD /* Assets.xcassets */,
 				FA10A43721D1C13B0076C4FD /* Unused */,
 			);
 			path = MenuRadio;
@@ -130,6 +134,7 @@
 		FA10A43721D1C13B0076C4FD /* Unused */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A42D21D042030076C4FD /* MenuRadioController.swift */,
 				FAD0757A21E0DF010022C56A /* TableViewDelegate.swift */,
 				FA10A44B21D40E840076C4FD /* DataManager.swift */,
 				FA10A43121D047800076C4FD /* MenuRadioPlaybackState.swift */,
@@ -163,7 +168,8 @@
 			children = (
 				FA10A42321D041930076C4FD /* Main.storyboard */,
 				FA10A43821D1C4DB0076C4FD /* PopoverViewController.swift */,
-				FA229CCE21D817BA00F1FC0B /* ScrollingTextView.swift */,
+				FAF6323121F578260081F344 /* NSSearchFieldDelegate.swift */,
+				FA229CCE21D817BA00F1FC0B /* MarqueeView.swift */,
 				FA4E2F4021E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift */,
 			);
 			path = Popover;
@@ -183,11 +189,22 @@
 		FA10A45F21D5A62F0076C4FD /* Menu Remote */ = {
 			isa = PBXGroup;
 			children = (
+				FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */,
 				FA10A43521D188DD0076C4FD /* AnimatedView.swift */,
 				FA10A42F21D044D30076C4FD /* LongPressView.swift */,
-				FA10A45D21D5A50B0076C4FD /* MenuRemote.swift */,
+				FA4E2F1C21E5706600A32169 /* StationManagerDelegate.swift */,
+				FA4E2F1A21E5702B00A32169 /* PopoverViewControllerDelegate.swift */,
+				FA4E2F1821E56E2900A32169 /* PopoverDelegate.swift */,
 			);
 			path = "Menu Remote";
+			sourceTree = "<group>";
+		};
+		FA2CBE1521EF4B3600A60AA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA2CBE1621EF4B3700A60AA2 /* QuartzCore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA4E2F4221E8EBAF00A32169 /* CollectionView */ = {
@@ -195,6 +212,7 @@
 			children = (
 				FA4E2F3C21E8CF0400A32169 /* CollectionItem.swift */,
 				FA4E2F3D21E8CF0400A32169 /* CollectionItem.xib */,
+				FA2CBE1321EF4A1500A60AA2 /* AspectFillImageView.swift */,
 				FA4E2F4521E8F3A700A32169 /* HeaderView.swift */,
 				FA4E2F4321E8F2BD00A32169 /* HeaderView.xib */,
 				FAA1526121EC6EDA00557D0E /* EditStationView.swift */,
@@ -269,11 +287,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA10A42221D041930076C4FD /* Assets.xcassets in Resources */,
 				FA4E2F4421E8F2BD00A32169 /* HeaderView.xib in Resources */,
 				FA229CD121DA7B7D00F1FC0B /* DefaultRadioStations.plist in Resources */,
 				FAA1526421EC6EDA00557D0E /* EditStationView.xib in Resources */,
 				FA4E2F3F21E8CF0400A32169 /* CollectionItem.xib in Resources */,
+				FA08F92F21F3A7FF004D7517 /* Assets.xcassets in Resources */,
 				FA10A42521D041930076C4FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,17 +304,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA10A43921D1C4DB0076C4FD /* PopoverViewController.swift in Sources */,
+				FA2CBE1421EF4A1500A60AA2 /* AspectFillImageView.swift in Sources */,
 				FA10A45E21D5A50B0076C4FD /* MenuRemote.swift in Sources */,
 				FA10A43B21D1D6EA0076C4FD /* PreferenceManager.swift in Sources */,
 				FA10A44E21D40EE80076C4FD /* RadioStation.swift in Sources */,
 				FA4E2F4121E8E74600A32169 /* CollectionViewDelegateAndDataSource.swift in Sources */,
 				FAA1526321EC6EDA00557D0E /* EditStationView.swift in Sources */,
 				FA10A45021D420A20076C4FD /* InternalSettings.swift in Sources */,
+				FAF6323221F578260081F344 /* NSSearchFieldDelegate.swift in Sources */,
 				FA4E2F1D21E5706600A32169 /* StationManagerDelegate.swift in Sources */,
 				FA4E2F3E21E8CF0400A32169 /* CollectionItem.swift in Sources */,
 				FA10A44921D2FCBB0076C4FD /* FRadioAPI.swift in Sources */,
 				FA10A43021D044D30076C4FD /* LongPressView.swift in Sources */,
-				FA229CCF21D817BA00F1FC0B /* ScrollingTextView.swift in Sources */,
+				FA229CCF21D817BA00F1FC0B /* MarqueeView.swift in Sources */,
 				FA10A45C21D44D3A0076C4FD /* ImageLoader.swift in Sources */,
 				FA10A42E21D042030076C4FD /* MenuRadioController.swift in Sources */,
 				FA4E2F1B21E5702B00A32169 /* PopoverViewControllerDelegate.swift in Sources */,
